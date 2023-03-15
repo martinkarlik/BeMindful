@@ -22,6 +22,8 @@
 		4E36CAE029B8B3F900F380CC /* BitSpy_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CADF29B8B3F900F380CC /* BitSpy_Watch_AppTests.swift */; };
 		4E36CAEA29B8B3F900F380CC /* BitSpy_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAE929B8B3F900F380CC /* BitSpy_Watch_AppUITests.swift */; };
 		4E36CAEC29B8B3F900F380CC /* BitSpy_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAEB29B8B3F900F380CC /* BitSpy_Watch_AppUITestsLaunchTests.swift */; };
+		4EBE554729BE3616006ECF5A /* TrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* TrackerViewModel.swift */; };
+		4EBE554829BE3616006ECF5A /* TrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* TrackerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,7 @@
 		4E36CAE529B8B3F900F380CC /* BitSpy Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BitSpy Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E36CAE929B8B3F900F380CC /* BitSpy_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSpy_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		4E36CAEB29B8B3F900F380CC /* BitSpy_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSpy_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4EBE554629BE3616006ECF5A /* TrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,7 @@
 		4E36CA9A29B8B3F500F380CC = {
 			isa = PBXGroup;
 			children = (
+				4EBE554529BE35BC006ECF5A /* AppCoreShared */,
 				4E36CAA529B8B3F500F380CC /* BitSpy */,
 				4E36CAB629B8B3F800F380CC /* BitSpyTests */,
 				4E36CAC029B8B3F800F380CC /* BitSpyUITests */,
@@ -241,6 +245,14 @@
 				4E36CAEB29B8B3F900F380CC /* BitSpy_Watch_AppUITestsLaunchTests.swift */,
 			);
 			path = "BitSpy Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		4EBE554529BE35BC006ECF5A /* AppCoreShared */ = {
+			isa = PBXGroup;
+			children = (
+				4EBE554629BE3616006ECF5A /* TrackerViewModel.swift */,
+			);
+			path = AppCoreShared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,6 +479,7 @@
 			files = (
 				4E36CAA929B8B3F500F380CC /* ContentView.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BitSpyApp.swift in Sources */,
+				4EBE554729BE3616006ECF5A /* TrackerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +506,7 @@
 			files = (
 				4E36CAD129B8B3F800F380CC /* ContentView.swift in Sources */,
 				4E36CACF29B8B3F800F380CC /* BitSpyApp.swift in Sources */,
+				4EBE554829BE3616006ECF5A /* TrackerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

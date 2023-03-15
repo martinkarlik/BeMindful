@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 @main
 struct BitSpyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(session: WCSession.default)
         }
     }
 }
