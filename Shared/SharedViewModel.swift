@@ -12,13 +12,15 @@ import SwiftUI
 class SharedViewModel: ObservableObject {
     
     @Published var bfrbCounter: Int
+    let defaults = UserDefaults.standard
     
     init() {
-        self.bfrbCounter = 0
+        self.bfrbCounter = defaults.integer(forKey: "bfrbCounter")
 
     }
     
     func incrementCounter() {
         bfrbCounter += 1
+        defaults.set(bfrbCounter, forKey:"bfrbCounter")
     }
 }
