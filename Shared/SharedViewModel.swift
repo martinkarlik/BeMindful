@@ -12,17 +12,13 @@ import SwiftUI
 class SharedViewModel: ObservableObject {
     
     @Published var bfrbCounter: Int
-    var connectivityProvider = ConnectivityProvider()
     
-    init(bfrbCounter: Int = 0) {
-        self.bfrbCounter = bfrbCounter
+    init() {
+        self.bfrbCounter = 0
+
     }
     
-    func sendMessageToiPhone() {
-        connectivityProvider.sendMessageToiPhone()
-    }
-    
-    func sendMessageToWatch() {
-        connectivityProvider.sendMessageToWatch()
+    func incrementCounter() {
+        bfrbCounter += 1
     }
 }
