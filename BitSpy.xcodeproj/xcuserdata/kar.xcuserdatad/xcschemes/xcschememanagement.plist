@@ -4,15 +4,62 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BitSpy Watch App.xcscheme_^#shared#^_</key>
+		<key>BitSpyMobile.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>BitSpyMobileTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>BitSpyWatch.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>BitSpy.xcscheme_^#shared#^_</key>
+		<key>BitSpyWatchTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4E36CAA229B8B3F500F380CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E36CAB229B8B3F800F380CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E36CABC29B8B3F800F380CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E36CAC829B8B3F800F380CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E36CADA29B8B3F900F380CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E36CAE429B8B3F900F380CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
