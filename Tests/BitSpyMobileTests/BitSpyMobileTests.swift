@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import BitSpy
+@testable import BitSpyMobile
 
 final class BitSpyTests: XCTestCase {
 
