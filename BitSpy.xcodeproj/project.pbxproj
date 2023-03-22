@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4234C88829CB3D5800A75364 /* ScatterChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234C88729CB3D5800A75364 /* ScatterChart.swift */; };
+		4234C88A29CB3D7200A75364 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234C88929CB3D7200A75364 /* Data.swift */; };
 		4E36CAA729B8B3F500F380CC /* BitSpyMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA629B8B3F500F380CC /* BitSpyMobileApp.swift */; };
 		4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA829B8B3F500F380CC /* MobileAppView.swift */; };
 		4E36CAAB29B8B3F700F380CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAAA29B8B3F700F380CC /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4234C88729CB3D5800A75364 /* ScatterChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScatterChart.swift; sourceTree = "<group>"; };
+		4234C88929CB3D7200A75364 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		4E36CAA329B8B3F500F380CC /* BitSpyMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitSpyMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E36CAA629B8B3F500F380CC /* BitSpyMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSpyMobileApp.swift; sourceTree = "<group>"; };
 		4E36CAA829B8B3F500F380CC /* MobileAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAppView.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				4E36CAA829B8B3F500F380CC /* MobileAppView.swift */,
 				4E36CAAA29B8B3F700F380CC /* Assets.xcassets */,
 				4E36CAAC29B8B3F700F380CC /* Preview Content */,
+				4234C88729CB3D5800A75364 /* ScatterChart.swift */,
+				4234C88929CB3D7200A75364 /* Data.swift */,
 			);
 			path = BitSpyMobile;
 			sourceTree = "<group>";
@@ -370,7 +376,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
+				4234C88A29CB3D7200A75364 /* Data.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
+				4234C88829CB3D5800A75364 /* ScatterChart.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BitSpyMobileApp.swift in Sources */,
 				4EBE554729BE3616006ECF5A /* SharedViewModel.swift in Sources */,
 			);

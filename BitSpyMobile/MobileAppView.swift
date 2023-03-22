@@ -21,6 +21,8 @@ struct MobileAppView: View {
             Button("Click", action: {
                 counter += 1
             })
+
+            ScatterChart()
         }
         .padding()
     }
