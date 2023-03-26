@@ -9,18 +9,17 @@ import SwiftUI
 import WatchConnectivity
 
 struct MobileAppView: View {
-    
-    @State var counter: Int = 0
-    
-    @State var viewModel = SharedViewModel()
+
+    @ObservedObject var viewModel = SharedViewModel()
+    var connectivityProvider = ConnectivityProvider()
     
     var body: some View {
         VStack {
-            Text("Nail bites: \(counter)")
-            
-            Button("Click", action: {
-                counter += 1
-            })
+            Text("Nail bites: \(viewModel.bfrbCounter)")
+        }
+        .onAppear {
+            connectivityProvider.connect()
+            connectivityProvider.sharedViewModel = viewModel
         }
         .padding()
     }

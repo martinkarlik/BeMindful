@@ -11,13 +11,18 @@ import WatchConnectivity
 
 struct WatchAppView: View {
     
-    var viewModel = SharedViewModel()
+    @ObservedObject var viewModel = SharedViewModel()
+    var connectivityProvider = ConnectivityProvider()
     
     var body: some View {
         VStack {
             Button("Oops I did it again!") {
-                viewModel.sendMessageToiPhone()
+                connectivityProvider.sendMessageToiPhone()
             }
+        }
+        .onAppear {
+            connectivityProvider.connect()
+            connectivityProvider.sharedViewModel = viewModel
         }
         .padding()
     }
