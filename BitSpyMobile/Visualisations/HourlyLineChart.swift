@@ -16,7 +16,7 @@ struct HourlyLineChart: View {
         Chart(data) { series in
             ForEach(series.occurrencies, id: \.weekday) { element in
                 LineMark(
-                    x: .value("Day", element.weekday, unit: .day),
+                    x: .value("Day", element.weekday, unit: .minute),
                     y: .value("Occurrencies", element.occurrencies)
                 )
             }
@@ -37,6 +37,7 @@ struct HourlyLineChart: View {
                 AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
             }
         }
+
         .chartLegend(position: .top)
     }
 }
@@ -119,3 +120,5 @@ struct LineChartDetails_Previews: PreviewProvider {
         LineChartDetails()
     }
 }
+
+

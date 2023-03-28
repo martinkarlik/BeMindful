@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-func occurenceDate(year: Int, month: Int, day: Int = 1, hour: Int = 1) -> Date {
+func occurenceDate(year: Int, month: Int, day: Int = 1, hour: Int = 7, minute: Int = 0) -> Date {
     
-    Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour)) ?? Date()
+    Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
 }
 
 // Data for the occurrencies by location and weekday charts.
@@ -31,20 +31,20 @@ struct BFRBData {
     /// change it to timestamps - remove occurrencies
     static let lastHour: [Series] = [
         .init(BFRBName: "Nail Biting", occurrencies: [
-            (weekday: occurenceDate(year: 2022, month: 5, day: 2), occurrencies: 4),
-            (weekday: occurenceDate(year: 2022, month: 5, day: 3), occurrencies: 3),
-            (weekday: occurenceDate(year: 2022, month: 5, day: 4), occurrencies: 2),
-            (weekday: occurenceDate(year: 2022, month: 5, day: 5), occurrencies: 3),
-            (weekday: occurenceDate(year: 2022, month: 5, day: 6), occurrencies: 1),
-            (weekday: occurenceDate(year: 2022, month: 5, day: 7), occurrencies: 5),
+            (weekday: occurenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 8),  occurrencies: 1),
+            (weekday: occurenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 10), occurrencies: 1),
+            (weekday: occurenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 14), occurrencies: 1),
+            (weekday: occurenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 22), occurrencies: 1),
+            (weekday: occurenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 34), occurrencies: 1),
+            (weekday: occurenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 43), occurrencies: 1),
         ])
     ]
 
     /// The best weekday and location for the last 30 days.
     static let lastHourMost = (
         BFRBName: "Nail Biting",
-        weekday: occurenceDate(year: 2022, month: 5, day: 8),
-        occurrencies: 5
+        weekday: occurenceDate(year: 2022, month: 5, day: 8, hour: 8, minute: 8),
+        occurrencies: 1
     )
 
 
