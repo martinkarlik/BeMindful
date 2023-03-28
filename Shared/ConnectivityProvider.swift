@@ -11,6 +11,7 @@ import WatchConnectivity
 class ConnectivityProvider: NSObject {
     
     var session: WCSession
+    var sharedViewModel: SharedViewModel?
     
     override init() {
         self.session = WCSession.default
@@ -48,7 +49,7 @@ extension ConnectivityProvider: WCSessionDelegate {
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        print("Session deactivated")
+        session.delegate = nil
     }
     #endif
     
@@ -57,6 +58,13 @@ extension ConnectivityProvider: WCSessionDelegate {
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        print("Message received")
+
+        guard let sharedViewModel = sharedViewModel else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            sharedViewModel.incrementCounter()
+        }
     }
 }
