@@ -16,7 +16,7 @@ struct HourlyLineChart: View {
         Chart(data) { series in
             ForEach(series.occurrences, id: \.weekday) { element in
                 LineMark(
-                    x: .value("Day", element.weekday, unit: .minute),
+                    x: .value("Day", element.weekday, unit: .day),
                     y: .value("occurrences", element.occurrences)
                 )
             }
