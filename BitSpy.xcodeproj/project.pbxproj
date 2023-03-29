@@ -22,6 +22,9 @@
 		4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
 		4E4FD1B529CB1A1700DADB21 /* SharedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* SharedViewModel.swift */; };
 		4EBE554729BE3616006ECF5A /* SharedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* SharedViewModel.swift */; };
+		B099273D29CB3F9B0099FBFB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099273C29CB3F9B0099FBFB /* Data.swift */; };
+		B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */; };
+		B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		4E36CADF29B8B3F900F380CC /* BitSpyWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSpyWatchAppTests.swift; sourceTree = "<group>"; };
 		4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		4EBE554629BE3616006ECF5A /* SharedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewModel.swift; sourceTree = "<group>"; };
+		B099273C29CB3F9B0099FBFB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyLineChart.swift; sourceTree = "<group>"; };
+		B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,7 @@
 		4E36CAA529B8B3F500F380CC /* BitSpyMobile */ = {
 			isa = PBXGroup;
 			children = (
+				B099273B29CB3F620099FBFB /* Visualisations */,
 				4E36CAA629B8B3F500F380CC /* BitSpyMobileApp.swift */,
 				4E36CAA829B8B3F500F380CC /* MobileAppView.swift */,
 				4E36CAAA29B8B3F700F380CC /* Assets.xcassets */,
@@ -194,6 +201,7 @@
 			children = (
 				4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */,
 				4EBE554629BE3616006ECF5A /* SharedViewModel.swift */,
+				B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -205,6 +213,15 @@
 				4E36CAB629B8B3F800F380CC /* BitSpyMobileTests */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		B099273B29CB3F620099FBFB /* Visualisations */ = {
+			isa = PBXGroup;
+			children = (
+				B099273C29CB3F9B0099FBFB /* Data.swift */,
+				B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */,
+			);
+			path = Visualisations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,9 +387,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
+				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
+				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BitSpyMobileApp.swift in Sources */,
 				4EBE554729BE3616006ECF5A /* SharedViewModel.swift in Sources */,
+				B099273D29CB3F9B0099FBFB /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
