@@ -10,14 +10,14 @@ import SwiftUI
 
 struct HourlyLineChart: View {
     let data: [BFRBData.Series]
-    let mostOccurrencies: (BFRBName: String, weekday: Date, occurrencies: Int)
+    let mostOccurrences: (BFRBName: String, weekday: Date, occurrences: Int)
     
     var body: some View {
         Chart(data) { series in
-            ForEach(series.occurrencies, id: \.weekday) { element in
+            ForEach(series.occurrences, id: \.weekday) { element in
                 LineMark(
                     x: .value("Day", element.weekday, unit: .minute),
-                    y: .value("Occurrencies", element.occurrencies)
+                    y: .value("occurrences", element.occurrences)
                 )
             }
             .foregroundStyle(by: .value("Habit", series.BFRBName))
@@ -45,7 +45,7 @@ struct HourlyLineChart: View {
 struct LineChartDetails: View {
     @State private var timeRange: TimeRange = .lastHour
 
-    var mostOccurrencies: (BFRBName: String, weekday: Date, occurrencies: Int) {
+    var mostOccurrences: (BFRBName: String, weekday: Date, occurrences: Int) {
         switch timeRange {
         case .lastHour:
             return BFRBData.lastHourMost
@@ -72,9 +72,9 @@ struct LineChartDetails: View {
     }
 
     var descriptionText: Text {
-        let occurrencies = mostOccurrencies.occurrencies.formatted(.number)
-        let weekday = mostOccurrencies.weekday.formatted(.dateTime.weekday(.wide))
-        let BFRBName = mostOccurrencies.BFRBName
+        let occurrences = mostOccurrences.occurrences.formatted(.number)
+        let weekday = mostOccurrences.weekday.formatted(.dateTime.weekday(.wide))
+        let BFRBName = mostOccurrences.BFRBName
         let time: String
         switch timeRange {
         case .lastHour:
@@ -86,7 +86,7 @@ struct LineChartDetails: View {
         case .lastMonth:
             time = "last month"
         }
-        return Text("On average, \(occurrencies) occurencies of \(BFRBName) were counted in the \(time). on \(weekday)s ")
+        return Text("On average, \(occurrences) occurencies of \(BFRBName) were counted in the \(time). on \(weekday)s ")
     }
 
     var body: some View {
@@ -95,14 +95,14 @@ struct LineChartDetails: View {
                 TimeRangePicker(value: $timeRange)
                     .padding(.bottom)
 
-                Text("Day + Location With Most Sales")
+                Text("Habit occurrences")
                     .font(.callout)
                     .foregroundStyle(.secondary)
 
-                Text("Sundays in San Francisco")
+                Text("Nail biting occurrences")
                     .font(.title2.bold())
 
-                HourlyLineChart(data: data, mostOccurrencies: mostOccurrencies)
+                HourlyLineChart(data: data, mostOccurrences: mostOccurrences)
                     .frame(height: 240)
 
                 descriptionText
@@ -111,7 +111,7 @@ struct LineChartDetails: View {
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
-        .navigationBarTitle("Day + Location", displayMode: .inline)
+        .navigationBarTitle("Habit over time", displayMode: .inline)
     }
 }
 
