@@ -1,6 +1,6 @@
 //
 //  Utils.swift
-//  BitSpyMobile
+//  BeMindfulMobile
 //
 //  Created by Marina Epitropakis on 22/03/2023.
 //

@@ -18,9 +18,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4E36CADA29B8B3F900F380CC"
-               BuildableName = "BitSpyWatchTests.xctest"
-               BlueprintName = "BitSpyWatchTests"
-               ReferencedContainer = "container:BitSpy.xcodeproj">
+               BuildableName = "BeMindfulWatchTests.xctest"
+               BlueprintName = "BeMindfulWatchTests"
+               ReferencedContainer = "container:BeMindful.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

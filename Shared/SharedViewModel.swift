@@ -1,6 +1,6 @@
 //
 //  TrackerViewModel.swift
-//  BitSpy
+//  BeMindful
 //
 //  Created by Martin Karlik on 12/03/2023.
 //

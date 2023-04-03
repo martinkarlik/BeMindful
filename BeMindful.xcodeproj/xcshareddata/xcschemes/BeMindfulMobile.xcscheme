@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4E36CAA229B8B3F500F380CC"
-               BuildableName = "BitSpyMobile.app"
-               BlueprintName = "BitSpyMobile"
-               ReferencedContainer = "container:BitSpy.xcodeproj">
+               BuildableName = "BeMindfulMobile.app"
+               BlueprintName = "BeMindfulMobile"
+               ReferencedContainer = "container:BeMindful.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4E36CAB229B8B3F800F380CC"
-               BuildableName = "BitSpyMobileTests.xctest"
-               BlueprintName = "BitSpyMobileTests"
-               ReferencedContainer = "container:BitSpy.xcodeproj">
+               BuildableName = "BeMindfulMobileTests.xctest"
+               BlueprintName = "BeMindfulMobileTests"
+               ReferencedContainer = "container:BeMindful.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,7 +47,7 @@
                BlueprintIdentifier = "4E36CABC29B8B3F800F380CC"
                BuildableName = "BitSpyUITests.xctest"
                BlueprintName = "BitSpyUITests"
-               ReferencedContainer = "container:BitSpy.xcodeproj">
+               ReferencedContainer = "container:BeMindful.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -67,9 +67,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4E36CAA229B8B3F500F380CC"
-            BuildableName = "BitSpyMobile.app"
-            BlueprintName = "BitSpyMobile"
-            ReferencedContainer = "container:BitSpy.xcodeproj">
+            BuildableName = "BeMindfulMobile.app"
+            BlueprintName = "BeMindfulMobile"
+            ReferencedContainer = "container:BeMindful.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -84,9 +84,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4E36CAA229B8B3F500F380CC"
-            BuildableName = "BitSpyMobile.app"
-            BlueprintName = "BitSpyMobile"
-            ReferencedContainer = "container:BitSpy.xcodeproj">
+            BuildableName = "BeMindfulMobile.app"
+            BlueprintName = "BeMindfulMobile"
+            ReferencedContainer = "container:BeMindful.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

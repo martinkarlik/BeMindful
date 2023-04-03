@@ -1,6 +1,6 @@
 //
 //  ConnectionProvider.swift
-//  BitSpy
+//  BeMindful
 //
 //  Created by Martin Karlik on 22/03/2023.
 //
