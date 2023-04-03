@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E36CAA729B8B3F500F380CC /* BitSpyMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA629B8B3F500F380CC /* BitSpyMobileApp.swift */; };
+		4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */; };
 		4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA829B8B3F500F380CC /* MobileAppView.swift */; };
 		4E36CAAB29B8B3F700F380CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAAA29B8B3F700F380CC /* Assets.xcassets */; };
 		4E36CAAE29B8B3F700F380CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAAD29B8B3F700F380CC /* Preview Assets.xcassets */; };
-		4E36CAB829B8B3F800F380CC /* BitSpyMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAB729B8B3F800F380CC /* BitSpyMobileTests.swift */; };
-		4E36CACA29B8B3F800F380CC /* BitSpyWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4E36CAC929B8B3F800F380CC /* BitSpyWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		4E36CACF29B8B3F800F380CC /* BitSpyWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CACE29B8B3F800F380CC /* BitSpyWatchApp.swift */; };
+		4E36CAB829B8B3F800F380CC /* BeMindfulMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAB729B8B3F800F380CC /* BeMindfulMobileTests.swift */; };
+		4E36CACA29B8B3F800F380CC /* BeMindfulWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4E36CAC929B8B3F800F380CC /* BeMindfulWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4E36CACF29B8B3F800F380CC /* BeMindfulWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CACE29B8B3F800F380CC /* BeMindfulWatchApp.swift */; };
 		4E36CAD129B8B3F800F380CC /* WatchAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAD029B8B3F800F380CC /* WatchAppView.swift */; };
 		4E36CAD329B8B3F900F380CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAD229B8B3F900F380CC /* Assets.xcassets */; };
 		4E36CAD629B8B3F900F380CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAD529B8B3F900F380CC /* Preview Assets.xcassets */; };
-		4E36CAE029B8B3F900F380CC /* BitSpyWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CADF29B8B3F900F380CC /* BitSpyWatchAppTests.swift */; };
+		4E36CAE029B8B3F900F380CC /* BeMindfulWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CADF29B8B3F900F380CC /* BeMindfulWatchAppTests.swift */; };
 		4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
 		4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
 		4E4FD1B529CB1A1700DADB21 /* SharedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* SharedViewModel.swift */; };
@@ -58,7 +58,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				4E36CACA29B8B3F800F380CC /* BitSpyWatch.app in Embed Watch Content */,
+				4E36CACA29B8B3F800F380CC /* BeMindfulWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,20 +66,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4E36CAA329B8B3F500F380CC /* BitSpyMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitSpyMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E36CAA629B8B3F500F380CC /* BitSpyMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSpyMobileApp.swift; sourceTree = "<group>"; };
+		4E36CAA329B8B3F500F380CC /* BeMindfulMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMindfulMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulMobileApp.swift; sourceTree = "<group>"; };
 		4E36CAA829B8B3F500F380CC /* MobileAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAppView.swift; sourceTree = "<group>"; };
 		4E36CAAA29B8B3F700F380CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E36CAAD29B8B3F700F380CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4E36CAB329B8B3F800F380CC /* BitSpyMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitSpyMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E36CAB729B8B3F800F380CC /* BitSpyMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSpyMobileTests.swift; sourceTree = "<group>"; };
-		4E36CAC929B8B3F800F380CC /* BitSpyWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitSpyWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E36CACE29B8B3F800F380CC /* BitSpyWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSpyWatchApp.swift; sourceTree = "<group>"; };
+		4E36CAB329B8B3F800F380CC /* BeMindfulMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeMindfulMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E36CAB729B8B3F800F380CC /* BeMindfulMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulMobileTests.swift; sourceTree = "<group>"; };
+		4E36CAC929B8B3F800F380CC /* BeMindfulWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMindfulWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E36CACE29B8B3F800F380CC /* BeMindfulWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulWatchApp.swift; sourceTree = "<group>"; };
 		4E36CAD029B8B3F800F380CC /* WatchAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAppView.swift; sourceTree = "<group>"; };
 		4E36CAD229B8B3F900F380CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E36CAD529B8B3F900F380CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4E36CADB29B8B3F900F380CC /* BitSpyWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitSpyWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E36CADF29B8B3F900F380CC /* BitSpyWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitSpyWatchAppTests.swift; sourceTree = "<group>"; };
+		4E36CADB29B8B3F900F380CC /* BeMindfulWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeMindfulWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E36CADF29B8B3F900F380CC /* BeMindfulWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulWatchAppTests.swift; sourceTree = "<group>"; };
 		4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		4EBE554629BE3616006ECF5A /* SharedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewModel.swift; sourceTree = "<group>"; };
 		B099273C29CB3F9B0099FBFB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 			children = (
 				4E4FD1B129CB187E00DADB21 /* Shared */,
 				4EF370AC29CAEE5B007FF249 /* Tests */,
-				4E36CAA529B8B3F500F380CC /* BitSpyMobile */,
-				4E36CACD29B8B3F800F380CC /* BitSpyWatch */,
+				4E36CAA529B8B3F500F380CC /* BeMindfulMobile */,
+				4E36CACD29B8B3F800F380CC /* BeMindfulWatch */,
 				4E36CAA429B8B3F500F380CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,24 +133,24 @@
 		4E36CAA429B8B3F500F380CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4E36CAA329B8B3F500F380CC /* BitSpyMobile.app */,
-				4E36CAB329B8B3F800F380CC /* BitSpyMobileTests.xctest */,
-				4E36CAC929B8B3F800F380CC /* BitSpyWatch.app */,
-				4E36CADB29B8B3F900F380CC /* BitSpyWatchTests.xctest */,
+				4E36CAA329B8B3F500F380CC /* BeMindfulMobile.app */,
+				4E36CAB329B8B3F800F380CC /* BeMindfulMobileTests.xctest */,
+				4E36CAC929B8B3F800F380CC /* BeMindfulWatch.app */,
+				4E36CADB29B8B3F900F380CC /* BeMindfulWatchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4E36CAA529B8B3F500F380CC /* BitSpyMobile */ = {
+		4E36CAA529B8B3F500F380CC /* BeMindfulMobile */ = {
 			isa = PBXGroup;
 			children = (
 				B099273B29CB3F620099FBFB /* Visualisations */,
-				4E36CAA629B8B3F500F380CC /* BitSpyMobileApp.swift */,
+				4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */,
 				4E36CAA829B8B3F500F380CC /* MobileAppView.swift */,
 				4E36CAAA29B8B3F700F380CC /* Assets.xcassets */,
 				4E36CAAC29B8B3F700F380CC /* Preview Content */,
 			);
-			path = BitSpyMobile;
+			path = BeMindfulMobile;
 			sourceTree = "<group>";
 		};
 		4E36CAAC29B8B3F700F380CC /* Preview Content */ = {
@@ -161,23 +161,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4E36CAB629B8B3F800F380CC /* BitSpyMobileTests */ = {
+		4E36CAB629B8B3F800F380CC /* BeMindfulMobileTests */ = {
 			isa = PBXGroup;
 			children = (
-				4E36CAB729B8B3F800F380CC /* BitSpyMobileTests.swift */,
+				4E36CAB729B8B3F800F380CC /* BeMindfulMobileTests.swift */,
 			);
-			path = BitSpyMobileTests;
+			path = BeMindfulMobileTests;
 			sourceTree = "<group>";
 		};
-		4E36CACD29B8B3F800F380CC /* BitSpyWatch */ = {
+		4E36CACD29B8B3F800F380CC /* BeMindfulWatch */ = {
 			isa = PBXGroup;
 			children = (
-				4E36CACE29B8B3F800F380CC /* BitSpyWatchApp.swift */,
+				4E36CACE29B8B3F800F380CC /* BeMindfulWatchApp.swift */,
 				4E36CAD029B8B3F800F380CC /* WatchAppView.swift */,
 				4E36CAD229B8B3F900F380CC /* Assets.xcassets */,
 				4E36CAD429B8B3F900F380CC /* Preview Content */,
 			);
-			path = BitSpyWatch;
+			path = BeMindfulWatch;
 			sourceTree = "<group>";
 		};
 		4E36CAD429B8B3F900F380CC /* Preview Content */ = {
@@ -188,12 +188,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4E36CADE29B8B3F900F380CC /* BitSpyWatchTests */ = {
+		4E36CADE29B8B3F900F380CC /* BeMindfulWatchTests */ = {
 			isa = PBXGroup;
 			children = (
-				4E36CADF29B8B3F900F380CC /* BitSpyWatchAppTests.swift */,
+				4E36CADF29B8B3F900F380CC /* BeMindfulWatchAppTests.swift */,
 			);
-			path = BitSpyWatchTests;
+			path = BeMindfulWatchTests;
 			sourceTree = "<group>";
 		};
 		4E4FD1B129CB187E00DADB21 /* Shared */ = {
@@ -209,8 +209,8 @@
 		4EF370AC29CAEE5B007FF249 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4E36CADE29B8B3F900F380CC /* BitSpyWatchTests */,
-				4E36CAB629B8B3F800F380CC /* BitSpyMobileTests */,
+				4E36CADE29B8B3F900F380CC /* BeMindfulWatchTests */,
+				4E36CAB629B8B3F800F380CC /* BeMindfulMobileTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -227,9 +227,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4E36CAA229B8B3F500F380CC /* BitSpyMobile */ = {
+		4E36CAA229B8B3F500F380CC /* BeMindfulMobile */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E36CAF329B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BitSpyMobile" */;
+			buildConfigurationList = 4E36CAF329B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BeMindfulMobile" */;
 			buildPhases = (
 				4E36CA9F29B8B3F500F380CC /* Sources */,
 				4E36CAA029B8B3F500F380CC /* Frameworks */,
@@ -241,14 +241,14 @@
 			dependencies = (
 				4E36CACC29B8B3F800F380CC /* PBXTargetDependency */,
 			);
-			name = BitSpyMobile;
+			name = BeMindfulMobile;
 			productName = BitSpy;
-			productReference = 4E36CAA329B8B3F500F380CC /* BitSpyMobile.app */;
+			productReference = 4E36CAA329B8B3F500F380CC /* BeMindfulMobile.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4E36CAB229B8B3F800F380CC /* BitSpyMobileTests */ = {
+		4E36CAB229B8B3F800F380CC /* BeMindfulMobileTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E36CAF629B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BitSpyMobileTests" */;
+			buildConfigurationList = 4E36CAF629B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BeMindfulMobileTests" */;
 			buildPhases = (
 				4E36CAAF29B8B3F800F380CC /* Sources */,
 				4E36CAB029B8B3F800F380CC /* Frameworks */,
@@ -259,14 +259,14 @@
 			dependencies = (
 				4E36CAB529B8B3F800F380CC /* PBXTargetDependency */,
 			);
-			name = BitSpyMobileTests;
+			name = BeMindfulMobileTests;
 			productName = BitSpyTests;
-			productReference = 4E36CAB329B8B3F800F380CC /* BitSpyMobileTests.xctest */;
+			productReference = 4E36CAB329B8B3F800F380CC /* BeMindfulMobileTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4E36CAC829B8B3F800F380CC /* BitSpyWatch */ = {
+		4E36CAC829B8B3F800F380CC /* BeMindfulWatch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E36CAEF29B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BitSpyWatch" */;
+			buildConfigurationList = 4E36CAEF29B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BeMindfulWatch" */;
 			buildPhases = (
 				4E36CAC529B8B3F800F380CC /* Sources */,
 				4E36CAC629B8B3F800F380CC /* Frameworks */,
@@ -276,14 +276,14 @@
 			);
 			dependencies = (
 			);
-			name = BitSpyWatch;
+			name = BeMindfulWatch;
 			productName = "BitSpy Watch App";
-			productReference = 4E36CAC929B8B3F800F380CC /* BitSpyWatch.app */;
+			productReference = 4E36CAC929B8B3F800F380CC /* BeMindfulWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4E36CADA29B8B3F900F380CC /* BitSpyWatchTests */ = {
+		4E36CADA29B8B3F900F380CC /* BeMindfulWatchTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E36CAFC29B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BitSpyWatchTests" */;
+			buildConfigurationList = 4E36CAFC29B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BeMindfulWatchTests" */;
 			buildPhases = (
 				4E36CAD729B8B3F900F380CC /* Sources */,
 				4E36CAD829B8B3F900F380CC /* Frameworks */,
@@ -294,9 +294,9 @@
 			dependencies = (
 				4E36CADD29B8B3F900F380CC /* PBXTargetDependency */,
 			);
-			name = BitSpyWatchTests;
+			name = BeMindfulWatchTests;
 			productName = "BitSpy Watch AppTests";
-			productReference = 4E36CADB29B8B3F900F380CC /* BitSpyWatchTests.xctest */;
+			productReference = 4E36CADB29B8B3F900F380CC /* BeMindfulWatchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -325,7 +325,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4E36CA9E29B8B3F500F380CC /* Build configuration list for PBXProject "BitSpy" */;
+			buildConfigurationList = 4E36CA9E29B8B3F500F380CC /* Build configuration list for PBXProject "BeMindful" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -338,10 +338,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4E36CAA229B8B3F500F380CC /* BitSpyMobile */,
-				4E36CAC829B8B3F800F380CC /* BitSpyWatch */,
-				4E36CAB229B8B3F800F380CC /* BitSpyMobileTests */,
-				4E36CADA29B8B3F900F380CC /* BitSpyWatchTests */,
+				4E36CAA229B8B3F500F380CC /* BeMindfulMobile */,
+				4E36CAC829B8B3F800F380CC /* BeMindfulWatch */,
+				4E36CAB229B8B3F800F380CC /* BeMindfulMobileTests */,
+				4E36CADA29B8B3F900F380CC /* BeMindfulWatchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -390,7 +390,7 @@
 				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
-				4E36CAA729B8B3F500F380CC /* BitSpyMobileApp.swift in Sources */,
+				4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */,
 				4EBE554729BE3616006ECF5A /* SharedViewModel.swift in Sources */,
 				B099273D29CB3F9B0099FBFB /* Data.swift in Sources */,
 			);
@@ -400,7 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E36CAB829B8B3F800F380CC /* BitSpyMobileTests.swift in Sources */,
+				4E36CAB829B8B3F800F380CC /* BeMindfulMobileTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +410,7 @@
 			files = (
 				4E4FD1B529CB1A1700DADB21 /* SharedViewModel.swift in Sources */,
 				4E36CAD129B8B3F800F380CC /* WatchAppView.swift in Sources */,
-				4E36CACF29B8B3F800F380CC /* BitSpyWatchApp.swift in Sources */,
+				4E36CACF29B8B3F800F380CC /* BeMindfulWatchApp.swift in Sources */,
 				4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,7 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E36CAE029B8B3F900F380CC /* BitSpyWatchAppTests.swift in Sources */,
+				4E36CAE029B8B3F900F380CC /* BeMindfulWatchAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,17 +428,17 @@
 /* Begin PBXTargetDependency section */
 		4E36CAB529B8B3F800F380CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4E36CAA229B8B3F500F380CC /* BitSpyMobile */;
+			target = 4E36CAA229B8B3F500F380CC /* BeMindfulMobile */;
 			targetProxy = 4E36CAB429B8B3F800F380CC /* PBXContainerItemProxy */;
 		};
 		4E36CACC29B8B3F800F380CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4E36CAC829B8B3F800F380CC /* BitSpyWatch */;
+			target = 4E36CAC829B8B3F800F380CC /* BeMindfulWatch */;
 			targetProxy = 4E36CACB29B8B3F800F380CC /* PBXContainerItemProxy */;
 		};
 		4E36CADD29B8B3F900F380CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4E36CAC829B8B3F800F380CC /* BitSpyWatch */;
+			target = 4E36CAC829B8B3F800F380CC /* BeMindfulWatch */;
 			targetProxy = 4E36CADC29B8B3F900F380CC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -560,19 +560,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BitSpyWatch/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulWatch/Preview Content\"";
 				DEVELOPMENT_TEAM = G69B5T58Z3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BitSpy;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.smoothless.BitSpy;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.smoothless.BeMindful;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BitSpy.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BeMindful.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -590,19 +590,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BitSpyWatch/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulWatch/Preview Content\"";
 				DEVELOPMENT_TEAM = G69B5T58Z3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BitSpy;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.smoothless.BitSpy;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.smoothless.BeMindful;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BitSpy.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BeMindful.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -622,7 +622,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BitSpyMobile/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulMobile/Preview Content\"";
 				DEVELOPMENT_TEAM = G69B5T58Z3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -638,7 +638,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BitSpy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BeMindful;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -655,7 +655,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BitSpyMobile/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulMobile/Preview Content\"";
 				DEVELOPMENT_TEAM = G69B5T58Z3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -671,7 +671,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BitSpy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BeMindful;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -698,7 +698,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitSpyMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BitSpyMobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeMindfulMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeMindfulMobile";
 			};
 			name = Debug;
 		};
@@ -719,7 +719,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitSpyMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BitSpyMobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeMindfulMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeMindfulMobile";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -740,7 +740,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitSpyWatch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BitSpyWatch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeMindfulWatch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeMindfulWatch";
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -761,7 +761,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitSpyWatch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BitSpyWatch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeMindfulWatch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeMindfulWatch";
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -770,7 +770,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4E36CA9E29B8B3F500F380CC /* Build configuration list for PBXProject "BitSpy" */ = {
+		4E36CA9E29B8B3F500F380CC /* Build configuration list for PBXProject "BeMindful" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E36CAED29B8B3F900F380CC /* Debug */,
@@ -779,7 +779,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E36CAEF29B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BitSpyWatch" */ = {
+		4E36CAEF29B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BeMindfulWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E36CAF029B8B3F900F380CC /* Debug */,
@@ -788,7 +788,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E36CAF329B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BitSpyMobile" */ = {
+		4E36CAF329B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BeMindfulMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E36CAF429B8B3F900F380CC /* Debug */,
@@ -797,7 +797,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E36CAF629B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BitSpyMobileTests" */ = {
+		4E36CAF629B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BeMindfulMobileTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E36CAF729B8B3F900F380CC /* Debug */,
@@ -806,7 +806,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E36CAFC29B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BitSpyWatchTests" */ = {
+		4E36CAFC29B8B3F900F380CC /* Build configuration list for PBXNativeTarget "BeMindfulWatchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E36CAFD29B8B3F900F380CC /* Debug */,

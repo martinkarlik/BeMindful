@@ -4,19 +4,19 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BitSpyMobile.xcscheme_^#shared#^_</key>
+		<key>BeMindfulMobile.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>BitSpyMobileTests.xcscheme_^#shared#^_</key>
+		<key>BeMindfulMobileTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>BitSpyWatch.xcscheme_^#shared#^_</key>
+		<key>BeMindfulWatch.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<true/>
