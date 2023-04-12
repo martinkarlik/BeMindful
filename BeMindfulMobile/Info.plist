@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UILaunchScreen</key>
+	<key>UILaunchScreens</key>
 	<dict>
-		<key>LaunchIcon</key>
+		<key>New item</key>
 		<string></string>
-		<key>UILaunchScreen</key>
-		<dict/>
+		<key>UIDefaultLaunchScreen</key>
+		<string></string>
 	</dict>
 </dict>
 </plist>
