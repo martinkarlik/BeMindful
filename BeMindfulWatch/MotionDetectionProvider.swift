@@ -22,7 +22,7 @@ class MotionDetectionProvider: MotionDetectionDelegate {
     func monitorRotationRate() {
         
         if motionManager.isDeviceMotionAvailable {
-            motionManager.deviceMotionUpdateInterval = 0.01
+            motionManager.deviceMotionUpdateInterval = Constants.deviceMotionUpdateInterval
             motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { [weak self] motion, error in
                 guard let motion = motion, error == nil, let self = self else {
                     print("*** Motion Error: \(error!)")
@@ -32,12 +32,12 @@ class MotionDetectionProvider: MotionDetectionDelegate {
                 
                 if let startQuaternion = self.startQuaternion,
                    let startTime = self.startTime,
-                    motion.timestamp - startTime < 1.0 {
+                   motion.timestamp - startTime < Constants.gestureTimeLimit {
                     
                     let currentQuaternion = motion.attitude.quaternion
                     let angle = self.angleBetweenQuaternions(startQuaternion, currentQuaternion)
                     
-                    if angle < -2.0 {
+                    if angle < -Constants.angleThreshold {
                         print("Rotated by 180 degrees within one second")
                         WKInterfaceDevice.current().play(.notification)
                         self.startQuaternion = nil
@@ -69,4 +69,13 @@ class MotionDetectionProvider: MotionDetectionDelegate {
         return direction * angle
     }
 
+}
+
+extension MotionDetectionProvider {
+    
+    enum Constants {
+        static let angleThreshold = 2.0
+        static let gestureTimeLimit = 1.0
+        static let deviceMotionUpdateInterval = 0.01
+    }
 }
