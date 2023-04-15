@@ -12,7 +12,6 @@ import CoreMotion
 
 struct WatchAppView: View {
     
-    @ObservedObject var viewModel = SharedViewModel()
     var connectivityProvider = ConnectivityProvider()
     var motionDetectionProvider = MotionDetectionProvider()
     
@@ -56,7 +55,6 @@ struct WatchAppView: View {
         }
         .onAppear {
             connectivityProvider.connect()
-            connectivityProvider.sharedViewModel = viewModel
             
             if Constants.gestureDetection {
                 motionDetectionProvider.monitorRotationRate()

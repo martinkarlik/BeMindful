@@ -23,8 +23,9 @@ struct MobileAppView: View {
             }
         }
         .onAppear {
-            connectivityProvider.connect()
+            viewModel.moc = moc
             connectivityProvider.sharedViewModel = viewModel
+            connectivityProvider.connect()
         }
         .padding()
     }

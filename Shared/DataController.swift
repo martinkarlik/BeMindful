@@ -19,4 +19,17 @@ class DataController: ObservableObject {
         }
     }
     
+    
+    // Call this from the initializer to reset the real data on device: We don't support flexible data deletion yet
+    // This WILL delete all user's data so treat lightly
+    func resetAllData() {
+        for store in container.persistentStoreCoordinator.persistentStores {
+            try? container.persistentStoreCoordinator.destroyPersistentStore(
+                at: store.url!,
+                ofType: store.type,
+                options: nil
+            )
+        }
+    }
+    
 }
