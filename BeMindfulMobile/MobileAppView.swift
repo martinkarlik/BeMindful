@@ -16,10 +16,44 @@ struct MobileAppView: View {
     @ObservedObject var viewModel = SharedViewModel()
     var connectivityProvider = ConnectivityProvider()
     
+    @State private var showCheckmark = false
+    
     var body: some View {
         VStack {
             List(occurences) { occurence in
                 Text(occurence.timestamp ?? "Unknown")
+            }
+            Button(action: {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                viewModel.addBfrbOccurence(occurenceTimestamp: dateFormatter.string(from: Date()))
+                
+                withAnimation {
+                    self.showCheckmark = true
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + Constants.animationTime) {
+                    withAnimation {
+                        self.showCheckmark = false
+                    }
+                }
+                
+            }) {
+                if !showCheckmark {
+                    Image(systemName: "plus")
+                        .font(.largeTitle)
+                        .frame(width: Constants.buttonDiamater, height: Constants.buttonDiamater)
+                        .background(Color.purple)
+                        .foregroundColor(.white)
+                        .clipShape(Circle())
+                } else {
+                    Image(systemName: "checkmark.seal.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(width: Constants.buttonDiamater, height: Constants.buttonDiamater)
+                        .background(Color.green)
+                        .clipShape(Circle())
+                }
             }
         }
         .onAppear {
@@ -30,6 +64,14 @@ struct MobileAppView: View {
         .padding()
     }
     
+}
+
+extension MobileAppView {
+    enum Constants {
+        static let buttonDiamater = 80.0
+        static let animationTime = 1.0
+        static let gestureDetection = false
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
