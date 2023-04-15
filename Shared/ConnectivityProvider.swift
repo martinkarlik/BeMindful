@@ -33,7 +33,10 @@ class ConnectivityProvider: NSObject {
     
     func sendMessageToiPhone() {
         if session.isReachable {
-            let message = ["key": "value"]
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let dateString = dateFormatter.string(from: Date())
+            let message = ["timestamp": dateString]
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }
@@ -63,8 +66,11 @@ extension ConnectivityProvider: WCSessionDelegate {
             return
         }
         
-        DispatchQueue.main.async {
-            sharedViewModel.incrementCounter()
+        if let timestamp = message["timestamp"] as? String {
+            DispatchQueue.main.async {
+                sharedViewModel.incrementCounter()
+                sharedViewModel.addBfrbOccurence(occurenceTimestamp: timestamp)
+            }
         }
     }
 }
