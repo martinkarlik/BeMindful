@@ -16,7 +16,7 @@ class MobileAppViewModel: ObservableObject {
     
     init() {}
     
-    func addBfrbOccurence(occurenceTimestamp: String) {
+    func addBfrbOccurence(occurenceTimestamp: Date) {
         
         guard let moc = moc else {
             return

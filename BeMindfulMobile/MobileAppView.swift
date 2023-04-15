@@ -21,12 +21,10 @@ struct MobileAppView: View {
     var body: some View {
         VStack {
             List(occurences) { occurence in
-                Text(occurence.timestamp ?? "Unknown")
+                Text(formatDate(occurence.timestamp) ?? "Unknown")
             }
             Button(action: {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                viewModel.addBfrbOccurence(occurenceTimestamp: dateFormatter.string(from: Date()))
+                viewModel.addBfrbOccurence(occurenceTimestamp: Date())
                 
                 withAnimation {
                     self.showCheckmark = true
@@ -58,7 +56,7 @@ struct MobileAppView: View {
         }
         .onAppear {
             viewModel.moc = moc
-            connectivityProvider.sharedViewModel = viewModel
+            connectivityProvider.mobileAppViewModel = viewModel
             connectivityProvider.connect()
         }
         .padding()
@@ -71,6 +69,16 @@ extension MobileAppView {
         static let buttonDiamater = 80.0
         static let animationTime = 1.0
         static let gestureDetection = false
+    }
+    
+    func formatDate(_ date: Date?) -> String? {
+        guard let date = date else {
+            return nil
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: date)
     }
 }
 

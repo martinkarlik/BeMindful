@@ -23,6 +23,16 @@ class DataController: ObservableObject {
     // Call this from the initializer to reset the real data on device: We don't support flexible data deletion yet
     // This WILL delete all user's data so treat lightly
     func resetAllData() {
+        
+        let storeURL: URL = container.persistentStoreDescriptions.first?.url ?? URL(fileURLWithPath: "")
+
+        // Delete the existing persistent store file
+        do {
+            try FileManager.default.removeItem(at: storeURL)
+        } catch let error {
+            print("Failed to delete persistent store: \(error)")
+        }
+        
         for store in container.persistentStoreCoordinator.persistentStores {
             try? container.persistentStoreCoordinator.destroyPersistentStore(
                 at: store.url!,
@@ -30,6 +40,8 @@ class DataController: ObservableObject {
                 options: nil
             )
         }
+        
+        print("The persistent store has been reset!")
     }
     
 }

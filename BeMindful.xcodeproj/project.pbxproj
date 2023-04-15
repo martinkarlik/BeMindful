@@ -19,6 +19,7 @@
 		4E36CAD329B8B3F900F380CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAD229B8B3F900F380CC /* Assets.xcassets */; };
 		4E36CAD629B8B3F900F380CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAD529B8B3F900F380CC /* Preview Assets.xcassets */; };
 		4E36CAE029B8B3F900F380CC /* BeMindfulWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CADF29B8B3F900F380CC /* BeMindfulWatchAppTests.swift */; };
+		4E37302429EB3CF40016D348 /* MobileAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* MobileAppViewModel.swift */; };
 		4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
 		4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
 		4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */; };
@@ -168,7 +169,6 @@
 				B099273B29CB3F620099FBFB /* Visualisations */,
 				B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */,
 				4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */,
-				4EBE554629BE3616006ECF5A /* MobileAppViewModel.swift */,
 				4E36CAA829B8B3F500F380CC /* MobileAppView.swift */,
 				4E36CAAA29B8B3F700F380CC /* Assets.xcassets */,
 				4E36CAAC29B8B3F700F380CC /* Preview Content */,
@@ -242,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */,
+				4EBE554629BE3616006ECF5A /* MobileAppViewModel.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -453,6 +454,7 @@
 				4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */,
 				4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */,
 				4E9BDF3829EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
+				4E37302429EB3CF40016D348 /* MobileAppViewModel.swift in Sources */,
 				4E36CAD129B8B3F800F380CC /* WatchAppView.swift in Sources */,
 				4E36CACF29B8B3F800F380CC /* BeMindfulWatchApp.swift in Sources */,
 				4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */,

@@ -26,17 +26,14 @@ class ConnectivityProvider: NSObject {
     
     func sendMessageToWatch() {
         if session.isReachable {
-            let message = ["key": "value"]
-            session.sendMessage(message, replyHandler: nil, errorHandler: nil)
+            // Communication from iphone to watch is not established
+            session.sendMessage([:], replyHandler: nil, errorHandler: nil)
         }
     }
     
     func sendMessageToiPhone() {
         if session.isReachable {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let dateString = dateFormatter.string(from: Date())
-            let message = ["timestamp": dateString]
+            let message = ["timestamp": Date()]
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }
@@ -66,7 +63,7 @@ extension ConnectivityProvider: WCSessionDelegate {
             return
         }
         
-        if let timestamp = message["timestamp"] as? String {
+        if let timestamp = message["timestamp"] as? Date {
             DispatchQueue.main.async {
                 viewModel.addBfrbOccurence(occurenceTimestamp: timestamp)
             }
