@@ -68,7 +68,6 @@ extension ConnectivityProvider: WCSessionDelegate {
         
         if let timestamp = message["timestamp"] as? String {
             DispatchQueue.main.async {
-                sharedViewModel.incrementCounter()
                 sharedViewModel.addBfrbOccurence(occurenceTimestamp: timestamp)
             }
         }

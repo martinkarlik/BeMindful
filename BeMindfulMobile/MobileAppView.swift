@@ -9,13 +9,18 @@ import SwiftUI
 import WatchConnectivity
 
 struct MobileAppView: View {
-
+    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var occurences: FetchedResults<Occurence>
+    
     @ObservedObject var viewModel = SharedViewModel()
     var connectivityProvider = ConnectivityProvider()
     
     var body: some View {
         VStack {
-            Text("Nail bites: \(viewModel.bfrbCounter)")
+            List(occurences) { occurence in
+                Text(occurence.timestamp ?? "Unknown")
+            }
         }
         .onAppear {
             connectivityProvider.connect()
