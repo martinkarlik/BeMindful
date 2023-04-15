@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 import CoreData
 
-class SharedViewModel: ObservableObject {
+class MobileAppViewModel: ObservableObject {
         
     var moc: NSManagedObjectContext?
     

@@ -11,7 +11,7 @@ import WatchConnectivity
 class ConnectivityProvider: NSObject {
     
     var session: WCSession
-    var sharedViewModel: SharedViewModel?
+    var mobileAppViewModel: MobileAppViewModel?
     
     override init() {
         self.session = WCSession.default
@@ -62,13 +62,13 @@ extension ConnectivityProvider: WCSessionDelegate {
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
 
-        guard let sharedViewModel = sharedViewModel else {
+        guard let viewModel = mobileAppViewModel else {
             return
         }
         
         if let timestamp = message["timestamp"] as? String {
             DispatchQueue.main.async {
-                sharedViewModel.addBfrbOccurence(occurenceTimestamp: timestamp)
+                viewModel.addBfrbOccurence(occurenceTimestamp: timestamp)
             }
         }
     }

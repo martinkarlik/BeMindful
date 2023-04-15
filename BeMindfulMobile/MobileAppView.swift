@@ -13,7 +13,7 @@ struct MobileAppView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var occurences: FetchedResults<Occurence>
     
-    @ObservedObject var viewModel = SharedViewModel()
+    @ObservedObject var viewModel = MobileAppViewModel()
     var connectivityProvider = ConnectivityProvider()
     
     @State private var showCheckmark = false
