@@ -11,7 +11,7 @@ import WatchConnectivity
 class ConnectivityProvider: NSObject {
     
     var session: WCSession
-    var mobileAppViewModel: MobileAppViewModel?
+    var occurenceViewModel: OccurenceViewModel?
     
     override init() {
         self.session = WCSession.default
@@ -59,7 +59,7 @@ extension ConnectivityProvider: WCSessionDelegate {
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
 
-        guard let viewModel = mobileAppViewModel else {
+        guard let viewModel = occurenceViewModel else {
             return
         }
         

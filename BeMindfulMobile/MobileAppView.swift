@@ -13,7 +13,7 @@ struct MobileAppView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var occurences: FetchedResults<Occurence>
     
-    @ObservedObject var viewModel = MobileAppViewModel()
+    @ObservedObject var viewModel = OccurenceViewModel()
     var connectivityProvider = ConnectivityProvider()
     
     @State private var showCheckmark = false
@@ -56,7 +56,7 @@ struct MobileAppView: View {
         }
         .onAppear {
             viewModel.moc = moc
-            connectivityProvider.mobileAppViewModel = viewModel
+            connectivityProvider.occurenceViewModel = viewModel
             connectivityProvider.connect()
         }
         .padding()
