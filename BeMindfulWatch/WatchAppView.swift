@@ -8,11 +8,13 @@
 import SwiftUI
 import Combine
 import WatchConnectivity
+import CoreMotion
 
 struct WatchAppView: View {
     
     @ObservedObject var viewModel = SharedViewModel()
     var connectivityProvider = ConnectivityProvider()
+    var motionDetectionProvider = MotionDetectionProvider()
     
     var body: some View {
         VStack {
@@ -23,6 +25,7 @@ struct WatchAppView: View {
         .onAppear {
             connectivityProvider.connect()
             connectivityProvider.sharedViewModel = viewModel
+            motionDetectionProvider.monitorRotationRate()
         }
         .padding()
     }
