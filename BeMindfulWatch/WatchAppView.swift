@@ -20,38 +20,9 @@ struct WatchAppView: View {
     var body: some View {
         VStack {
             Text("Oops! I did it again.")
-            Button(action: {
+            CheckMarkView() {
                 connectivityProvider.sendMessageToiPhone()
-                
-                withAnimation {
-                    self.showCheckmark = true
-                }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + Constants.animationTime) {
-                    withAnimation {
-                        self.showCheckmark = false
-                    }
-                }
-            }) {
-                if !showCheckmark {
-                    Image(systemName: "plus")
-                        .font(.largeTitle)
-                        .frame(width: Constants.buttonDiamater, height: Constants.buttonDiamater)
-                        .background(Color.purple)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "checkmark.seal.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .frame(width: Constants.buttonDiamater, height: Constants.buttonDiamater)
-                        .background(Color.green)
-                        .clipShape(Circle())
-                }
-                
             }
-            .buttonStyle(PlainButtonStyle())
-            .padding()
         }
         .onAppear {
             connectivityProvider.connect()
@@ -68,8 +39,6 @@ struct WatchAppView: View {
 
 extension WatchAppView {
     enum Constants {
-        static let buttonDiamater = 80.0
-        static let animationTime = 1.0
         static let gestureDetection = false
     }
 }

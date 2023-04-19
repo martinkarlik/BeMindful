@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
+		4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E2B289D29DC3BC100843D39 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2B289C29DC3BC100843D39 /* CoreMotion.framework */; };
 		4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */; };
 		4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA829B8B3F500F380CC /* MobileAppView.swift */; };
@@ -72,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E24756729EFDAA000622706 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		4E2B289C29DC3BC100843D39 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		4E36CAA329B8B3F500F380CC /* BeMindfulMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMindfulMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulMobileApp.swift; sourceTree = "<group>"; };
@@ -243,6 +246,7 @@
 			children = (
 				4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */,
 				4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */,
+				4E24756729EFDAA000622706 /* CheckmarkView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -432,6 +436,7 @@
 				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
+				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */,
 				4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */,
@@ -456,6 +461,7 @@
 				4E9BDF3829EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
 				4E37302429EB3CF40016D348 /* OccurenceViewModel.swift in Sources */,
 				4E36CAD129B8B3F800F380CC /* WatchAppView.swift in Sources */,
+				4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4E36CACF29B8B3F800F380CC /* BeMindfulWatchApp.swift in Sources */,
 				4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
 			);

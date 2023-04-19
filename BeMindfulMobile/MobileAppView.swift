@@ -23,35 +23,8 @@ struct MobileAppView: View {
             List(occurences) { occurence in
                 Text(formatDate(occurence.timestamp) ?? "Unknown")
             }
-            Button(action: {
+            CheckMarkView() {
                 viewModel.addBfrbOccurence(occurenceTimestamp: Date())
-                
-                withAnimation {
-                    self.showCheckmark = true
-                }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + Constants.animationTime) {
-                    withAnimation {
-                        self.showCheckmark = false
-                    }
-                }
-                
-            }) {
-                if !showCheckmark {
-                    Image(systemName: "plus")
-                        .font(.largeTitle)
-                        .frame(width: Constants.buttonDiamater, height: Constants.buttonDiamater)
-                        .background(Color.purple)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "checkmark.seal.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .frame(width: Constants.buttonDiamater, height: Constants.buttonDiamater)
-                        .background(Color.green)
-                        .clipShape(Circle())
-                }
             }
         }
         .onAppear {
@@ -65,11 +38,6 @@ struct MobileAppView: View {
 }
 
 extension MobileAppView {
-    enum Constants {
-        static let buttonDiamater = 80.0
-        static let animationTime = 1.0
-        static let gestureDetection = false
-    }
     
     func formatDate(_ date: Date?) -> String? {
         guard let date = date else {
