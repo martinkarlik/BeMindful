@@ -16,6 +16,8 @@ enum TrackedBehavior: String, CaseIterable {
 }
 
 struct TrackedBehaviorView: View {
+    @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
+    @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
     @State var selectedBehavior: TrackedBehavior?
     
     var body: some View {
@@ -44,26 +46,60 @@ struct TrackedBehaviorView: View {
                 }) {
                     HStack {
                         if selectedBehavior == behavior {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(Color(hex: 0x5E63B6).opacity(0.8))
-                                .padding(.trailing, 10)
+                            Label(behavior.rawValue, systemImage: "checkmark")
+                                .foregroundColor(Color.white)
+                                .fontWeight(.regular)
+                                .frame(maxWidth: 350, minHeight: 41)
+                                .foregroundColor(.white)
+                                .background(Color(hex: 0x5E63B6).opacity(0.8))
+                                .cornerRadius(8)
+                                .shadow(color: Color.gray.opacity(1),
+                                        radius: 4, x: 0, y: 2)
                         }
-                        Text(behavior.rawValue)
-                            .fontWeight(.regular)
-                            .frame(maxWidth: 350, minHeight: 41)
-                            .foregroundColor(.white)
-                            .background(selectedBehavior == behavior ? Color(hex: 0x5E63B6).opacity(1) : Color(hex: 0x5E63B6).opacity(0.8))
-                            .cornerRadius(8)
+                        else {
+                            Text(behavior.rawValue)
+                                .foregroundColor(Color.white)
+                                .fontWeight(.regular)
+                                .frame(maxWidth: 350, minHeight: 41)
+                                .foregroundColor(.white)
+                                .background(Color(hex: 0x5E63B6).opacity(0.8))
+                                .cornerRadius(8)
+                        }
                     }
                 }
                 .padding(.bottom, 16)
             }
             
             Spacer()
+            
+            HStack {
+                Spacer()
+                Button(action: {
+                    isTrackedBehaviorViewActive = false
+                }) {
+                    Text("Continue")
+                        .fontWeight(.regular)
+                        .frame(maxWidth: 120, minHeight: 41)
+                        .foregroundColor(.black)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .shadow(color: Color.gray.opacity(0.1),
+                                radius: 4, x: 0, y: 2)
+                    
+                        
+                }
+                .padding(.trailing, 16)
+                .shadow(radius: 2, y: 2)
+            }
+            .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 16)
+            .padding(.trailing, 16)
         }
         .background(Color.white.edgesIgnoringSafeArea(.all))
     }
 }
+
+
+
 
 
 

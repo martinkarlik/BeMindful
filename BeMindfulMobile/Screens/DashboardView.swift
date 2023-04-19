@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct DashboardView: View {
+    @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = false
+    
     var body: some View {
         Text("Dashboard")
+            .font(.largeTitle)
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        DashboardView()
     }
 }

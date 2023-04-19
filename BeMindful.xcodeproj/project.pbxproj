@@ -24,10 +24,13 @@
 		4E4FD1B529CB1A1700DADB21 /* SharedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* SharedViewModel.swift */; };
 		4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */; };
 		4EBE554729BE3616006ECF5A /* SharedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* SharedViewModel.swift */; };
+		4EC5749E29DB23AA006E23C1 /* WatchAppTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5749D29DB23AA006E23C1 /* WatchAppTypes.swift */; };
+		B00A34A829EEF49100516391 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A34A729EEF49100516391 /* OnboardingView.swift */; };
+		B00A34AA29EEF49D00516391 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A34A929EEF49D00516391 /* DashboardView.swift */; };
+		B00A34AC29EEF50200516391 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A34AB29EEF50200516391 /* ContainerView.swift */; };
 		B030B90929DED80900ABD785 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B030B90829DED80900ABD785 /* LaunchView.swift */; };
 		B030B90A29DED80900ABD785 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B030B90829DED80900ABD785 /* LaunchView.swift */; };
 		B0708C2829E6E88100C41187 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0708C2729E6E88100C41187 /* Launch Screen.storyboard */; };
-		4EC5749E29DB23AA006E23C1 /* WatchAppTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5749D29DB23AA006E23C1 /* WatchAppTypes.swift */; };
 		B099273D29CB3F9B0099FBFB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099273C29CB3F9B0099FBFB /* Data.swift */; };
 		B09984D329E71A290037B361 /* TrackedBehaviorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09984D229E71A290037B361 /* TrackedBehaviorView.swift */; };
 		B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */; };
@@ -91,10 +94,13 @@
 		4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetectionProvider.swift; sourceTree = "<group>"; };
 		4EBE554629BE3616006ECF5A /* SharedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewModel.swift; sourceTree = "<group>"; };
+		4EC5749D29DB23AA006E23C1 /* WatchAppTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAppTypes.swift; sourceTree = "<group>"; };
+		B00A34A729EEF49100516391 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B00A34A929EEF49D00516391 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		B00A34AB29EEF50200516391 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		B030B90829DED80900ABD785 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		B030B90B29DEDD8B00ABD785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B0708C2729E6E88100C41187 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		4EC5749D29DB23AA006E23C1 /* WatchAppTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAppTypes.swift; sourceTree = "<group>"; };
 		B099273C29CB3F9B0099FBFB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		B09984D229E71A290037B361 /* TrackedBehaviorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedBehaviorView.swift; sourceTree = "<group>"; };
 		B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyLineChart.swift; sourceTree = "<group>"; };
@@ -246,9 +252,12 @@
 		B030B90729DED0BF00ABD785 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B00A34AB29EEF50200516391 /* ContainerView.swift */,
 				B030B90829DED80900ABD785 /* LaunchView.swift */,
 				B0708C2729E6E88100C41187 /* Launch Screen.storyboard */,
 				B09984D229E71A290037B361 /* TrackedBehaviorView.swift */,
+				B00A34A729EEF49100516391 /* OnboardingView.swift */,
+				B00A34A929EEF49D00516391 /* DashboardView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -428,9 +437,12 @@
 				B09984D329E71A290037B361 /* TrackedBehaviorView.swift in Sources */,
 				B030B90929DED80900ABD785 /* LaunchView.swift in Sources */,
 				4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
+				B00A34A829EEF49100516391 /* OnboardingView.swift in Sources */,
 				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
+				B00A34AA29EEF49D00516391 /* DashboardView.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
+				B00A34AC29EEF50200516391 /* ContainerView.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */,
 				4EBE554729BE3616006ECF5A /* SharedViewModel.swift in Sources */,
 				B099273D29CB3F9B0099FBFB /* Data.swift in Sources */,
@@ -605,7 +617,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulWatch/Preview Content\"";
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -634,7 +646,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulWatch/Preview Content\"";
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -665,7 +677,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulMobile/Preview Content\"";
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BeMindfulMobile/Info.plist;
@@ -699,7 +711,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulMobile/Preview Content\"";
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BeMindfulMobile/Info.plist;

@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct ContainerView: View {
+    @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            if isOnboardingViewActive {
+                OnboardingView()
+            }
+            else {
+                TrackedBehaviorView()
+            }
+        }
     }
 }
 
