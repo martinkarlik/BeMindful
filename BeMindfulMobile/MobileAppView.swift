@@ -9,21 +9,45 @@ import SwiftUI
 import WatchConnectivity
 
 struct MobileAppView: View {
-
-    @ObservedObject var viewModel = SharedViewModel()
+    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var occurences: FetchedResults<Occurence>
+    
+    @ObservedObject var viewModel = OccurenceViewModel()
     var connectivityProvider = ConnectivityProvider()
+    
+    @State private var showCheckmark = false
     
     var body: some View {
         VStack {
-            Text("Nail bites: \(viewModel.bfrbCounter)")
+            List(occurences) { occurence in
+                Text(formatDate(occurence.timestamp) ?? "Unknown")
+            }
+            CheckMarkView() {
+                viewModel.addBfrbOccurence(occurenceTimestamp: Date())
+            }
         }
         .onAppear {
+            viewModel.moc = moc
+            connectivityProvider.occurenceViewModel = viewModel
             connectivityProvider.connect()
-            connectivityProvider.sharedViewModel = viewModel
         }
         .padding()
     }
     
+}
+
+extension MobileAppView {
+    
+    func formatDate(_ date: Date?) -> String? {
+        guard let date = date else {
+            return nil
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: date)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
+		4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E2B289D29DC3BC100843D39 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2B289C29DC3BC100843D39 /* CoreMotion.framework */; };
 		4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */; };
 		4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA829B8B3F500F380CC /* MobileAppView.swift */; };
@@ -19,12 +21,15 @@
 		4E36CAD329B8B3F900F380CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAD229B8B3F900F380CC /* Assets.xcassets */; };
 		4E36CAD629B8B3F900F380CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAD529B8B3F900F380CC /* Preview Assets.xcassets */; };
 		4E36CAE029B8B3F900F380CC /* BeMindfulWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CADF29B8B3F900F380CC /* BeMindfulWatchAppTests.swift */; };
+		4E37302429EB3CF40016D348 /* OccurenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */; };
 		4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
 		4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
-		4E4FD1B529CB1A1700DADB21 /* SharedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* SharedViewModel.swift */; };
 		4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */; };
-		4EBE554729BE3616006ECF5A /* SharedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* SharedViewModel.swift */; };
-		4EC5749E29DB23AA006E23C1 /* WatchAppTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5749D29DB23AA006E23C1 /* WatchAppTypes.swift */; };
+		4E9BDF3729EA89B300CA432A /* Occurences.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3529EA89B300CA432A /* Occurences.xcdatamodeld */; };
+		4E9BDF3829EA89B300CA432A /* Occurences.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3529EA89B300CA432A /* Occurences.xcdatamodeld */; };
+		4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
+		4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */; };
+		4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */; };
 		B099273D29CB3F9B0099FBFB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099273C29CB3F9B0099FBFB /* Data.swift */; };
 		B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */; };
 		B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */; };
@@ -69,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E24756729EFDAA000622706 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		4E2B289C29DC3BC100843D39 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		4E36CAA329B8B3F500F380CC /* BeMindfulMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMindfulMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulMobileApp.swift; sourceTree = "<group>"; };
@@ -86,8 +92,10 @@
 		4E36CADF29B8B3F900F380CC /* BeMindfulWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulWatchAppTests.swift; sourceTree = "<group>"; };
 		4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetectionProvider.swift; sourceTree = "<group>"; };
-		4EBE554629BE3616006ECF5A /* SharedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViewModel.swift; sourceTree = "<group>"; };
-		4EC5749D29DB23AA006E23C1 /* WatchAppTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAppTypes.swift; sourceTree = "<group>"; };
+		4E9BDF3629EA89B300CA432A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		4E9BDF3929EA8CCF00CA432A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccurenceViewModel.swift; sourceTree = "<group>"; };
+		4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTypes.swift; sourceTree = "<group>"; };
 		B099273C29CB3F9B0099FBFB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyLineChart.swift; sourceTree = "<group>"; };
 		B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -160,7 +168,9 @@
 		4E36CAA529B8B3F500F380CC /* BeMindfulMobile */ = {
 			isa = PBXGroup;
 			children = (
+				4E37301729EB14580016D348 /* Persistency */,
 				B099273B29CB3F620099FBFB /* Visualisations */,
+				B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */,
 				4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */,
 				4E36CAA829B8B3F500F380CC /* MobileAppView.swift */,
 				4E36CAAA29B8B3F700F380CC /* Assets.xcassets */,
@@ -188,10 +198,9 @@
 		4E36CACD29B8B3F800F380CC /* BeMindfulWatch */ = {
 			isa = PBXGroup;
 			children = (
+				4E37301829EB317C0016D348 /* Motion */,
 				4E36CACE29B8B3F800F380CC /* BeMindfulWatchApp.swift */,
-				4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */,
 				4E36CAD029B8B3F800F380CC /* WatchAppView.swift */,
-				4EC5749D29DB23AA006E23C1 /* WatchAppTypes.swift */,
 				4E36CAD229B8B3F900F380CC /* Assets.xcassets */,
 				4E36CAD429B8B3F900F380CC /* Preview Content */,
 			);
@@ -214,12 +223,30 @@
 			path = BeMindfulWatchTests;
 			sourceTree = "<group>";
 		};
+		4E37301729EB14580016D348 /* Persistency */ = {
+			isa = PBXGroup;
+			children = (
+				4E9BDF3529EA89B300CA432A /* Occurences.xcdatamodeld */,
+				4E9BDF3929EA8CCF00CA432A /* DataController.swift */,
+			);
+			path = Persistency;
+			sourceTree = "<group>";
+		};
+		4E37301829EB317C0016D348 /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */,
+				4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */,
+			);
+			path = Motion;
+			sourceTree = "<group>";
+		};
 		4E4FD1B129CB187E00DADB21 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */,
-				4EBE554629BE3616006ECF5A /* SharedViewModel.swift */,
-				B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */,
+				4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */,
+				4E24756729EFDAA000622706 /* CheckmarkView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -405,11 +432,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
+				4E9BDF3729EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
 				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
+				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
+				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */,
-				4EBE554729BE3616006ECF5A /* SharedViewModel.swift in Sources */,
+				4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */,
 				B099273D29CB3F9B0099FBFB /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,9 +457,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */,
-				4E4FD1B529CB1A1700DADB21 /* SharedViewModel.swift in Sources */,
-				4EC5749E29DB23AA006E23C1 /* WatchAppTypes.swift in Sources */,
+				4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */,
+				4E9BDF3829EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
+				4E37302429EB3CF40016D348 /* OccurenceViewModel.swift in Sources */,
 				4E36CAD129B8B3F800F380CC /* WatchAppView.swift in Sources */,
+				4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4E36CACF29B8B3F800F380CC /* BeMindfulWatchApp.swift in Sources */,
 				4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
 			);
@@ -834,6 +866,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4E9BDF3529EA89B300CA432A /* Occurences.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4E9BDF3629EA89B300CA432A /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 4E9BDF3629EA89B300CA432A /* DataModel.xcdatamodel */;
+			path = Occurences.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4E36CA9B29B8B3F500F380CC /* Project object */;
 }

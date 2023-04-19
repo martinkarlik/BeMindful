@@ -10,9 +10,12 @@ import WatchConnectivity
 
 @main
 struct BeMindfulMobileApp: App {
+    
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
-            MobileAppView()
+            MobileAppView().environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
