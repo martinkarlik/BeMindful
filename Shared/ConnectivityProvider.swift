@@ -11,7 +11,7 @@ import WatchConnectivity
 class ConnectivityProvider: NSObject {
     
     var session: WCSession
-    var sharedViewModel: SharedViewModel?
+    var occurenceViewModel: OccurenceViewModel?
     
     override init() {
         self.session = WCSession.default
@@ -26,14 +26,14 @@ class ConnectivityProvider: NSObject {
     
     func sendMessageToWatch() {
         if session.isReachable {
-            let message = ["key": "value"]
-            session.sendMessage(message, replyHandler: nil, errorHandler: nil)
+            // Communication from iphone to watch is not established
+            session.sendMessage([:], replyHandler: nil, errorHandler: nil)
         }
     }
     
     func sendMessageToiPhone() {
         if session.isReachable {
-            let message = ["key": "value"]
+            let message = ["timestamp": Date()]
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }
@@ -59,12 +59,14 @@ extension ConnectivityProvider: WCSessionDelegate {
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
 
-        guard let sharedViewModel = sharedViewModel else {
+        guard let viewModel = occurenceViewModel else {
             return
         }
         
-        DispatchQueue.main.async {
-            sharedViewModel.incrementCounter()
+        if let timestamp = message["timestamp"] as? Date {
+            DispatchQueue.main.async {
+                viewModel.addBfrbOccurence(occurenceTimestamp: timestamp)
+            }
         }
     }
 }

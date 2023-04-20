@@ -12,26 +12,34 @@ import CoreMotion
 
 struct WatchAppView: View {
     
-    @ObservedObject var viewModel = SharedViewModel()
     var connectivityProvider = ConnectivityProvider()
     var motionDetectionProvider = MotionDetectionProvider()
-    
+
     var body: some View {
         VStack {
-            Button("Oops I did it again!") {
+            Text("Oops! I did it again.")
+            CheckMarkView() {
                 connectivityProvider.sendMessageToiPhone()
             }
         }
         .onAppear {
             connectivityProvider.connect()
-            connectivityProvider.sharedViewModel = viewModel
-            motionDetectionProvider.monitorRotationRate()
+            
+            if Constants.gestureDetection {
+                motionDetectionProvider.monitorRotationRate()
+            }
         }
         .padding()
     }
     
 }
 
+
+extension WatchAppView {
+    enum Constants {
+        static let gestureDetection = false
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
