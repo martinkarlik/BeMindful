@@ -7,116 +7,151 @@
 
 import SwiftUI
 
-enum TrackedBehavior: String, CaseIterable {
-    case behavior1 = "Nail Picking"
-    case behavior2 = "Nail Biting"
-    case behavior3 = "Cheek Biting"
-    case behavior4 = "Hair Pulling"
-    case behavior5 = "Other..."
-}
+
 
 struct TrackedBehaviorView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
+    @State private var showAlert = false
+    @State private var showConfirmationPopup = false
     @State var selectedBehavior: TrackedBehavior?
     @State var customBehavior: String = ""
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Tracked Behavior")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                    .padding(.top, 50)
-                
-                Text("Choose the one you want to track")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                
-                Spacer()
-                
-                ForEach(TrackedBehavior.allCases, id: \.self) { behavior in
+            ZStack{
+                VStack {
+                    Text("Tracked Behavior")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                        .padding(.top, 50)
                     
-                    Button(action: {
-                        if behavior == selectedBehavior {
-                            // Deselect the button if it's already selected
-                            selectedBehavior = nil
-                        } else {
-                            // Select the button and deselect all the other buttons
-                            selectedBehavior = behavior
-                        }
-                    }) {
-                        HStack {
-                            if selectedBehavior == behavior {
-                                if behavior == .behavior5 {
-                                    TextField("Enter custom behavior", text: $customBehavior, onCommit: {
-                                        if !customBehavior.isEmpty {
-                                            selectedBehavior = .behavior5
-                                        }
-                                    })
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                                    .padding(.horizontal, 16)
-                                    .frame(maxWidth: 350, minHeight: 41)
-                                    .background(Color(hex: 0x5E63B6).opacity(0.8))
-                                    .cornerRadius(8)
-                                    .shadow(color: Color.gray.opacity(1), radius: 4, x: 0, y: 2)
-                                } else {
-                                    Label(behavior.rawValue, systemImage: "checkmark")
+                    Text("Choose the one you want to track")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                    
+                    Spacer()
+                    
+                    ForEach(TrackedBehavior.allCases, id: \.self) { behavior in
+                        
+                        Button(action: {
+                            if behavior == selectedBehavior {
+                                // Deselect the button if it's already selected
+                                selectedBehavior = nil
+                            } else {
+                                // Select the button and deselect all the other buttons
+                                selectedBehavior = behavior
+                            }
+                        }) {
+                            HStack {
+                                if selectedBehavior == behavior {
+                                    if behavior == .behavior5 {
+                                        TextField("Enter custom behavior", text: $customBehavior, onCommit: {
+                                            if !customBehavior.isEmpty {
+                                                selectedBehavior = .behavior5
+                                            }
+                                        })
                                         .foregroundColor(.white)
-                                        .fontWeight(.regular)
+                                        .font(.headline)
+                                        .padding(.horizontal, 16)
                                         .frame(maxWidth: 350, minHeight: 41)
                                         .background(Color(hex: 0x5E63B6).opacity(0.8))
                                         .cornerRadius(8)
                                         .shadow(color: Color.gray.opacity(1), radius: 4, x: 0, y: 2)
-                                        .labelStyle(TrailingImageLabelStyle())
+                                    } else {
+                                        Label(behavior.rawValue, systemImage: "checkmark")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.regular)
+                                            .frame(maxWidth: 350, minHeight: 41)
+                                            .background(Color(hex: 0x5E63B6).opacity(0.8))
+                                            .cornerRadius(8)
+                                            .shadow(color: Color.gray.opacity(1), radius: 4, x: 0, y: 2)
+                                            .labelStyle(TrailingImageLabelStyle())
+                                    }
+                                }
+                                else {
+                                    Text(behavior.rawValue)
+                                        .foregroundColor(Color.white)
+                                        .fontWeight(.regular)
+                                        .frame(maxWidth: 350, minHeight: 41)
+                                        .foregroundColor(.white)
+                                        .background(Color(hex: 0x5E63B6).opacity(0.8))
+                                        .cornerRadius(8)
                                 }
                             }
-                            else {
-                                Text(behavior.rawValue)
-                                    .foregroundColor(Color.white)
-                                    .fontWeight(.regular)
-                                    .frame(maxWidth: 350, minHeight: 41)
-                                    .foregroundColor(.white)
-                                    .background(Color(hex: 0x5E63B6).opacity(0.8))
-                                    .cornerRadius(8)
-                            }
                         }
+                        .padding(.bottom, 16)
+                    }
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            if selectedBehavior != nil || !customBehavior.isEmpty {
+                                isTrackedBehaviorViewActive = false
+                                showConfirmationPopup = true
+                            } else {
+                                showAlert = true
+                            }
+                        }) {
+                            Text("Continue")
+                                .fontWeight(.regular)
+                                .frame(maxWidth: 120, minHeight: 41)
+                                .foregroundColor(.black)
+                                .background(Color.white)
+                                .cornerRadius(8)
+                                .shadow(color: Color.gray.opacity(0.1),
+                                        radius: 4, x: 0, y: 2)
+                        }
+                        .padding(.trailing, 16)
+                        .shadow(radius: 2, y: 2)
                     }
                     .padding(.bottom, 16)
-                }
-                
-                Spacer()
-                
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        isTrackedBehaviorViewActive = false
-                    }) {
-                        Text("Continue")
-                            .fontWeight(.regular)
-                            .frame(maxWidth: 120, minHeight: 41)
-                            .foregroundColor(.black)
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .shadow(color: Color.gray.opacity(0.1),
-                                    radius: 4, x: 0, y: 2)
-                        
-                        
-                    }
                     .padding(.trailing, 16)
-                    .shadow(radius: 2, y: 2)
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Please select a behavior"), message: Text("You must select a behavior or enter a custom behavior to continue."), dismissButton: .default(Text("OK")))
+                    }
+                    
                 }
-                .padding(.bottom, 16)
-                .padding(.trailing, 16)
+                
+                if showConfirmationPopup {
+                    if let selectedBehavior {
+                        ConfirmationPopup(
+                            title: "Great!",
+                            message: "From now on you can track your \(selectedBehavior.rawValue) behaviour.\n\nYou are already one step closer to breaking the habit!",
+                            onConfirm: {
+                                print("Confirmed")
+                                showConfirmationPopup = false
+                            },
+                            onCancel: {
+                                print("Canceled")
+                                showConfirmationPopup = false
+                            }
+                        )
+                    } else {
+                        ConfirmationPopup(
+                            title: "Great!",
+                            message: "From now on you can track your selected behaviour.\n\nYou are already one step closer to breaking the habit!",
+                            onConfirm: {
+                                print("Confirmed")
+                                showConfirmationPopup = false
+                            },
+                            onCancel: {
+                                print("Canceled")
+                                showConfirmationPopup = false
+                            }
+                        )
+                    }
+                }
             }
+            
             .background(Color.white.edgesIgnoringSafeArea(.all))
         }
         .navigationBarHidden(true)
     }
 }
-
 
 struct TrailingImageLabelStyle: LabelStyle {
     func makeBody(configuration: Configuration) -> some View {
