@@ -41,6 +41,7 @@ struct OnboardingView: View {
                     label: {
                         Text("Continue")
                             .font(.headline)
+                            .fontWeight(.regular)
                             .foregroundColor(.black)
                             .padding(.vertical, 10)
                             .frame(maxWidth: 300)
@@ -58,8 +59,9 @@ struct OnboardingView: View {
                 
             }
             .navigationBarHidden(true)
+            .background(Color.white.edgesIgnoringSafeArea(.all))
         }
-        .background(Color.white)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
