@@ -14,6 +14,7 @@ struct TrackedBehaviorView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
     @State private var showAlert = false
     @State private var showConfirmationPopup = false
+    @State private var showDashboardView = false
     @State var selectedBehavior: TrackedBehavior?
     @State var customBehavior: String = ""
     
@@ -56,7 +57,7 @@ struct TrackedBehaviorView: View {
                                         .font(.headline)
                                         .padding(.horizontal, 16)
                                         .frame(maxWidth: 350, minHeight: 41)
-                                        .background(Color(hex: 0x5E63B6).opacity(0.8))
+                                        .background(Color("Purple").opacity(0.8))
                                         .cornerRadius(8)
                                         .shadow(color: Color.gray.opacity(1), radius: 4, x: 0, y: 2)
                                     } else {
@@ -64,7 +65,7 @@ struct TrackedBehaviorView: View {
                                             .foregroundColor(.white)
                                             .fontWeight(.regular)
                                             .frame(maxWidth: 350, minHeight: 41)
-                                            .background(Color(hex: 0x5E63B6).opacity(0.8))
+                                            .background(Color("Purple").opacity(0.8))
                                             .cornerRadius(8)
                                             .shadow(color: Color.gray.opacity(1), radius: 4, x: 0, y: 2)
                                             .labelStyle(TrailingImageLabelStyle())
@@ -76,7 +77,7 @@ struct TrackedBehaviorView: View {
                                         .fontWeight(.regular)
                                         .frame(maxWidth: 350, minHeight: 41)
                                         .foregroundColor(.white)
-                                        .background(Color(hex: 0x5E63B6).opacity(0.8))
+                                        .background(Color("Purple").opacity(0.8))
                                         .cornerRadius(8)
                                 }
                             }
@@ -124,6 +125,10 @@ struct TrackedBehaviorView: View {
                             onConfirm: {
                                 print("Confirmed")
                                 showConfirmationPopup = false
+                                NavigationLink(destination: DashboardView(selectedBehavior: selectedBehavior.rawValue)) {
+                                    Text("Continue")
+                                        .foregroundColor(.white)
+                                }
                             },
                             onCancel: {
                                 print("Canceled")

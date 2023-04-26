@@ -33,7 +33,7 @@ struct ConfirmationPopup: View {
                         .fontWeight(.regular)
                         .frame(maxWidth: 120, minHeight: 41)
                         .foregroundColor(.white)
-                        .background(Color(hex: 0x5E63B6).opacity(0.8))
+                        .background(Color("Purple").opacity(0.8))
                         .cornerRadius(8)
                         .shadow(color: Color.gray.opacity(0.1), radius: 4, x: 0, y: 2)
                 }
