@@ -125,10 +125,7 @@ struct TrackedBehaviorView: View {
                             onConfirm: {
                                 print("Confirmed")
                                 showConfirmationPopup = false
-                                NavigationLink(destination: DashboardView(selectedBehavior: selectedBehavior.rawValue)) {
-                                    Text("Continue")
-                                        .foregroundColor(.white)
-                                }
+                                navigateToDashboardTabBar(selectedBehavior: "\(selectedBehavior.rawValue)")
                             },
                             onCancel: {
                                 print("Canceled")
@@ -142,6 +139,7 @@ struct TrackedBehaviorView: View {
                             onConfirm: {
                                 print("Confirmed")
                                 showConfirmationPopup = false
+                                navigateToDashboardTabBar(selectedBehavior: "Other")
                             },
                             onCancel: {
                                 print("Canceled")
@@ -150,11 +148,20 @@ struct TrackedBehaviorView: View {
                         )
                     }
                 }
+
             }
             
             .background(Color.white.edgesIgnoringSafeArea(.all))
         }
         .navigationBarHidden(true)
+    }
+}
+
+private func navigateToDashboardTabBar(selectedBehavior: String) {
+    let dashboardTabBar = DashboardTabBar(selectedBehavior: selectedBehavior)
+    if let window = UIApplication.shared.windows.first {
+        window.rootViewController = UIHostingController(rootView: dashboardTabBar)
+        window.makeKeyAndVisible()
     }
 }
 

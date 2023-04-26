@@ -14,6 +14,7 @@ struct DashboardView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
+            Spacer()
             HStack {
                 Text("Dashboard: \(selectedBehavior)")
                     .font(.title)
@@ -34,6 +35,8 @@ struct DashboardView: View {
             }
             Spacer()
             LineChartDetails()
+            Spacer()
+            Divider()
         }
         .navigationTitle("")
         .navigationBarHidden(true)
