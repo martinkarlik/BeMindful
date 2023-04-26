@@ -9,19 +9,25 @@ import SwiftUI
 
 struct RealTimeCounter: View {
     var body: some View {
-        HStack(spacing: 16) {
-            CounterView(count: "4",
-                        title: "Last hour",
-                        arrowDirection: "down",
-                        arrowColor: .green)
-            CounterDivider()
-            CounterView(count: "6", title: "Last day",
-                        arrowDirection: "up",
-                        arrowColor: .red)
-            CounterDivider()
-            CounterView(count: "15", title: "Last week",
-                        arrowDirection: "down",
-                        arrowColor: .green)
+        VStack(alignment: .leading){
+            Text("Behavior statistics:")
+                .font(.title3)
+                .fontWeight(.medium)
+                .foregroundColor(Color("DarkPurple"))
+            HStack(spacing: 16) {
+                CounterView(count: "4",
+                            title: "Last hour",
+                            arrowDirection: "down",
+                            arrowColor: .green)
+                CounterDivider()
+                CounterView(count: "6", title: "Last day",
+                            arrowDirection: "up",
+                            arrowColor: .red)
+                CounterDivider()
+                CounterView(count: "15", title: "Last week",
+                            arrowDirection: "down",
+                            arrowColor: .green)
+            }
         }
     }
 }

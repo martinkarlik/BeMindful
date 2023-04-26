@@ -14,7 +14,7 @@ struct OnboardingView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
+            VStack {
                 Text("Welcome to BeMindful!")
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -24,16 +24,16 @@ struct OnboardingView: View {
                 Image(logoImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
-                    .padding(.top, 50)
+                    .frame(width: 150, height: 150)
+                    .padding(.top, 0)
                 
-                Text("This is an app that helps you achieve your goals by tracking your daily behavior.\n\n You can choose from a list of predefined behaviors or create your own custom behavior.\n\n You can track your progress over time and receive reminders to stay on track.")
+                Text("The application is designed to help you overcome your body-focused repetitive behaviors (BFRBs) and achieve your goals by tracking your daily behavior.\nYou can choose from a list of predefined behaviors or create your own custom behavior.\n\nYou can track your progress over time through the watch application or the app widget and check your statistics on your mobile, where several visualisations are available to understand your data. \n\nTogether, let's make progress towards a happier, healthier you!")
                     .font(.headline)
                     .fontWeight(.medium)
                     .foregroundColor(Color("DarkPurple"))
                     .padding(50)
                 
-                Spacer()
+               // Spacer()
                 
                 NavigationLink(
                     destination: TrackedBehaviorView(),

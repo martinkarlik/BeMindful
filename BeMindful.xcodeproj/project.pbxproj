@@ -35,6 +35,7 @@
 		4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
 		4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */; };
 		4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */; };
+		B021585B29F998F8004BB421 /* WelcomePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B021585A29F998F8004BB421 /* WelcomePopUp.swift */; };
 		B04008AE29F861D000B3BC6C /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */; };
 		B099273D29CB3F9B0099FBFB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099273C29CB3F9B0099FBFB /* Data.swift */; };
 		B09CDC3B29F91F950089E686 /* RealTimeCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */; };
@@ -110,6 +111,7 @@
 		4E9BDF3929EA8CCF00CA432A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccurenceViewModel.swift; sourceTree = "<group>"; };
 		4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTypes.swift; sourceTree = "<group>"; };
+		B021585A29F998F8004BB421 /* WelcomePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePopUp.swift; sourceTree = "<group>"; };
 		B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopup.swift; sourceTree = "<group>"; };
 		B099273C29CB3F9B0099FBFB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCounterView.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */,
 				B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */,
 				B09CDC4029F92C330089E686 /* DashboardTabBar.swift */,
+				B021585A29F998F8004BB421 /* WelcomePopUp.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
 				4E2693CF29F3A92C00401A96 /* ContainerView.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
+				B021585B29F998F8004BB421 /* WelcomePopUp.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */,
