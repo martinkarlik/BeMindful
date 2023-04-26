@@ -59,7 +59,7 @@ struct OnboardingView: View {
                 
             }
             .navigationBarHidden(true)
-            .background(Color.white.edgesIgnoringSafeArea(.all))
+            //.background(Color.white.edgesIgnoringSafeArea(.all))
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

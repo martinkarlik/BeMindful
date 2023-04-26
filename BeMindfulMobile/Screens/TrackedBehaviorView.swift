@@ -25,7 +25,7 @@ struct TrackedBehaviorView: View {
                     Text("Tracked Behavior")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("DarkPurple"))
                         .padding(.top, 50)
                     
                     Text("Choose the one you want to track")
@@ -151,7 +151,7 @@ struct TrackedBehaviorView: View {
 
             }
             
-            .background(Color.white.edgesIgnoringSafeArea(.all))
+            //.background(Color.white.edgesIgnoringSafeArea(.all))
         }
         .navigationBarHidden(true)
     }

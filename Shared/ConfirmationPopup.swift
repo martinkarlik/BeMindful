@@ -43,7 +43,7 @@ struct ConfirmationPopup: View {
                     Text("Continue")
                         .fontWeight(.regular)
                         .frame(maxWidth: 120, minHeight: 41)
-                        .foregroundColor(Color("DarkPurple"))
+                        .foregroundColor(.black)
                         .background(Color.white)
                         .cornerRadius(8)
                         .shadow(color: Color.gray.opacity(0.1), radius: 4, x: 0, y: 2)
@@ -52,7 +52,7 @@ struct ConfirmationPopup: View {
             .padding(.top, 8)
         }
         .padding()
-        .background(Color.white)
+        .background(Color("PopUp"))
         .cornerRadius(16)
         .shadow(color: Color.gray.opacity(0.3), radius: 8, x: 0, y: 4)
     }
