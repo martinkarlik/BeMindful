@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
+		4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C429F3A92C00401A96 /* DashboardView.swift */; };
+		4E2693CB29F3A92C00401A96 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C529F3A92C00401A96 /* LaunchView.swift */; };
+		4E2693CD29F3A92C00401A96 /* TrackedBehaviorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C729F3A92C00401A96 /* TrackedBehaviorView.swift */; };
+		4E2693CE29F3A92C00401A96 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C829F3A92C00401A96 /* OnboardingView.swift */; };
+		4E2693CF29F3A92C00401A96 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C929F3A92C00401A96 /* ContainerView.swift */; };
 		4E2B289D29DC3BC100843D39 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2B289C29DC3BC100843D39 /* CoreMotion.framework */; };
 		4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */; };
 		4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA829B8B3F500F380CC /* MobileAppView.swift */; };
@@ -30,7 +35,11 @@
 		4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
 		4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */; };
 		4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */; };
+		B04008AE29F861D000B3BC6C /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */; };
 		B099273D29CB3F9B0099FBFB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099273C29CB3F9B0099FBFB /* Data.swift */; };
+		B09CDC3B29F91F950089E686 /* RealTimeCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */; };
+		B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC4029F92C330089E686 /* DashboardTabBar.swift */; };
+		B09CDC4429F934B80089E686 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC4329F934B80089E686 /* HistoryView.swift */; };
 		B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */; };
 		B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +84,11 @@
 
 /* Begin PBXFileReference section */
 		4E24756729EFDAA000622706 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		4E2693C429F3A92C00401A96 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		4E2693C529F3A92C00401A96 /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		4E2693C729F3A92C00401A96 /* TrackedBehaviorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackedBehaviorView.swift; sourceTree = "<group>"; };
+		4E2693C829F3A92C00401A96 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		4E2693C929F3A92C00401A96 /* ContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		4E2B289C29DC3BC100843D39 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		4E36CAA329B8B3F500F380CC /* BeMindfulMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMindfulMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulMobileApp.swift; sourceTree = "<group>"; };
@@ -96,7 +110,11 @@
 		4E9BDF3929EA8CCF00CA432A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccurenceViewModel.swift; sourceTree = "<group>"; };
 		4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTypes.swift; sourceTree = "<group>"; };
+		B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopup.swift; sourceTree = "<group>"; };
 		B099273C29CB3F9B0099FBFB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCounterView.swift; sourceTree = "<group>"; };
+		B09CDC4029F92C330089E686 /* DashboardTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBar.swift; sourceTree = "<group>"; };
+		B09CDC4329F934B80089E686 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyLineChart.swift; sourceTree = "<group>"; };
 		B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +152,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E2693C329F3A92C00401A96 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4E2693C529F3A92C00401A96 /* LaunchView.swift */,
+				4E2693C429F3A92C00401A96 /* DashboardView.swift */,
+				4E2693C729F3A92C00401A96 /* TrackedBehaviorView.swift */,
+				4E2693C829F3A92C00401A96 /* OnboardingView.swift */,
+				4E2693C929F3A92C00401A96 /* ContainerView.swift */,
+				B09CDC4329F934B80089E686 /* HistoryView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		4E2B289B29DC3BC100843D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +199,7 @@
 		4E36CAA529B8B3F500F380CC /* BeMindfulMobile */ = {
 			isa = PBXGroup;
 			children = (
+				4E2693C329F3A92C00401A96 /* Screens */,
 				4E37301729EB14580016D348 /* Persistency */,
 				B099273B29CB3F620099FBFB /* Visualisations */,
 				B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */,
@@ -247,6 +279,9 @@
 				4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */,
 				4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */,
 				4E24756729EFDAA000622706 /* CheckmarkView.swift */,
+				B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */,
+				B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */,
+				B09CDC4029F92C330089E686 /* DashboardTabBar.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -432,15 +467,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
+				B09CDC3B29F91F950089E686 /* RealTimeCounterView.swift in Sources */,
+				4E2693CB29F3A92C00401A96 /* LaunchView.swift in Sources */,
+				4E2693CD29F3A92C00401A96 /* TrackedBehaviorView.swift in Sources */,
+				B09CDC4429F934B80089E686 /* HistoryView.swift in Sources */,
 				4E9BDF3729EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
 				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
+				4E2693CF29F3A92C00401A96 /* ContainerView.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
+				4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */,
 				4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */,
+				B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */,
 				B099273D29CB3F9B0099FBFB /* Data.swift in Sources */,
+				4E2693CE29F3A92C00401A96 /* OnboardingView.swift in Sources */,
+				B04008AE29F861D000B3BC6C /* ConfirmationPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

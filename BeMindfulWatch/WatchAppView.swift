@@ -14,9 +14,7 @@ struct WatchAppView: View {
     
     var connectivityProvider = ConnectivityProvider()
     var motionDetectionProvider = MotionDetectionProvider()
-    
-    @State private var showCheckmark = false
-    
+
     var body: some View {
         VStack {
             Text("Oops! I did it again.")

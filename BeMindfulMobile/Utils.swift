@@ -27,3 +27,11 @@ struct TimeRangePicker: View {
         .pickerStyle(.segmented)
     }
 }
+
+enum TrackedBehavior: String, CaseIterable {
+    case behavior1 = "Nail Picking"
+    case behavior2 = "Nail Biting"
+    case behavior3 = "Cheek Biting"
+    case behavior4 = "Hair Pulling"
+    case behavior5 = "Other..."
+}
