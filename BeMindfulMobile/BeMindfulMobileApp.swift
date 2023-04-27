@@ -16,7 +16,7 @@ struct BeMindfulMobileApp: App {
     var body: some Scene {
         WindowGroup {
             OnboardingView(logoImage: "LaunchIcon")
-            //MobileAppView().environment(\.managedObjectContext, dataController.container.viewContext)
+//            MobileAppView().environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

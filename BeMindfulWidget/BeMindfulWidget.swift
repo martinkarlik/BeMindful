@@ -40,43 +40,32 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
 }
 
-struct BeMindfulWidgetEntryView : View {
+struct BeMindfulWidgetEntryView: View {
     var entry: Provider.Entry
 
-    var connectivityProvider = ConnectivityProvider()
-        
-        @State private var showCheckmark = false
-        
-        var body: some View {
-            VStack {
-                Text("Oops! I did it again.")
-                CheckMarkView() {
-                    connectivityProvider.sendMessageToiPhone()
-                }
-            }
-            .onAppear {
-                connectivityProvider.connect()
-            }
-            .padding()
+    var body: some View {
+        VStack {
+            CheckMarkView {}
         }
+        .padding()
+        .background(Color.clear)
+    }
 }
+
+
 
 struct BeMindfulWidget: Widget {
     let kind: String = "BeMindfulWidget"
+    
+    @ObservedObject var viewModel = OccurenceViewModel()
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            BeMindfulWidgetEntryView(entry: entry)
+                BeMindfulWidgetEntryView(entry: entry)
+            }
+            .configurationDisplayName("My Widget")
+            .description("This is an example widget.")
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
-    }
-}
 
-struct BeMindfulWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        BeMindfulWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
 }
 

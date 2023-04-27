@@ -56,22 +56,3 @@ struct BeMindfulWidgetLiveActivity: Widget {
     }
 }
 
-struct BeMindfulWidgetLiveActivity_Previews: PreviewProvider {
-    static let attributes = BeMindfulWidgetAttributes(name: "Me")
-    static let contentState = BeMindfulWidgetAttributes.ContentState(value: 3)
-
-    static var previews: some View {
-        attributes
-            .previewContext(contentState, viewKind: .dynamicIsland(.compact))
-            .previewDisplayName("Island Compact")
-        attributes
-            .previewContext(contentState, viewKind: .dynamicIsland(.expanded))
-            .previewDisplayName("Island Expanded")
-        attributes
-            .previewContext(contentState, viewKind: .dynamicIsland(.minimal))
-            .previewDisplayName("Minimal")
-        attributes
-            .previewContext(contentState, viewKind: .content)
-            .previewDisplayName("Notification")
-    }
-}

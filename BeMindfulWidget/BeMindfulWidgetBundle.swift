@@ -10,6 +10,8 @@ import SwiftUI
 
 @main
 struct BeMindfulWidgetBundle: WidgetBundle {
+    
+    @WidgetBundleBuilder
     var body: some Widget {
         BeMindfulWidget()
         BeMindfulWidgetLiveActivity()
