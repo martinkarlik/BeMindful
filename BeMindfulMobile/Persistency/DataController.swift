@@ -9,16 +9,41 @@ import CoreData
 import Foundation
 
 class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "Occurences")
+    let container: NSPersistentContainer
+    var context : NSManagedObjectContext { container.viewContext }
     
-    init() {
+    init(containerName: String, inMemory: Bool = false) {
+        container = NSPersistentContainer(name: containerName)
+        if inMemory {
+            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+        }
+        container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores { description, error in
             if let error = error {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }
         }
     }
-    
+
+    func fetchData<Result>(request: NSFetchRequest<Result>) -> [Result] {
+        var result: [Result] = []
+        do {
+            result = try context.fetch(request)
+        } catch let error {
+            print("ERROR: \(error)")
+        }
+        return result
+    }
+
+    func saveData() {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch let error as NSError {
+                NSLog("Unresolved error saving context: \(error), \(error.userInfo)")
+            }
+        }
+    }
     
     // Call this from the initializer to reset the real data on device: We don't support flexible data deletion yet
     // This WILL delete all user's data so treat lightly

@@ -11,21 +11,21 @@ import SwiftUI
 import CoreData
 
 class OccurenceViewModel: ObservableObject {
-        
-    var moc: NSManagedObjectContext?
+
+    @Published var occurences: [Occurence] = []
+
+    private let dataController: DataController
+    private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
     
-    init() {}
+    init() {
+        dataController = DataController(containerName: "Occurences")
+        occurences = dataController.fetchData(request: request)
+    }
     
-    func addBfrbOccurence(occurenceTimestamp: Date) {
-        
-        guard let moc = moc else {
-            return
-        }
-        
-        let newOccurence = Occurence(context: moc)
-        newOccurence.id = UUID()
-        newOccurence.timestamp = occurenceTimestamp
-        
-        try? moc.save()
+    func addOccurence(occurenceTimestamp: Date) {
+        _ = Occurence(context: dataController.context, timestamp: occurenceTimestamp, type: "Nail biting")
+        dataController.saveData()
+        // Until I find a prettier solution to auto-update after save
+        occurences = dataController.fetchData(request: request)
     }
 }

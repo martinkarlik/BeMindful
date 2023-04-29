@@ -65,7 +65,7 @@ extension ConnectivityProvider: WCSessionDelegate {
         
         if let timestamp = message["timestamp"] as? Date {
             DispatchQueue.main.async {
-                viewModel.addBfrbOccurence(occurenceTimestamp: timestamp)
+                viewModel.addOccurence(occurenceTimestamp: timestamp)
             }
         }
     }

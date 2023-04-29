@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		423E77B429F9D55F00FB3B27 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
+		425EB00329F9485F0076058F /* Occurence+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */; };
+		425EB00429F9485F0076058F /* Occurence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */; };
+		425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */; };
+		425EB00629F951970076058F /* Occurence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */; };
 		4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C429F3A92C00401A96 /* DashboardView.swift */; };
@@ -83,6 +88,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataClass.swift"; sourceTree = "<group>"; };
+		425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E24756729EFDAA000622706 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		4E2693C429F3A92C00401A96 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		4E2693C529F3A92C00401A96 /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -152,6 +159,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		425EB00729F951B10076058F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */,
+				425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		4E2693C329F3A92C00401A96 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +292,7 @@
 		4E4FD1B129CB187E00DADB21 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				425EB00729F951B10076058F /* Data */,
 				4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */,
 				4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */,
 				4E24756729EFDAA000622706 /* CheckmarkView.swift */,
@@ -479,8 +496,10 @@
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
+				425EB00429F9485F0076058F /* Occurence+CoreDataProperties.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */,
 				4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */,
+				425EB00329F9485F0076058F /* Occurence+CoreDataClass.swift in Sources */,
 				B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */,
 				B099273D29CB3F9B0099FBFB /* Data.swift in Sources */,
 				4E2693CE29F3A92C00401A96 /* OnboardingView.swift in Sources */,
@@ -502,7 +521,10 @@
 			files = (
 				4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */,
 				4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */,
+				425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */,
+				425EB00629F951970076058F /* Occurence+CoreDataProperties.swift in Sources */,
 				4E9BDF3829EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
+				423E77B429F9D55F00FB3B27 /* DataController.swift in Sources */,
 				4E37302429EB3CF40016D348 /* OccurenceViewModel.swift in Sources */,
 				4E36CAD129B8B3F800F380CC /* WatchAppView.swift in Sources */,
 				4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */,
