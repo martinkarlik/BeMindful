@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42049C0C29FEED5300ACF1B1 /* LineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42049C0B29FEED5300ACF1B1 /* LineChartData.swift */; };
+		42049C0D29FF03FC00ACF1B1 /* TrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D58AA029FDA06D001A025B /* TrendData.swift */; };
+		42049C0E29FF17F700ACF1B1 /* LineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42049C0B29FEED5300ACF1B1 /* LineChartData.swift */; };
 		423E77B429F9D55F00FB3B27 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
 		425EB00329F9485F0076058F /* Occurence+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */; };
 		425EB00429F9485F0076058F /* Occurence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */; };
 		425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */; };
 		425EB00629F951970076058F /* Occurence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */; };
+		42D58AA129FDA06D001A025B /* TrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D58AA029FDA06D001A025B /* TrendData.swift */; };
 		4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C429F3A92C00401A96 /* DashboardView.swift */; };
@@ -88,8 +92,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42049C0B29FEED5300ACF1B1 /* LineChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartData.swift; sourceTree = "<group>"; };
 		425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataClass.swift"; sourceTree = "<group>"; };
 		425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		42D58AA029FDA06D001A025B /* TrendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendData.swift; sourceTree = "<group>"; };
 		4E24756729EFDAA000622706 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		4E2693C429F3A92C00401A96 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		4E2693C529F3A92C00401A96 /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -159,6 +165,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42049C0929FEA95E00ACF1B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */,
+				B09CDC4029F92C330089E686 /* DashboardTabBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		42049C0A29FEECAB00ACF1B1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				42D58AA029FDA06D001A025B /* TrendData.swift */,
+				42049C0B29FEED5300ACF1B1 /* LineChartData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		425EB00729F951B10076058F /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +241,7 @@
 			children = (
 				4E2693C329F3A92C00401A96 /* Screens */,
 				4E37301729EB14580016D348 /* Persistency */,
+				42049C0929FEA95E00ACF1B1 /* Views */,
 				B099273B29CB3F620099FBFB /* Visualisations */,
 				B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */,
 				4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */,
@@ -296,9 +321,6 @@
 				4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */,
 				4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */,
 				4E24756729EFDAA000622706 /* CheckmarkView.swift */,
-				B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */,
-				B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */,
-				B09CDC4029F92C330089E686 /* DashboardTabBar.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -315,6 +337,8 @@
 		B099273B29CB3F620099FBFB /* Visualisations */ = {
 			isa = PBXGroup;
 			children = (
+				42049C0A29FEECAB00ACF1B1 /* Data */,
+				B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */,
 				B099273C29CB3F9B0099FBFB /* Data.swift */,
 				B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */,
 			);
@@ -483,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42049C0C29FEED5300ACF1B1 /* LineChartData.swift in Sources */,
 				4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
 				B09CDC3B29F91F950089E686 /* RealTimeCounterView.swift in Sources */,
 				4E2693CB29F3A92C00401A96 /* LaunchView.swift in Sources */,
@@ -492,6 +517,7 @@
 				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
 				4E2693CF29F3A92C00401A96 /* ContainerView.swift in Sources */,
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
+				42D58AA129FDA06D001A025B /* TrendData.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */,
@@ -528,7 +554,9 @@
 				4E37302429EB3CF40016D348 /* OccurenceViewModel.swift in Sources */,
 				4E36CAD129B8B3F800F380CC /* WatchAppView.swift in Sources */,
 				4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */,
+				42049C0D29FF03FC00ACF1B1 /* TrendData.swift in Sources */,
 				4E36CACF29B8B3F800F380CC /* BeMindfulWatchApp.swift in Sources */,
+				42049C0E29FF17F700ACF1B1 /* LineChartData.swift in Sources */,
 				4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

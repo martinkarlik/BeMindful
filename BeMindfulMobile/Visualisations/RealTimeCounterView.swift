@@ -8,20 +8,18 @@
 import SwiftUI
 
 struct RealTimeCounter: View {
+    @ObservedObject var viewModel: OccurenceViewModel
+
     var body: some View {
-        HStack(spacing: 16) {
-            CounterView(count: "4",
-                        title: "Last hour",
-                        arrowDirection: "down",
-                        arrowColor: .green)
+        HStack(spacing: 8) {
+            CounterView(data: viewModel.trendData[0],
+                        title: "Last hour")
             CounterDivider()
-            CounterView(count: "6", title: "Last day",
-                        arrowDirection: "up",
-                        arrowColor: .red)
+            CounterView(data: viewModel.trendData[1],
+                        title: "Last day")
             CounterDivider()
-            CounterView(count: "15", title: "Last week",
-                        arrowDirection: "down",
-                        arrowColor: .green)
+            CounterView(data: viewModel.trendData[2],
+                        title: "Last week")
         }
     }
 }
@@ -36,21 +34,26 @@ struct CounterDivider: View {
 }
 
 struct CounterView: View {
-    let count: String
+    @ObservedObject var data: TrendData
     let title: String
-    let arrowDirection: String
-    let arrowColor: Color
+
+    private var arrowDirection: String {
+        data.currentCount < data.previousCount ? "down" : "up"
+    }
+
+    private var arrowColor: Color {
+        data.currentCount < data.previousCount ? .green : .red
+    }
     
     var body: some View {
         HStack(alignment: .center, spacing: 1) {
             VStack(alignment: .center, spacing: 1) {
-                Text(count)
+                Text(String(data.currentCount))
                     .font(.system(size: 28, weight: .semibold))
                 Text(title)
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
             }
-            
             Image(systemName: "arrow.\(arrowDirection)")
                 .foregroundColor(arrowColor)
         }
@@ -63,6 +66,6 @@ struct CounterView: View {
 
 struct RealTimeCounterView_Previews: PreviewProvider {
     static var previews: some View {
-        RealTimeCounter()
+        RealTimeCounter(viewModel: OccurenceViewModel.preview)
     }
 }

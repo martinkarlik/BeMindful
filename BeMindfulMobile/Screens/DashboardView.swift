@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = false
+    @ObservedObject var viewModel: OccurenceViewModel
     let selectedBehavior: String
     
     
@@ -30,7 +31,7 @@ struct DashboardView: View {
             Spacer()
             HStack {
                 Spacer()
-                RealTimeCounter()
+                RealTimeCounter(viewModel: viewModel)
                 Spacer()
             }
             Spacer()
@@ -45,6 +46,6 @@ struct DashboardView: View {
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView( selectedBehavior: TrackedBehavior.behavior1.rawValue)
+        DashboardView(viewModel: OccurenceViewModel.preview, selectedBehavior: TrackedBehavior.behavior1.rawValue)
     }
 }
