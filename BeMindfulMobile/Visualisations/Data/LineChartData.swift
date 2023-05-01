@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LineChartData: ObservableObject {
+class LineChartData: ObservableObject, Identifiable {
     let hour: [Occurence]
     let day: [Occurence]
     let week: [Occurence]

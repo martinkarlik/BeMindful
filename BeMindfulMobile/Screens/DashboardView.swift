@@ -35,7 +35,7 @@ struct DashboardView: View {
                 Spacer()
             }
             Spacer()
-            LineChartDetails()
+            LineChartDetails(data: viewModel.lineChartData)
             Spacer()
             Divider()
         }

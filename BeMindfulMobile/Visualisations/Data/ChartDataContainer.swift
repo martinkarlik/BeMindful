@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ChartDataContainer: ObservableObject, Identifiable {
+class ChartDataContainer: ObservableObject {
     @Published var occurences: [Occurence]
 
     init(occurences: [Occurence] = []) {
