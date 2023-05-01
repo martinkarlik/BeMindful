@@ -54,8 +54,10 @@ struct CounterView: View {
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
             }
-            Image(systemName: "arrow.\(arrowDirection)")
-                .foregroundColor(arrowColor)
+            if data.currentCount != 0 || data.previousCount != 0 {
+                Image(systemName: "arrow.\(arrowDirection)")
+                    .foregroundColor(arrowColor)
+            }
         }
         .padding()
         .cornerRadius(8)

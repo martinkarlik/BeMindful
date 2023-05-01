@@ -10,7 +10,6 @@ import SwiftUI
 struct OnboardingView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @State private var showTrackedBehaviorView = false
-    @ObservedObject var viewModel: OccurenceViewModel
     var logoImage: String
     
     var body: some View {
@@ -37,7 +36,7 @@ struct OnboardingView: View {
                 Spacer()
                 
                 NavigationLink(
-                    destination: TrackedBehaviorView(viewModel: viewModel),
+                    destination: TrackedBehaviorView(),
                     isActive: $showTrackedBehaviorView,
                     label: {
                         Text("Continue")
@@ -68,6 +67,6 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView(viewModel: OccurenceViewModel.preview, logoImage: "LaunchIcon")
+        OnboardingView(logoImage: "LaunchIcon")
     }
 }

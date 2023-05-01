@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = false
-    @ObservedObject var viewModel: OccurenceViewModel
+    @ObservedObject var viewModel = OccurenceViewModel()
     let selectedBehavior: String
     
     

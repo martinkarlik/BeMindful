@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DashboardTabBar: View {
-    @ObservedObject var viewModel: OccurenceViewModel
     let selectedBehavior: String
     
     enum Tab {
@@ -20,7 +19,7 @@ struct DashboardTabBar: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            DashboardView(viewModel: viewModel, selectedBehavior: selectedBehavior)
+            DashboardView(selectedBehavior: selectedBehavior)
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                     Text("Dashboard")
@@ -40,6 +39,6 @@ struct DashboardTabBar: View {
 
 struct DashboardTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardTabBar(viewModel: OccurenceViewModel.preview, selectedBehavior: "Test")
+        DashboardTabBar(selectedBehavior: "Test")
     }
 }

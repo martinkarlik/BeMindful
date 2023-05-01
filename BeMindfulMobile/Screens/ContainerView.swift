@@ -15,10 +15,10 @@ struct ContainerView: View {
     var body: some View {
         ZStack {
             if isOnboardingViewActive {
-                OnboardingView(viewModel: viewModel, logoImage: "LaunchIcon")
+                OnboardingView(logoImage: "LaunchIcon")
             }
             else {
-                TrackedBehaviorView(viewModel: viewModel)
+                TrackedBehaviorView()
             }
         }
     }

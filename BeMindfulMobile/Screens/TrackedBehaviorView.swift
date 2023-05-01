@@ -17,7 +17,6 @@ struct TrackedBehaviorView: View {
     @State private var showDashboardView = false
     @State var selectedBehavior: TrackedBehavior?
     @State var customBehavior: String = ""
-    @ObservedObject var viewModel: OccurenceViewModel
     
     var body: some View {
         NavigationView {
@@ -126,7 +125,7 @@ struct TrackedBehaviorView: View {
                             onConfirm: {
                                 print("Confirmed")
                                 showConfirmationPopup = false
-                                navigateToDashboardTabBar(viewModel: viewModel, selectedBehavior: "\(selectedBehavior.rawValue)")
+                                navigateToDashboardTabBar(selectedBehavior: "\(selectedBehavior.rawValue)")
                             },
                             onCancel: {
                                 print("Canceled")
@@ -140,7 +139,7 @@ struct TrackedBehaviorView: View {
                             onConfirm: {
                                 print("Confirmed")
                                 showConfirmationPopup = false
-                                navigateToDashboardTabBar(viewModel: viewModel, selectedBehavior: "Other")
+                                navigateToDashboardTabBar(selectedBehavior: "Other")
                             },
                             onCancel: {
                                 print("Canceled")
@@ -158,8 +157,8 @@ struct TrackedBehaviorView: View {
     }
 }
 
-private func navigateToDashboardTabBar(viewModel: OccurenceViewModel, selectedBehavior: String) {
-    let dashboardTabBar = DashboardTabBar(viewModel: viewModel, selectedBehavior: selectedBehavior)
+private func navigateToDashboardTabBar(selectedBehavior: String) {
+    let dashboardTabBar = DashboardTabBar(selectedBehavior: selectedBehavior)
     if let window = UIApplication.shared.windows.first {
         window.rootViewController = UIHostingController(rootView: dashboardTabBar)
         window.makeKeyAndVisible()
@@ -181,6 +180,6 @@ struct TrailingImageLabelStyle: LabelStyle {
 
 struct ChoiceSelection_Previews: PreviewProvider {
     static var previews: some View {
-        TrackedBehaviorView(viewModel: OccurenceViewModel.preview)
+        TrackedBehaviorView()
     }
 }
