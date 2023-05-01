@@ -53,7 +53,9 @@ struct ConfirmationPopup: View {
         }
         .padding()
         .background(Color("PopUp"))
+        
         .cornerRadius(16)
+        .frame(maxWidth: 320, minHeight: 41)
         .shadow(color: Color.gray.opacity(0.3), radius: 8, x: 0, y: 4)
     }
 }
