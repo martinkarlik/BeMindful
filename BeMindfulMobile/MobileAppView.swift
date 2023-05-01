@@ -9,7 +9,7 @@ import SwiftUI
 import WatchConnectivity
 
 struct MobileAppView: View {
-    
+    // We'll be able to remove this as well when we get rid of the list
     @ObservedObject var viewModel = OccurenceViewModel()
     var connectivityProvider = ConnectivityProvider()
     

@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct RealTimeCounter: View {
-    @ObservedObject var viewModel: OccurenceViewModel
+    @ObservedObject var data: TrendDataContainer
 
     var body: some View {
         HStack(spacing: 8) {
-            CounterView(data: viewModel.trendData[0],
+            CounterView(data: data.trendData[0],
                         title: "Last hour")
             CounterDivider()
-            CounterView(data: viewModel.trendData[1],
+            CounterView(data: data.trendData[1],
                         title: "Last day")
             CounterDivider()
-            CounterView(data: viewModel.trendData[2],
+            CounterView(data: data.trendData[2],
                         title: "Last week")
         }
     }
@@ -68,6 +68,6 @@ struct CounterView: View {
 
 struct RealTimeCounterView_Previews: PreviewProvider {
     static var previews: some View {
-        RealTimeCounter(viewModel: OccurenceViewModel.preview)
+        RealTimeCounter(data: TrendDataContainer.preview)
     }
 }

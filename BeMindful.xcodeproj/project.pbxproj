@@ -15,6 +15,7 @@
 		425EB00429F9485F0076058F /* Occurence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */; };
 		425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */; };
 		425EB00629F951970076058F /* Occurence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */; };
+		4299E7312A0031A200896C3B /* TrendDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299E7302A0031A200896C3B /* TrendDataContainer.swift */; };
 		42D58AA129FDA06D001A025B /* TrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D58AA029FDA06D001A025B /* TrendData.swift */; };
 		4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
@@ -95,6 +96,7 @@
 		42049C0B29FEED5300ACF1B1 /* LineChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartData.swift; sourceTree = "<group>"; };
 		425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataClass.swift"; sourceTree = "<group>"; };
 		425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4299E7302A0031A200896C3B /* TrendDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDataContainer.swift; sourceTree = "<group>"; };
 		42D58AA029FDA06D001A025B /* TrendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendData.swift; sourceTree = "<group>"; };
 		4E24756729EFDAA000622706 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		4E2693C429F3A92C00401A96 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				42D58AA029FDA06D001A025B /* TrendData.swift */,
 				42049C0B29FEED5300ACF1B1 /* LineChartData.swift */,
+				4299E7302A0031A200896C3B /* TrendDataContainer.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				42D58AA129FDA06D001A025B /* TrendData.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
+				4299E7312A0031A200896C3B /* TrendDataContainer.swift in Sources */,
 				4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
 				425EB00429F9485F0076058F /* Occurence+CoreDataProperties.swift in Sources */,
@@ -548,6 +552,7 @@
 				4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */,
 				4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */,
 				425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */,
+				4299E7322A00330100896C3B /* TrendDataContainer.swift in Sources */,
 				425EB00629F951970076058F /* Occurence+CoreDataProperties.swift in Sources */,
 				4E9BDF3829EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
 				423E77B429F9D55F00FB3B27 /* DataController.swift in Sources */,

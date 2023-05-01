@@ -13,7 +13,7 @@ import CoreData
 class OccurenceViewModel: ObservableObject {
 
     @Published var occurences: [Occurence] = []
-    @Published var trendData: [TrendData] = []
+    @Published var trendData = TrendDataContainer()
 
     private let dataController: DataController
     private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
@@ -48,7 +48,7 @@ class OccurenceViewModel: ObservableObject {
         occurences = dataController.fetchData(request: request)
     }
 
-    private func getTrendData(from occurences: [Occurence]) -> [TrendData] {
+    private func getTrendData(from occurences: [Occurence]) -> TrendDataContainer {
         let lastHour = occurences
             .filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
             .count
@@ -84,9 +84,10 @@ class OccurenceViewModel: ObservableObject {
             }
             .count
 
-        return [TrendData(current: lastHour, previous: hourBefore),
-                TrendData(current: lastDay, previous: dayBefore),
-                TrendData(current: lastWeek, previous: weekBefore)]
+        return TrendDataContainer(trendData: [TrendData(current: lastHour, previous: hourBefore),
+                                              TrendData(current: lastDay, previous: dayBefore),
+                                              TrendData(current: lastWeek, previous: weekBefore)]
+        )
     }
 
     private func getLineChartData(from occurences: [Occurence]) -> LineChartData {

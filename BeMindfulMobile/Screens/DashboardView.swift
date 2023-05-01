@@ -31,7 +31,7 @@ struct DashboardView: View {
             Spacer()
             HStack {
                 Spacer()
-                RealTimeCounter(viewModel: viewModel)
+                RealTimeCounter(data: viewModel.trendData)
                 Spacer()
             }
             Spacer()
