@@ -14,6 +14,7 @@ class OccurenceViewModel: ObservableObject {
 
     @Published var occurences: [Occurence] = []
     @Published var trendData = TrendDataContainer()
+    @Published var lineChartData = LineChartData()
 
     private let dataController: DataController
     private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
@@ -38,6 +39,7 @@ class OccurenceViewModel: ObservableObject {
         if !inMemory {
             occurences = dataController.fetchData(request: request)
             trendData = getTrendData(from: occurences)
+            lineChartData = getLineChartData(from: occurences)
         }
     }
     
