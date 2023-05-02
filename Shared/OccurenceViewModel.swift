@@ -13,7 +13,7 @@ import CoreData
 class OccurenceViewModel: ObservableObject {
 
     @Published var occurences: [Occurence] = []
-    @Published var trendData = TrendDataContainer()
+    @Published var trendData = TrendDataContainer.preview
     @Published var lineChartData = LineChartData.preview
 
     private let dataController: DataController
@@ -38,7 +38,7 @@ class OccurenceViewModel: ObservableObject {
         dataController = DataController(containerName: "Occurences", inMemory: inMemory)
         if !inMemory {
             occurences = dataController.fetchData(request: request)
-            trendData = getTrendData(from: occurences)
+            // trendData = getTrendData(from: occurences)
 //            lineChartData = getLineChartData(from: occurences)
         }
     }

@@ -7,10 +7,7 @@
 
 import SwiftUI
 
-func occurrenceDate(year: Int, month: Int, day: Int = 1, hour: Int = 7, minute: Int = 0) -> Date {
-    
-    Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
-}
+
 
 // Data for the occurrences by location and weekday charts.
 struct BFRBData {
