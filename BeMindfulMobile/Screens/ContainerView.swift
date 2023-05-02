@@ -10,6 +10,7 @@ import SwiftUI
 struct ContainerView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
+    @ObservedObject var viewModel: OccurenceViewModel
     
     var body: some View {
         ZStack {
@@ -25,6 +26,6 @@ struct ContainerView: View {
 
 struct ContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContainerView()
+        ContainerView(viewModel: OccurenceViewModel.preview)
     }
 }

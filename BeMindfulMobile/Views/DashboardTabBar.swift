@@ -26,7 +26,7 @@ struct DashboardTabBar: View {
                 }
                 .tag(Tab.dashboard)
             
-            HistoryView()
+            HistoryView(selectedBehavior: selectedBehavior)
                 .tabItem {
                     Image(systemName: "clock.arrow.circlepath")
                     Text("History")

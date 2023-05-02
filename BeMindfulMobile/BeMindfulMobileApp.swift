@@ -11,12 +11,9 @@ import WatchConnectivity
 @main
 struct BeMindfulMobileApp: App {
     
-    @StateObject private var dataController = DataController()
-    
     var body: some Scene {
         WindowGroup {
             OnboardingView(logoImage: "LaunchIcon")
-            //MobileAppView().environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

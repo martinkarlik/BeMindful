@@ -9,19 +9,16 @@ import Charts
 import SwiftUI
 
 struct HourlyLineChart: View {
-    let data: [BFRBData.Series]
-    let mostOccurrences: (BFRBName: String, weekday: Date, occurrences: Int)
+    @ObservedObject var data: ChartDataContainer
     
     var body: some View {
-        Chart(data) { series in
-            ForEach(series.occurrences, id: \.weekday) { element in
-                LineMark(
-                    x: .value("Day", element.weekday, unit: .day),
-                    y: .value("occurrences", element.occurrences)
-                )
-            }
-            .foregroundStyle(by: .value("Habit", series.BFRBName))
-            .symbol(by: .value("Habit", series.BFRBName))
+        Chart(data.occurences) { occurence in
+            LineMark(
+                x: .value("Day", occurence.timestamp, unit: .day),
+                y: .value("occurrences", occurence.timestamp)
+            )
+            .foregroundStyle(by: .value("Habit", "Nail biting"))
+            .symbol(by: .value("Habit", "Nail biting"))
             .interpolationMethod(.catmullRom)
         }
         .chartForegroundStyleScale([
@@ -43,9 +40,10 @@ struct HourlyLineChart: View {
 }
 
 
+
 struct LineChartDetails_Previews: PreviewProvider {
     static var previews: some View {
-        HourlyLineChart(data: [], mostOccurrences: ("", Date(), 0))
+        HourlyLineChart(data: ChartDataContainer.preview)
     }
 }
 
