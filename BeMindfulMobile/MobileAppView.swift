@@ -9,10 +9,7 @@ import SwiftUI
 import WatchConnectivity
 
 struct MobileAppView: View {
-    
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var occurences: FetchedResults<Occurence>
-    
+    // We'll be able to remove this as well when we get rid of the list
     @ObservedObject var viewModel = OccurenceViewModel()
     var connectivityProvider = ConnectivityProvider()
     
@@ -20,15 +17,14 @@ struct MobileAppView: View {
     
     var body: some View {
         VStack {
-            List(occurences) { occurence in
+            List(viewModel.occurences) { occurence in
                 Text(formatDate(occurence.timestamp) ?? "Unknown")
             }
             CheckMarkView() {
-                viewModel.addBfrbOccurence(occurenceTimestamp: Date())
+                viewModel.addOccurence(occurenceTimestamp: Date())
             }
         }
         .onAppear {
-            viewModel.moc = moc
             connectivityProvider.occurenceViewModel = viewModel
             connectivityProvider.connect()
         }

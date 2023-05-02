@@ -9,19 +9,16 @@ import Charts
 import SwiftUI
 
 struct HourlyLineChart: View {
-    let data: [BFRBData.Series]
-    let mostOccurrences: (BFRBName: String, weekday: Date, occurrences: Int)
+    @ObservedObject var data: ChartDataContainer
     
     var body: some View {
-        Chart(data) { series in
-            ForEach(series.occurrences, id: \.weekday) { element in
-                LineMark(
-                    x: .value("Day", element.weekday, unit: .day),
-                    y: .value("occurrences", element.occurrences)
-                )
-            }
-            .foregroundStyle(by: .value("Habit", series.BFRBName))
-            .symbol(by: .value("Habit", series.BFRBName))
+        Chart(data.occurences) { occurence in
+            LineMark(
+                x: .value("Day", occurence.timestamp, unit: .day),
+                y: .value("occurrences", occurence.timestamp)
+            )
+            .foregroundStyle(by: .value("Habit", "Nail biting"))
+            .symbol(by: .value("Habit", "Nail biting"))
             .interpolationMethod(.catmullRom)
         }
         .chartForegroundStyleScale([
@@ -44,50 +41,51 @@ struct HourlyLineChart: View {
 
 struct LineChartDetails: View {
     @State private var timeRange: TimeRange = .lastHour
+    @ObservedObject var data: LineChartData
 
-    var mostOccurrences: (BFRBName: String, weekday: Date, occurrences: Int) {
+    var chartData: ChartDataContainer {
         switch timeRange {
         case .lastHour:
-            return BFRBData.lastHourMost
+            return ChartDataContainer(occurences: data.hour)
         case .lastDay:
-            return BFRBData.lastDayMost
+            return ChartDataContainer(occurences: data.day)
         case .lastWeek:
-            return BFRBData.lastWeekMost
+            return ChartDataContainer(occurences: data.week)
         case .lastMonth:
-            return BFRBData.lastMonthMost
+            return ChartDataContainer(occurences: data.month)
         }
     }
 
-    var data: [BFRBData.Series] {
-        switch timeRange {
-        case .lastHour:
-            return BFRBData.lastHour
-        case .lastDay:
-            return BFRBData.lastDay
-        case .lastWeek:
-            return BFRBData.lastWeek
-        case .lastMonth:
-            return BFRBData.lastMonth
-        }
-    }
+//    var data: [BFRBData.Series] {
+//        switch timeRange {
+//        case .lastHour:
+//            return BFRBData.lastHour
+//        case .lastDay:
+//            return BFRBData.lastDay
+//        case .lastWeek:
+//            return BFRBData.lastWeek
+//        case .lastMonth:
+//            return BFRBData.lastMonth
+//        }
+//    }
 
-    var descriptionText: Text {
-        let occurrences = mostOccurrences.occurrences.formatted(.number)
-        let weekday = mostOccurrences.weekday.formatted(.dateTime.weekday(.wide))
-        let BFRBName = mostOccurrences.BFRBName
-        let time: String
-        switch timeRange {
-        case .lastHour:
-            time = "last hour"
-        case .lastDay:
-            time = "last 24 hours"
-        case .lastWeek:
-            time = "last week"
-        case .lastMonth:
-            time = "last month"
-        }
-        return Text("On average, \(occurrences) occurencies of \(BFRBName) were counted in the \(time). on \(weekday)s ")
-    }
+//    var descriptionText: Text {
+//        let occurrences = mostOccurrences.occurrences.formatted(.number)
+//        let weekday = mostOccurrences.weekday.formatted(.dateTime.weekday(.wide))
+//        let BFRBName = mostOccurrences.BFRBName
+//        let time: String
+//        switch timeRange {
+//        case .lastHour:
+//            time = "last hour"
+//        case .lastDay:
+//            time = "last 24 hours"
+//        case .lastWeek:
+//            time = "last week"
+//        case .lastMonth:
+//            time = "last month"
+//        }
+//        return Text("On average, \(occurrences) occurencies of \(BFRBName) were counted in the \(time). on \(weekday)s ")
+//    }
 
     var body: some View {
         List {
@@ -102,11 +100,11 @@ struct LineChartDetails: View {
                 Text("Nail biting occurrences")
                     .font(.title2.bold())
 
-                HourlyLineChart(data: data, mostOccurrences: mostOccurrences)
+                HourlyLineChart(data: chartData)
                     .frame(height: 240)
 
-                descriptionText
-                    .font(.subheadline)
+//                descriptionText
+//                    .font(.subheadline)
             }
             .listRowSeparator(.hidden)
         }
@@ -117,7 +115,7 @@ struct LineChartDetails: View {
 
 struct LineChartDetails_Previews: PreviewProvider {
     static var previews: some View {
-        LineChartDetails()
+        LineChartDetails(data: LineChartData.preview)
     }
 }
 
