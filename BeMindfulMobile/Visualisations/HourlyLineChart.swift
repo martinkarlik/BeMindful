@@ -41,7 +41,7 @@ struct HourlyLineChart: View {
 
 
 
-struct LineChartDetails_Previews: PreviewProvider {
+struct HourlyLineChart_Previews: PreviewProvider {
     static var previews: some View {
         HourlyLineChart(data: ChartDataContainer.preview)
     }
