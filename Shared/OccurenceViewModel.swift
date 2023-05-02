@@ -14,7 +14,9 @@ class OccurenceViewModel: ObservableObject {
 
     @Published var occurences: [Occurence] = []
     @Published var trendData = TrendDataContainer.preview
+    //@Published var trendData = TrendDataContainer.emptyPreview
     @Published var lineChartData = LineChartData.preview
+   // @Published var lineChartData = LineChartData.emptyPreview
 
     private let dataController: DataController
     private let request = NSFetchRequest<Occurence>(entityName: "Occurence")

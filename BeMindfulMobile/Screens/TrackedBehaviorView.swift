@@ -91,7 +91,6 @@ struct TrackedBehaviorView: View {
                         Spacer()
                         Button(action: {
                             if selectedBehavior != nil || !customBehavior.isEmpty {
-                                isTrackedBehaviorViewActive = false
                                 showConfirmationPopup = true
                             } else {
                                 showAlert = true

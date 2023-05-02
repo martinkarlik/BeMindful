@@ -10,7 +10,6 @@ import SwiftUI
 struct ContainerView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
-    @ObservedObject var viewModel: OccurenceViewModel
     
     var body: some View {
         ZStack {
@@ -18,7 +17,7 @@ struct ContainerView: View {
                 OnboardingView(logoImage: "LaunchIcon")
             }
             else {
-                TrackedBehaviorView()
+                DashboardTabBar(selectedBehavior: TrackedBehavior.behavior1.rawValue)
             }
         }
     }
@@ -26,6 +25,6 @@ struct ContainerView: View {
 
 struct ContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContainerView(viewModel: OccurenceViewModel.preview)
+        ContainerView()
     }
 }
