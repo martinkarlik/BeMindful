@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = false
+    @ObservedObject var viewModel = OccurenceViewModel()
     @State private var showWelcomePopup = true
     let selectedBehavior: String
     
@@ -31,11 +32,11 @@ struct DashboardView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    RealTimeCounter()
+                    RealTimeCounter(data: viewModel.trendData)
                     Spacer()
                 }
                 Spacer()
-                LineChartDetails()
+                LineChartDetails(data: viewModel.lineChartData)
                 Spacer()
                 Divider()
             }
@@ -55,7 +56,7 @@ struct DashboardView: View {
                     showWelcomePopup = false
                     // if there are data we should set the
                     // showRealTimeCounter = true
-                             })
+                })
             }
         }
         .navigationTitle("")
@@ -65,6 +66,6 @@ struct DashboardView: View {
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView( selectedBehavior: TrackedBehavior.behavior1.rawValue)
+        DashboardView(viewModel: OccurenceViewModel.preview, selectedBehavior: TrackedBehavior.behavior1.rawValue)
     }
 }
