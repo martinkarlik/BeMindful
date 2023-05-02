@@ -11,7 +11,12 @@ struct RealTimeCounter: View {
     @ObservedObject var data: TrendDataContainer
 
     var body: some View {
-        HStack(spacing: 8) {
+        VStack(alignment: .leading){
+            Text("Behavior overview:")
+                .font(.title3)
+                .fontWeight(.medium)
+                .foregroundColor(Color("DarkPurple"))
+            HStack(spacing: 8) {
             CounterView(data: data.trendData[0],
                         title: "Last hour")
             CounterDivider()
@@ -20,6 +25,7 @@ struct RealTimeCounter: View {
             CounterDivider()
             CounterView(data: data.trendData[2],
                         title: "Last week")
+            }
         }
     }
 }
