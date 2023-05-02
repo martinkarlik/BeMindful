@@ -10,7 +10,6 @@ import SwiftUI
 struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = false
     @State private var showWelcomePopup = true
-    @State private var showRealTimeCounter = false
     let selectedBehavior: String
     
     var body: some View {
@@ -30,18 +29,10 @@ struct DashboardView: View {
                     .foregroundColor(.gray)
                     .padding(.leading)
                 Spacer()
-                if showRealTimeCounter {
-                    HStack {
-                        Spacer()
-                        RealTimeCounter()
-                        Spacer()
-                    }
-                } else {
-                    HStack {
-                        Spacer()
-                        RealTimeCounterPlaceholder()
-                        Spacer()
-                    }
+                HStack {
+                    Spacer()
+                    RealTimeCounter()
+                    Spacer()
                 }
                 Spacer()
                 LineChartDetails()
@@ -52,10 +43,8 @@ struct DashboardView: View {
             .onAppear {
                 if !isTrackedBehaviorViewActive {
                     showWelcomePopup = true
-                    showRealTimeCounter = false
                 } else {
                     showWelcomePopup = false
-                    showRealTimeCounter = true
                 }
             }
             
