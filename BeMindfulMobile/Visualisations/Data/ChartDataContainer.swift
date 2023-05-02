@@ -8,14 +8,14 @@
 import Foundation
 
 class ChartDataContainer: ObservableObject {
-    @Published var occurences: [Occurence]
+    @Published var grouped: [(key: Date, value: Int)]
 
-    init(occurences: [Occurence] = []) {
-        self.occurences = occurences
+    init(grouped: [Date: Int] = [:]) {
+        self.grouped = grouped.map { $0 }.sorted { $0.key < $1.key }
     }
 
     // TODO: fill up with mock data for preview
     static var preview: ChartDataContainer {
-        return ChartDataContainer()
+        return ChartDataContainer(grouped: LineChartData.preview.hourly)
     }
 }

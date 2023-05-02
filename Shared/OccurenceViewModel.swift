@@ -14,7 +14,7 @@ class OccurenceViewModel: ObservableObject {
 
     @Published var occurences: [Occurence] = []
     @Published var trendData = TrendDataContainer()
-    @Published var lineChartData = LineChartData()
+    @Published var lineChartData = LineChartData.preview
 
     private let dataController: DataController
     private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
@@ -39,7 +39,7 @@ class OccurenceViewModel: ObservableObject {
         if !inMemory {
             occurences = dataController.fetchData(request: request)
             trendData = getTrendData(from: occurences)
-            lineChartData = getLineChartData(from: occurences)
+//            lineChartData = getLineChartData(from: occurences)
         }
     }
     
@@ -92,13 +92,13 @@ class OccurenceViewModel: ObservableObject {
         )
     }
 
-    private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
-        let lastHour = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
-        let lastDay = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInDay }
-        let lastWeek = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
-        // TODO: find a way to filter for month, as seconds would be over the Integer threshold I think
-        let lastMonth = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
-
-        return LineChartData(hour: lastHour, day: lastDay, week: lastWeek, month: lastMonth)
-    }
+//    private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
+//        let lastHour = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
+//        let lastDay = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInDay }
+//        let lastWeek = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+//        // TODO: find a way to filter for month, as seconds would be over the Integer threshold I think
+//        let lastMonth = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+//
+//        return LineChartData(hour: lastHour, day: lastDay, week: lastWeek, month: lastMonth)
+//    }
 }

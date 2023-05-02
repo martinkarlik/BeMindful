@@ -8,27 +8,27 @@
 import Foundation
 
 class LineChartData: ObservableObject, Identifiable {
-    let hour: [Occurence]
-    let day: [Occurence]
-    let week: [Occurence]
-    let month: [Occurence]
+    let hourly: [Date: Int]
+    let daily: [Date: Int]
+    let weekly: [Date: Int]
+    let monthly: [Date: Int]
 
-    init(hour: [Occurence] = [],
-         day: [Occurence] = [],
-         week: [Occurence] = [],
-         month: [Occurence] = []) {
-        self.hour = hour
-        self.day = day
-        self.week = week
-        self.month = month
+    init(hour: [Date: Int] = [:],
+         day: [Date: Int] = [:],
+         week: [Date: Int] = [:],
+         month: [Date: Int] = [:]) {
+        self.hourly = hour
+        self.daily = day
+        self.weekly = week
+        self.monthly = month
     }
 
     // TODO: fill up with mock data for previews
     static var preview: LineChartData {
-        let hour: [Occurence] = []
-        let day: [Occurence] = []
-        let week: [Occurence] = []
-        let month: [Occurence] = []
+        let hour: [Date: Int] = [:]
+        let day: [Date: Int] = [:]
+        let week: [Date: Int] = [:]
+        let month: [Date: Int] = [:]
         return LineChartData(hour: hour,
                              day: day,
                              week: week,

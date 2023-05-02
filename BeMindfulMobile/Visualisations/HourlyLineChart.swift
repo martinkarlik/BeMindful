@@ -10,12 +10,39 @@ import SwiftUI
 
 struct HourlyLineChart: View {
     @ObservedObject var data: ChartDataContainer
+    var timeRange: TimeRange
+
+    var xComponent: Calendar.Component {
+        switch timeRange {
+        case .lastHour:
+            return .minute
+        case .lastDay:
+            return .hour
+        case .lastWeek:
+            return .weekday
+        case .lastMonth:
+            return .day
+        }
+    }
+
+    var xFormat: Date.FormatStyle {
+        switch timeRange {
+        case .lastHour:
+            return .dateTime.minute()
+        case .lastDay:
+            return .dateTime.hour()
+        case .lastWeek:
+            return .dateTime.weekday(.abbreviated)
+        case .lastMonth:
+            return .dateTime.day()
+        }
+    }
     
     var body: some View {
-        Chart(data.occurences) { occurence in
+        Chart(data.grouped, id: \.key) { (date, count) in
             LineMark(
-                x: .value("Day", occurence.timestamp, unit: .day),
-                y: .value("occurrences", occurence.timestamp)
+                x: .value("Day", date, unit: .day),
+                y: .value("occurrences", count)
             )
             .foregroundStyle(by: .value("Habit", "Nail biting"))
             .symbol(by: .value("Habit", "Nail biting"))
@@ -46,13 +73,13 @@ struct LineChartDetails: View {
     var chartData: ChartDataContainer {
         switch timeRange {
         case .lastHour:
-            return ChartDataContainer(occurences: data.hour)
+            return ChartDataContainer(grouped: data.hourly)
         case .lastDay:
-            return ChartDataContainer(occurences: data.day)
+            return ChartDataContainer(grouped: data.daily)
         case .lastWeek:
-            return ChartDataContainer(occurences: data.week)
+            return ChartDataContainer(grouped: data.weekly)
         case .lastMonth:
-            return ChartDataContainer(occurences: data.month)
+            return ChartDataContainer(grouped: data.monthly)
         }
     }
 
@@ -100,7 +127,7 @@ struct LineChartDetails: View {
                 Text("Nail biting occurrences")
                     .font(.title2.bold())
 
-                HourlyLineChart(data: chartData)
+                HourlyLineChart(data: chartData, timeRange: timeRange)
                     .frame(height: 240)
 
 //                descriptionText
