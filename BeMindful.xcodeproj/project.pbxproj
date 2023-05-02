@@ -40,6 +40,8 @@
 		B09CDC3B29F91F950089E686 /* RealTimeCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */; };
 		B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC4029F92C330089E686 /* DashboardTabBar.swift */; };
 		B09CDC4429F934B80089E686 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC4329F934B80089E686 /* HistoryView.swift */; };
+		B0BBF15D2A010B74008401DD /* HeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BBF15C2A010B74008401DD /* HeatmapView.swift */; };
+		B0BBF15F2A010D4C008401DD /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BBF15E2A010D4C008401DD /* Graphs.swift */; };
 		B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */; };
 		B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -115,6 +117,8 @@
 		B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCounterView.swift; sourceTree = "<group>"; };
 		B09CDC4029F92C330089E686 /* DashboardTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBar.swift; sourceTree = "<group>"; };
 		B09CDC4329F934B80089E686 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		B0BBF15C2A010B74008401DD /* HeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapView.swift; sourceTree = "<group>"; };
+		B0BBF15E2A010D4C008401DD /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyLineChart.swift; sourceTree = "<group>"; };
 		B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,6 +304,8 @@
 			children = (
 				B099273C29CB3F9B0099FBFB /* Data.swift */,
 				B0DA5B1D29CB486100EAEA24 /* HourlyLineChart.swift */,
+				B0BBF15E2A010D4C008401DD /* Graphs.swift */,
+				B0BBF15C2A010B74008401DD /* HeatmapView.swift */,
 			);
 			path = Visualisations;
 			sourceTree = "<group>";
@@ -477,9 +483,11 @@
 				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
+				B0BBF15D2A010B74008401DD /* HeatmapView.swift in Sources */,
 				4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
 				4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */,
+				B0BBF15F2A010D4C008401DD /* Graphs.swift in Sources */,
 				4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */,
 				B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */,
 				B099273D29CB3F9B0099FBFB /* Data.swift in Sources */,
@@ -657,17 +665,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulWatch/Preview Content\"";
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.smoothless.BeMindful;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.group5.BeMindful;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BeMindful.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.group5.BeMindful.watchkitapp;
 				PRODUCT_NAME = BeMindful;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -686,17 +694,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulWatch/Preview Content\"";
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.smoothless.BeMindful;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.group5.BeMindful;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BeMindful.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.group5.BeMindful.watchkitapp;
 				PRODUCT_NAME = BeMindful;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -717,7 +725,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulMobile/Preview Content\"";
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BeMindful;
@@ -732,7 +740,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BeMindful;
+				PRODUCT_BUNDLE_IDENTIFIER = com.group5.BeMindful;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -750,7 +758,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeMindfulMobile/Preview Content\"";
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BeMindful;
@@ -765,7 +773,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BeMindful;
+				PRODUCT_BUNDLE_IDENTIFIER = com.group5.BeMindful;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -782,11 +790,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BitSpyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.group5.BitSpyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -803,11 +811,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smoothless.BitSpyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.group5.BitSpyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -825,10 +833,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smoothless.BitSpy-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.group5.BitSpy-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -846,10 +854,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G69B5T58Z3;
+				DEVELOPMENT_TEAM = S5FXB59285;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smoothless.BitSpy-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.group5.BitSpy-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
