@@ -40,11 +40,12 @@ struct HourlyLineChart: View {
     
     var body: some View {
         Chart(data.grouped, id: \.key) { (date, count) in
-            LineMark(
-                x: .value("Day", date, unit: .day),
-                y: .value("occurrences", count)
+            BarMark(
+                x: .value("Day", date, unit: xComponent),
+                y: .value("Occurrences", count)
             )
-            .foregroundStyle(by: .value("Habit", "Nail biting"))
+            .foregroundStyle(.purple)
+            .symbol(.circle)
             .symbol(by: .value("Habit", "Nail biting"))
             .interpolationMethod(.catmullRom)
         }
@@ -54,13 +55,13 @@ struct HourlyLineChart: View {
         .chartSymbolScale([
             "Nail Biting": Circle().strokeBorder(lineWidth: 2)
         ])
-        .chartXAxis {
-            AxisMarks(values: .stride(by: .day)) { _ in
-                AxisTick()
-                AxisGridLine()
-                AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
-            }
-        }
+//        .chartXAxis {
+//            AxisMarks(values: .stride(by: xComponent)) { _ in
+//                AxisTick()
+//                AxisGridLine()
+//                AxisValueLabel(format: xFormat, centered: true)
+//            }
+//        }
 
         .chartLegend(position: .top)
     }
@@ -83,37 +84,6 @@ struct LineChartDetails: View {
         }
     }
 
-//    var data: [BFRBData.Series] {
-//        switch timeRange {
-//        case .lastHour:
-//            return BFRBData.lastHour
-//        case .lastDay:
-//            return BFRBData.lastDay
-//        case .lastWeek:
-//            return BFRBData.lastWeek
-//        case .lastMonth:
-//            return BFRBData.lastMonth
-//        }
-//    }
-
-//    var descriptionText: Text {
-//        let occurrences = mostOccurrences.occurrences.formatted(.number)
-//        let weekday = mostOccurrences.weekday.formatted(.dateTime.weekday(.wide))
-//        let BFRBName = mostOccurrences.BFRBName
-//        let time: String
-//        switch timeRange {
-//        case .lastHour:
-//            time = "last hour"
-//        case .lastDay:
-//            time = "last 24 hours"
-//        case .lastWeek:
-//            time = "last week"
-//        case .lastMonth:
-//            time = "last month"
-//        }
-//        return Text("On average, \(occurrences) occurencies of \(BFRBName) were counted in the \(time). on \(weekday)s ")
-//    }
-
     var body: some View {
         List {
             VStack(alignment: .leading) {
@@ -129,9 +99,6 @@ struct LineChartDetails: View {
 
                 HourlyLineChart(data: chartData, timeRange: timeRange)
                     .frame(height: 240)
-
-//                descriptionText
-//                    .font(.subheadline)
             }
             .listRowSeparator(.hidden)
         }

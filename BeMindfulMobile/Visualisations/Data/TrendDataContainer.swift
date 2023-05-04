@@ -13,6 +13,13 @@ class TrendDataContainer: ObservableObject {
     init(trendData: [TrendData] = []) {
         self.trendData = trendData
     }
+    
+    static var emptyPreview: TrendDataContainer {
+        return TrendDataContainer(trendData: [TrendData(current: 0, previous: 0),
+                                              TrendData(current: 0, previous: 0),
+                                              TrendData(current: 0, previous: 0)]
+        )
+    }
 
     static var preview: TrendDataContainer {
         return TrendDataContainer(trendData: [TrendData(current: 5, previous: 3),

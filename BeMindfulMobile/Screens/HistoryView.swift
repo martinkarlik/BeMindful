@@ -22,7 +22,16 @@ struct HistoryView: View {
         [ Occurrence(times: 3, timeSlot: "9:00 - 10:00"),
           Occurrence(times: 2, timeSlot: "10:00 - 11:00"),
           Occurrence(times: 4, timeSlot: "11:00 - 12:00"),
-          Occurrence(times: 1, timeSlot: "12:00 - 1:00"),]
+          Occurrence(times: 1, timeSlot: "12:00 - 13:00"),
+          Occurrence(times: 1, timeSlot: "13:00 - 14:00"),
+          Occurrence(times: 1, timeSlot: "14:00 - 15:00"),
+          Occurrence(times: 1, timeSlot: "15:00 - 16:00"),]
+    }
+    var occurences2: [Occurrence] {
+        [ Occurrence(times: 2, timeSlot: "10:00 - 11:00"),
+          Occurrence(times: 4, timeSlot: "11:00 - 12:00"),
+          Occurrence(times: 2, timeSlot: "13:00 - 14:00"),
+          Occurrence(times: 1, timeSlot: "18:00 - 19:00"),]
     }
     
     var body: some View {
@@ -32,11 +41,13 @@ struct HistoryView: View {
                     Text("History")
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        .foregroundColor(Color("DarkPurple"))
                     Spacer()
                     Button(action: { isShowingCalendarPicker.toggle() }) {
                         Image(systemName: "calendar")
                     }
                     .font(.title2)
+                    .foregroundColor(Color("DarkPurple"))
                 }
                 Text("Your behavior history per hour")
                     .font(.subheadline)
@@ -47,12 +58,23 @@ struct HistoryView: View {
                         .fontWeight(.semibold)
                 }
                 Divider()
-                List(occurrences) { occurrence in
-                    HStack {
-                        Text("\(occurrence.times) times")
-                            .fontWeight(.semibold)
-                        Spacer()
-                        Text(occurrence.timeSlot)
+                if selectedDate.stripTime() == Date().stripTime() {
+                    List(occurrences) { occurrence in
+                        HStack {
+                            Text("\(occurrence.times) times")
+                                .fontWeight(.semibold)
+                            Spacer()
+                            Text(occurrence.timeSlot)
+                        }
+                    }
+                } else {
+                    List(occurences2) { occurrence in
+                        HStack {
+                            Text("\(occurrence.times) times")
+                                .fontWeight(.semibold)
+                            Spacer()
+                            Text(occurrence.timeSlot)
+                        }
                     }
                 }
                 Spacer()
@@ -64,22 +86,7 @@ struct HistoryView: View {
             .navigationBarHidden(true)
             
             if isShowingCalendarPicker {
-                GeometryReader { geometry in
-                    VStack {
-                        Spacer()
-                        DatePicker("", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .frame(width: geometry.size.width, height: geometry.size.height / 3)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                    }
-                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .bottom)
-                    .background(Color.black.opacity(0.5))
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        isShowingCalendarPicker = false
-                    }
-                }
+                CalendarPickerView(selectedDate: $selectedDate)
             }
         }
     }
@@ -92,9 +99,13 @@ struct HistoryView: View {
     }
 }
 
-
-
-
+extension Date {
+    func stripTime() -> Date {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: self)
+        return calendar.date(from: components)!
+    }
+}
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
