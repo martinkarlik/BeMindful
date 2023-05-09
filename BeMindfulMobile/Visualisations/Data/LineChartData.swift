@@ -23,21 +23,27 @@ class LineChartData: ObservableObject, Identifiable {
         self.monthly = month
     }
     
-    static var emptyPreview: LineChartData {
+    static func occurrenceDate(year: Int, month: Int, day: Int = 1, hour: Int = 7, minute: Int = 0) -> Date {
+        
+        Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
+    }
+}
+
+extension LineChartData {
+    static var emptyMock: LineChartData {
         let hour: [Date: Int] = [:]
         let day: [Date: Int] = [:]
-        
+
         let week: [Date: Int] = [:]
-        
+
         let month: [Date: Int] = [:]
         return LineChartData(hour: hour,
                              day: day,
                              week: week,
                              month: month)
     }
-    
-    // TODO: fill up with mock data for previews
-    static var preview: LineChartData {
+
+    static var mock: LineChartData {
         let hour: [Date: Int] = [occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 8): 5,
                                  occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 10): 6,
                                  occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 14): 1,
@@ -56,14 +62,14 @@ class LineChartData: ObservableObject, Identifiable {
                                 occurrenceDate(year: 2022, month: 5, day: 2, hour: 17): 3,
                                 occurrenceDate(year: 2022, month: 5, day: 2, hour: 18): 2,
                                 occurrenceDate(year: 2022, month: 5, day: 2, hour: 19): 5]
-        
+
         let week: [Date: Int] = [occurrenceDate(year: 2022, month: 5, day: 2): 5,
                                  occurrenceDate(year: 2022, month: 5, day: 3): 6,
                                  occurrenceDate(year: 2022, month: 5, day: 4): 1,
                                  occurrenceDate(year: 2022, month: 5, day: 5): 3,
                                  occurrenceDate(year: 2022, month: 5, day: 6): 2,
                                  occurrenceDate(year: 2022, month: 5, day: 7): 5]
-        
+
         let month: [Date: Int] = [occurrenceDate(year: 2022, month: 5, day: 1): 5,
                                   occurrenceDate(year: 2022, month: 5, day: 2): 5,
                                   occurrenceDate(year: 2022, month: 5, day: 3): 6,
@@ -99,10 +105,5 @@ class LineChartData: ObservableObject, Identifiable {
                              day: day,
                              week: week,
                              month: month)
-    }
-    
-    static func occurrenceDate(year: Int, month: Int, day: Int = 1, hour: Int = 7, minute: Int = 0) -> Date {
-        
-        Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
     }
 }

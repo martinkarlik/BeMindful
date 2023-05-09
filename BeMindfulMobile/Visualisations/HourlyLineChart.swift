@@ -109,7 +109,7 @@ struct LineChartDetails: View {
 
 struct LineChartDetails_Previews: PreviewProvider {
     static var previews: some View {
-        LineChartDetails(data: LineChartData.preview)
+        LineChartDetails(data: LineChartData.mock)
     }
 }
 

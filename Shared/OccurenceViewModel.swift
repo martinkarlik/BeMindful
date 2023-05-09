@@ -13,10 +13,10 @@ import CoreData
 class OccurenceViewModel: ObservableObject {
 
     @Published var occurences: [Occurence] = []
-    @Published var trendData = TrendDataContainer.preview
-    //@Published var trendData = TrendDataContainer.emptyPreview
-    @Published var lineChartData = LineChartData.preview
-   // @Published var lineChartData = LineChartData.emptyPreview
+    @Published var trendData = TrendDataContainer.mock
+    //@Published var trendData = TrendDataContainer.emptyMock
+    @Published var lineChartData = LineChartData.mock
+   // @Published var lineChartData = LineChartData.emptyMock
 
     private let dataController: DataController
     private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
