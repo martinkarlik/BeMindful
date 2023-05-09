@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
-    @ObservedObject var viewModel = OccurenceViewModel()
+    @ObservedObject var viewModel: OccurenceViewModel
     @State private var showWelcomePopup = true
     let selectedBehavior: String
     
@@ -68,6 +68,6 @@ struct DashboardView: View {
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView(viewModel: OccurenceViewModel.preview, selectedBehavior: TrackedBehavior.behavior1.rawValue)
+        DashboardView(viewModel: OccurenceViewModel.mock, selectedBehavior: TrackedBehavior.behavior1.rawValue)
     }
 }

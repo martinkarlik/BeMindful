@@ -14,25 +14,10 @@ struct Occurrence: Identifiable {
 }
 
 struct HistoryView: View {
+    @ObservedObject var data: HistoryDataContainer
     @State private var isShowingCalendarPicker = false
     @State private var selectedDate = Date()
     let selectedBehavior: String
-    
-    var occurrences: [Occurrence] {
-        [ Occurrence(times: 3, timeSlot: "9:00 - 10:00"),
-          Occurrence(times: 2, timeSlot: "10:00 - 11:00"),
-          Occurrence(times: 4, timeSlot: "11:00 - 12:00"),
-          Occurrence(times: 1, timeSlot: "12:00 - 13:00"),
-          Occurrence(times: 1, timeSlot: "13:00 - 14:00"),
-          Occurrence(times: 1, timeSlot: "14:00 - 15:00"),
-          Occurrence(times: 1, timeSlot: "15:00 - 16:00"),]
-    }
-    var occurences2: [Occurrence] {
-        [ Occurrence(times: 2, timeSlot: "10:00 - 11:00"),
-          Occurrence(times: 4, timeSlot: "11:00 - 12:00"),
-          Occurrence(times: 2, timeSlot: "13:00 - 14:00"),
-          Occurrence(times: 1, timeSlot: "18:00 - 19:00"),]
-    }
     
     var body: some View {
         ZStack {
@@ -58,23 +43,12 @@ struct HistoryView: View {
                         .fontWeight(.semibold)
                 }
                 Divider()
-                if selectedDate.stripTime() == Date().stripTime() {
-                    List(occurrences) { occurrence in
-                        HStack {
-                            Text("\(occurrence.times) times")
-                                .fontWeight(.semibold)
-                            Spacer()
-                            Text(occurrence.timeSlot)
-                        }
-                    }
-                } else {
-                    List(occurences2) { occurrence in
-                        HStack {
-                            Text("\(occurrence.times) times")
-                                .fontWeight(.semibold)
-                            Spacer()
-                            Text(occurrence.timeSlot)
-                        }
+                List(data.historyData) { rowData in
+                    HStack {
+                        Text("\(rowData.count) times")
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Text(rowData.timeInterval)
                     }
                 }
                 Spacer()
@@ -110,6 +84,6 @@ extension Date {
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView(selectedBehavior: "nail biting")
+        HistoryView(data: HistoryDataContainer.mock, selectedBehavior: "nail biting")
     }
 }

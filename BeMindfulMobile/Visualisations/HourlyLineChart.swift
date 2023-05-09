@@ -37,7 +37,8 @@ struct HourlyLineChart: View {
             return .dateTime.day()
         }
     }
-    
+
+    // TODO: X-axis still needs refinement
     var body: some View {
         Chart(data.grouped, id: \.key) { (date, count) in
             BarMark(
@@ -55,13 +56,6 @@ struct HourlyLineChart: View {
         .chartSymbolScale([
             "Nail Biting": Circle().strokeBorder(lineWidth: 2)
         ])
-//        .chartXAxis {
-//            AxisMarks(values: .stride(by: xComponent)) { _ in
-//                AxisTick()
-//                AxisGridLine()
-//                AxisValueLabel(format: xFormat, centered: true)
-//            }
-//        }
 
         .chartLegend(position: .top)
     }

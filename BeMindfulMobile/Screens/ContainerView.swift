@@ -10,6 +10,8 @@ import SwiftUI
 struct ContainerView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
+    // We only have to switch this one out to a real one when we get the data flow together
+    @ObservedObject var viewModel = OccurenceViewModel.mock
     
     var body: some View {
         ZStack {
@@ -17,7 +19,7 @@ struct ContainerView: View {
                 OnboardingView(logoImage: "LaunchIcon")
             }
             else {
-                DashboardTabBar(selectedBehavior: TrackedBehavior.behavior1.rawValue)
+                DashboardTabBar(viewModel: viewModel, selectedBehavior: TrackedBehavior.behavior1.rawValue)
             }
         }
     }
