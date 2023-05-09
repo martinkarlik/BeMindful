@@ -1,5 +1,5 @@
 //
-//  HistoryView().swift
+//  HistoryView.swift
 //  BeMindful
 //
 //  Created by Marina Epitropakis on 26/04/2023.
@@ -84,6 +84,7 @@ struct HistoryView: View {
             .padding()
             .navigationTitle("")
             .navigationBarHidden(true)
+            .onChange(of: selectedDate) { _ in isShowingCalendarPicker.toggle() }
             
             if isShowingCalendarPicker {
                 CalendarPickerView(selectedDate: $selectedDate)
