@@ -26,15 +26,15 @@ struct OnboardingView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 150, height: 150)
                     .padding(.top, 0)
-                
-                Text("The application is designed to help you overcome your body-focused repetitive behaviors (BFRBs) and achieve your goals by tracking your daily behavior.\nYou can choose from a list of predefined behaviors or create your own custom behavior.\n\nYou can track your progress over time through the watch application or the app widget and check your statistics on your mobile, where several visualisations are available to understand your data. \n\nTogether, let's make progress towards a happier, healthier you!")
-                    .font(.headline)
-                    .fontWeight(.medium)
-                    .foregroundColor(Color("DarkPurple"))
-                    .padding(50)
-                
-               // Spacer()
-                
+                ScrollView {
+                    Text("This application is designed to help you overcome your body-focused repetitive behaviors (BFRBs) and achieve your goals by tracking your daily behavior.\nYou can choose from a list of predefined behaviors or create your own custom behavior.\n\nYou can track your progress over time through the watch application or the app widget and check your statistics on your mobile, where several visualisations are available to understand your data. \n\nTogether, let's make progress towards a happier, healthier you!")
+                        .font(.headline)
+                        .fontWeight(.medium)
+                        .foregroundColor(Color("DarkPurple"))
+                        .padding(50)
+                    
+                    // Spacer()
+                }
                 NavigationLink(
                     destination: TrackedBehaviorView(),
                     isActive: $showTrackedBehaviorView,

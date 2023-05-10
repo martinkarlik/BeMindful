@@ -7,13 +7,11 @@
 
 import Foundation
 
-class TrendData: ObservableObject, Identifiable {
-    let id: UUID
+class TrendData: ObservableObject {
     let currentCount: Int
     let previousCount: Int
 
     init(current: Int, previous: Int) {
-        self.id = UUID()
         self.currentCount = current
         self.previousCount = previous
     }

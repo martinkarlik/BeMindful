@@ -10,14 +10,43 @@ import SwiftUI
 
 struct HourlyLineChart: View {
     @ObservedObject var data: ChartDataContainer
-    
+    var timeRange: TimeRange
+
+    var xComponent: Calendar.Component {
+        switch timeRange {
+        case .lastHour:
+            return .minute
+        case .lastDay:
+            return .hour
+        case .lastWeek:
+            return .weekday
+        case .lastMonth:
+            return .day
+        }
+    }
+
+    var xFormat: Date.FormatStyle {
+        switch timeRange {
+        case .lastHour:
+            return .dateTime.minute()
+        case .lastDay:
+            return .dateTime.hour()
+        case .lastWeek:
+            return .dateTime.weekday(.abbreviated)
+        case .lastMonth:
+            return .dateTime.day()
+        }
+    }
+
+    // TODO: X-axis still needs refinement
     var body: some View {
-        Chart(data.occurences) { occurence in
-            LineMark(
-                x: .value("Day", occurence.timestamp, unit: .day),
-                y: .value("occurrences", occurence.timestamp)
+        Chart(data.grouped, id: \.key) { (date, count) in
+            BarMark(
+                x: .value("Day", date, unit: xComponent),
+                y: .value("Occurrences", count)
             )
-            .foregroundStyle(by: .value("Habit", "Nail biting"))
+            .foregroundStyle(.purple)
+            .symbol(.circle)
             .symbol(by: .value("Habit", "Nail biting"))
             .interpolationMethod(.catmullRom)
         }
@@ -27,13 +56,6 @@ struct HourlyLineChart: View {
         .chartSymbolScale([
             "Nail Biting": Circle().strokeBorder(lineWidth: 2)
         ])
-        .chartXAxis {
-            AxisMarks(values: .stride(by: .day)) { _ in
-                AxisTick()
-                AxisGridLine()
-                AxisValueLabel(format: .dateTime.weekday(.abbreviated), centered: true)
-            }
-        }
 
         .chartLegend(position: .top)
     }
@@ -46,46 +68,15 @@ struct LineChartDetails: View {
     var chartData: ChartDataContainer {
         switch timeRange {
         case .lastHour:
-            return ChartDataContainer(occurences: data.hour)
+            return ChartDataContainer(grouped: data.hourly)
         case .lastDay:
-            return ChartDataContainer(occurences: data.day)
+            return ChartDataContainer(grouped: data.daily)
         case .lastWeek:
-            return ChartDataContainer(occurences: data.week)
+            return ChartDataContainer(grouped: data.weekly)
         case .lastMonth:
-            return ChartDataContainer(occurences: data.month)
+            return ChartDataContainer(grouped: data.monthly)
         }
     }
-
-//    var data: [BFRBData.Series] {
-//        switch timeRange {
-//        case .lastHour:
-//            return BFRBData.lastHour
-//        case .lastDay:
-//            return BFRBData.lastDay
-//        case .lastWeek:
-//            return BFRBData.lastWeek
-//        case .lastMonth:
-//            return BFRBData.lastMonth
-//        }
-//    }
-
-//    var descriptionText: Text {
-//        let occurrences = mostOccurrences.occurrences.formatted(.number)
-//        let weekday = mostOccurrences.weekday.formatted(.dateTime.weekday(.wide))
-//        let BFRBName = mostOccurrences.BFRBName
-//        let time: String
-//        switch timeRange {
-//        case .lastHour:
-//            time = "last hour"
-//        case .lastDay:
-//            time = "last 24 hours"
-//        case .lastWeek:
-//            time = "last week"
-//        case .lastMonth:
-//            time = "last month"
-//        }
-//        return Text("On average, \(occurrences) occurencies of \(BFRBName) were counted in the \(time). on \(weekday)s ")
-//    }
 
     var body: some View {
         List {
@@ -100,11 +91,8 @@ struct LineChartDetails: View {
                 Text("Nail biting occurrences")
                     .font(.title2.bold())
 
-                HourlyLineChart(data: chartData)
+                HourlyLineChart(data: chartData, timeRange: timeRange)
                     .frame(height: 240)
-
-//                descriptionText
-//                    .font(.subheadline)
             }
             .listRowSeparator(.hidden)
         }
@@ -115,7 +103,7 @@ struct LineChartDetails: View {
 
 struct LineChartDetails_Previews: PreviewProvider {
     static var previews: some View {
-        LineChartDetails(data: LineChartData.preview)
+        LineChartDetails(data: LineChartData.mock)
     }
 }
 

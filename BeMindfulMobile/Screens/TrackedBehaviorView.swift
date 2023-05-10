@@ -91,7 +91,6 @@ struct TrackedBehaviorView: View {
                         Spacer()
                         Button(action: {
                             if selectedBehavior != nil || !customBehavior.isEmpty {
-                                isTrackedBehaviorViewActive = false
                                 showConfirmationPopup = true
                             } else {
                                 showAlert = true
@@ -158,7 +157,7 @@ struct TrackedBehaviorView: View {
 }
 
 private func navigateToDashboardTabBar(selectedBehavior: String) {
-    let dashboardTabBar = DashboardTabBar(selectedBehavior: selectedBehavior)
+    let dashboardTabBar = DashboardTabBar(viewModel: OccurenceViewModel.mock, selectedBehavior: selectedBehavior)
     if let window = UIApplication.shared.windows.first {
         window.rootViewController = UIHostingController(rootView: dashboardTabBar)
         window.makeKeyAndVisible()

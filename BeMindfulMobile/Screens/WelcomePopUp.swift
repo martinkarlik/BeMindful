@@ -17,6 +17,7 @@ struct WelcomePopUp: View {
             Text(title)
                 .font(.title)
                 .fontWeight(.bold)
+                .foregroundColor(Color("DarkPurple"))
             Text(message)
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color("DarkPurple"))

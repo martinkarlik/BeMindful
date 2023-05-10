@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = false
-    @ObservedObject var viewModel = OccurenceViewModel()
+    @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
+    @ObservedObject var viewModel: OccurenceViewModel
     @State private var showWelcomePopup = true
     let selectedBehavior: String
     
@@ -43,9 +43,9 @@ struct DashboardView: View {
             
             .onAppear {
                 if !isTrackedBehaviorViewActive {
-                    showWelcomePopup = true
-                } else {
                     showWelcomePopup = false
+                } else {
+                    showWelcomePopup = true
                 }
             }
             
@@ -54,6 +54,8 @@ struct DashboardView: View {
                              message: "You don’t have any data yet.\n\nWhenever you notice yourself biting your nails, track it in the watch app by pressing the button.\nThen you’ll be able to see your data here.",
                              onCancel: {
                     showWelcomePopup = false
+                    isTrackedBehaviorViewActive = false
+
                     // if there are data we should set the
                     // showRealTimeCounter = true
                 })
@@ -66,6 +68,6 @@ struct DashboardView: View {
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView(viewModel: OccurenceViewModel.preview, selectedBehavior: TrackedBehavior.behavior1.rawValue)
+        DashboardView(viewModel: OccurenceViewModel.mock, selectedBehavior: TrackedBehavior.behavior1.rawValue)
     }
 }

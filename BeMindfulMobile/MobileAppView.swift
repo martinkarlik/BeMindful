@@ -8,6 +8,7 @@
 import SwiftUI
 import WatchConnectivity
 
+// We should think it over and restructure the app once
 struct MobileAppView: View {
     // We'll be able to remove this as well when we get rid of the list
     @ObservedObject var viewModel = OccurenceViewModel()

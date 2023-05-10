@@ -74,6 +74,6 @@ struct CounterView: View {
 
 struct RealTimeCounterView_Previews: PreviewProvider {
     static var previews: some View {
-        RealTimeCounter(data: TrendDataContainer.preview)
+        RealTimeCounter(data: TrendDataContainer.mock)
     }
 }
