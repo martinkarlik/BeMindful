@@ -45,7 +45,7 @@ class OccurenceViewModel: ObservableObject {
     }
     
     func addOccurence(occurenceTimestamp: Date) {
-        _ = Occurence(context: dataController.context, timestamp: occurenceTimestamp, type: "Nail biting")
+        _ = Occurence(context: dataController.context, timestamp: occurenceTimestamp, type: "Hair pulling")
         dataController.saveData()
         // Until I find a prettier solution to auto-update after save
         occurences = dataController.fetchData(request: request)
