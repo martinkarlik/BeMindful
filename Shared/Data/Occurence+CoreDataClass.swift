@@ -20,7 +20,9 @@ public class Occurence: NSManagedObject {
                 id: UUID = UUID(),
                 timestamp: Date,
                 type: String) {
-        let entity = NSEntityDescription.entity(forEntityName: "Occurence", in: context)!
+        guard let entity = NSEntityDescription.entity(forEntityName: "Occurence", in: context) else {
+            fatalError("Occurence entity not found")
+        }
         super.init(entity: entity, insertInto: context)
         self.id = id
         self.timestamp = timestamp

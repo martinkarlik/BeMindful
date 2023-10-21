@@ -25,7 +25,7 @@ class MotionDetectionProvider: MotionDetectionDelegate {
             motionManager.deviceMotionUpdateInterval = Constants.deviceMotionUpdateInterval
             motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { [weak self] motion, error in
                 guard let motion = motion, error == nil, let self = self else {
-                    print("*** Motion Error: \(error!)")
+                    print("*** Motion Error: \(String(describing: error))")
                     return
                 }
                 

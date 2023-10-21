@@ -53,9 +53,10 @@ struct HourlyLineChart: View {
         .chartForegroundStyleScale([
             "Nail Biting": .purple
         ])
-        .chartSymbolScale([
-            "Nail Biting": Circle().strokeBorder(lineWidth: 2)
-        ])
+//        This modifier causes the crash, I'll leave it commented out for now
+//        .chartSymbolScale([
+//            "Nail Biting": Circle().strokeBorder(lineWidth: 2)
+//        ])
 
         .chartLegend(position: .top)
     }

@@ -14,8 +14,8 @@ class DataController: ObservableObject {
     
     init(containerName: String, inMemory: Bool = false) {
         container = NSPersistentContainer(name: containerName)
-        if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+        if inMemory, let first = container.persistentStoreDescriptions.first {
+            first.url = URL(fileURLWithPath: "/dev/null")
         }
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores { description, error in
