@@ -37,7 +37,7 @@ struct HourlyLineChart: View {
             return .dateTime.day()
         }
     }
-
+    
     var body: some View {
         let dataAverage = Double(data.grouped.map {
             $0.value
@@ -61,24 +61,11 @@ struct HourlyLineChart: View {
                 .interpolationMethod(.catmullRom)
                 .opacity(0.8)
                 
-            }
-            .chartForegroundStyleScale([
-                "Nail Biting": .purple,
-                "Average": .yellow
-            ])
-            .chartYAxis {
-                AxisMarks(
-                    values: [0, Double(minCount), Double(maxCount), Double(maxCount + 2)]
-                )
-            }
-            Chart(data.grouped, id: \.key) { (date, count) in
-                LineMark(
-                    x: .value("Day", date, unit: xComponent),
+                RuleMark(
                     y: .value("Occurrences", dataAverage)
                 )
                 .foregroundStyle(.yellow)
                 .lineStyle(StrokeStyle(lineWidth: 2, dash: [9, 2]))
-                .interpolationMethod(.catmullRom)
             }
             .chartYAxis {
                 AxisMarks(
@@ -91,11 +78,11 @@ struct HourlyLineChart: View {
             ])
             
         }
-//        This modifier causes the crash, I'll leave it commented out for now
-//        .chartSymbolScale([
-//            "Nail Biting": Circle().strokeBorder(lineWidth: 2)
-//        ])
-
+        //        This modifier causes the crash, I'll leave it commented out for now
+        //        .chartSymbolScale([
+        //            "Nail Biting": Circle().strokeBorder(lineWidth: 2)
+        //        ])
+        
         .chartLegend(position: .top)
     }
 }
@@ -120,8 +107,8 @@ struct LineChartDetails: View {
     var body: some View {
         List {
             VStack(alignment: .leading) {
-//                TimeRangePicker(value: $timeRange)
-//                    .padding(.bottom)
+                //                TimeRangePicker(value: $timeRange)
+                //                    .padding(.bottom)
                 
                 Text("Habit occurrences")
                     .font(.callout)
