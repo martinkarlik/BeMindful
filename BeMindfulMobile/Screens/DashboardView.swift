@@ -43,7 +43,7 @@ struct DashboardView: View {
                         HeartGraphDetails(data: LineChartData.mockHeart)
                             .listRowSeparator(.hidden)
                         CalendarHeatMap(data: LineChartData.mock)
-                        
+                            .frame(maxWidth: .infinity)
                             .listRowSeparator(.hidden)
                         }
                         .listStyle(.plain)
