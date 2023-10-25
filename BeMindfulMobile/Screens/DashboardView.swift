@@ -15,56 +15,63 @@ struct DashboardView: View {
     let selectedBehavior: String
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: 16) {
-                Spacer()
-                HStack {
-                    Text("Dashboard: \(selectedBehavior)")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("DarkPurple"))
+            ZStack {
+                VStack(alignment: .leading, spacing: 16) {
+                    Spacer()
+                    HStack {
+                        Text("Dashboard: \(selectedBehavior)")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("DarkPurple"))
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    Text("Last Synced: 9:39 AM")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                         .padding(.leading)
                     Spacer()
-                }
-                Text("Last Synced: 9:39 AM")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .padding(.leading)
-                Spacer()
-                HStack {
+                    HStack {
+                        Spacer()
+                        RealTimeCounter(data: viewModel.trendData)
+                        Spacer()
+                    }
                     Spacer()
-                    RealTimeCounter(data: viewModel.trendData)
-                    Spacer()
+                    List {
+                        LineChartDetails(data: viewModel.lineChartData)
+                            .listRowSeparator(.hidden)
+                        HeartGraphDetails(data: LineChartData.mockHeart)
+                            .listRowSeparator(.hidden)
+                        CalendarHeatMap(data: LineChartData.mock)
+                        
+                            .listRowSeparator(.hidden)
+                        }
+                        .listStyle(.plain)
+                    Divider()
                 }
-                Spacer()
-                LineChartDetails(data: viewModel.lineChartData)
-                Spacer()
-                HeartGraphDetails(data: LineChartData.mockHeart)
-                Divider()
-            }
-            
-            .onAppear {
-                if !isTrackedBehaviorViewActive {
-                    showWelcomePopup = false
-                } else {
-                    showWelcomePopup = true
+                
+                .onAppear {
+                    if !isTrackedBehaviorViewActive {
+                        showWelcomePopup = false
+                    } else {
+                        showWelcomePopup = true
+                    }
+                }
+                
+                if showWelcomePopup {
+                    WelcomePopUp(title: "Welcome!",
+                                 message: "You don’t have any data yet.\n\nWhenever you notice yourself biting your nails, track it in the watch app by pressing the button.\nThen you’ll be able to see your data here.",
+                                 onCancel: {
+                        showWelcomePopup = false
+                        isTrackedBehaviorViewActive = false
+                        
+                        // if there are data we should set the
+                        // showRealTimeCounter = true
+                    })
                 }
             }
-            
-            if showWelcomePopup {
-                WelcomePopUp(title: "Welcome!",
-                             message: "You don’t have any data yet.\n\nWhenever you notice yourself biting your nails, track it in the watch app by pressing the button.\nThen you’ll be able to see your data here.",
-                             onCancel: {
-                    showWelcomePopup = false
-                    isTrackedBehaviorViewActive = false
-
-                    // if there are data we should set the
-                    // showRealTimeCounter = true
-                })
-            }
-        }
-        .navigationTitle("")
-        .navigationBarHidden(true)
+            .navigationTitle("")
+            .navigationBarHidden(true)
     }
 }
 

@@ -105,25 +105,21 @@ struct LineChartDetails: View {
     }
     
     var body: some View {
-        List {
-            VStack(alignment: .leading) {
-                //                TimeRangePicker(value: $timeRange)
-                //                    .padding(.bottom)
-                
-                Text("Habit occurrences")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                
-                Text("Nail biting occurrences")
-                    .font(.title2.bold())
-                
-                HourlyLineChart(data: chartData, timeRange: timeRange)
-                    .frame(height: 240)
-            }
-            .listRowSeparator(.hidden)
+        
+        VStack(alignment: .leading) {
+            //                TimeRangePicker(value: $timeRange)
+            //                    .padding(.bottom)
+            
+            Text("Habit occurrences")
+                .font(.callout)
+                .foregroundStyle(.secondary)
+            
+            Text("Nail biting occurrences")
+                .font(.title2.bold())
+            
+            HourlyLineChart(data: chartData, timeRange: timeRange)
+                .frame(height: 240)
         }
-        .listStyle(.plain)
-        .navigationBarTitle("Habit over time", displayMode: .inline)
     }
 }
 

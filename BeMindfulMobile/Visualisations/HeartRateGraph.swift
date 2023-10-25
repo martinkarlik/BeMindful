@@ -37,7 +37,7 @@ struct HeartRateGraph: View {
             return .dateTime.day()
         }
     }
-
+    
     var body: some View {
         let dataAverage = Double(data.grouped.map {
             $0.value
@@ -50,16 +50,16 @@ struct HeartRateGraph: View {
         
         let curColor = Color(.systemPink)
         let curGradient = LinearGradient(
-                    gradient: Gradient (
-                        colors: [
-                            curColor.opacity(0.5),
-                            curColor.opacity(0.2),
-                            curColor.opacity(0.05),
-                        ]
-                    ),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
+            gradient: Gradient (
+                colors: [
+                    curColor.opacity(0.5),
+                    curColor.opacity(0.2),
+                    curColor.opacity(0.05),
+                ]
+            ),
+            startPoint: .top,
+            endPoint: .bottom
+        )
         
         ZStack{
             
@@ -89,11 +89,11 @@ struct HeartRateGraph: View {
             
             
         }
-//        This modifier causes the crash, I'll leave it commented out for now
-//        .chartSymbolScale([
-//            "Nail Biting": Circle().strokeBorder(lineWidth: 2)
-//        ])
-
+        //        This modifier causes the crash, I'll leave it commented out for now
+        //        .chartSymbolScale([
+        //            "Nail Biting": Circle().strokeBorder(lineWidth: 2)
+        //        ])
+        
         .chartLegend(position: .top)
     }
 }
@@ -117,22 +117,17 @@ struct HeartGraphDetails: View {
     }
     
     var body: some View {
-        List {
-            VStack(alignment: .leading) {
-//                TimeRangePicker(value: $timeRange)
-//                    .padding(.bottom)
-                
-                Text("Heart Rate Data")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                
-                HeartRateGraph(data: chartData, timeRange: timeRange)
-                    .frame(height: 240)
-            }
-            .listRowSeparator(.hidden)
+        VStack(alignment: .leading) {
+            //                TimeRangePicker(value: $timeRange)
+            //                    .padding(.bottom)
+            
+            Text("Heart Rate Data")
+                .font(.callout)
+                .foregroundStyle(.secondary)
+            
+            HeartRateGraph(data: chartData, timeRange: timeRange)
+                .frame(height: 240)
         }
-        .listStyle(.plain)
-        .navigationBarTitle("Habit over time", displayMode: .inline)
     }
 }
 
