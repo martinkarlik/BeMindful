@@ -14,26 +14,24 @@ struct CalendarHeatMap: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-         
             Text("Calendar")
                 .font(.callout)
                 .foregroundStyle(.secondary)
-            
+
             VStack(alignment: .center) {
-                
                 // Display day of the week headers
                 HStack {
-                    ForEach(["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"], id: \.self) { day in
+                    ForEach(getDaysOfWeek(), id: \.self) { day in
                         Text(day)
                             .frame(width: cellSize, height: cellSize)
                             .font(.caption2)
                     }
                 }
-                
-                ForEach(0..<5) { week in
+
+                ForEach(0..<6) { week in
                     HStack {
                         ForEach(0..<7) { day in
-                            if let value = data.monthly[getDate(week: week, day: day)] {
+                            if let value = data.monthly[getMockDate(day: day)] {
                                 CellView(value: value, getColor: self.getColor)
                             } else {
                                 EmptyCellView()
@@ -44,6 +42,31 @@ struct CalendarHeatMap: View {
             }
         }
     }
+
+    func getDaysOfWeek() -> [String] {
+        // Get the first day of the current month
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.year, .month], from: Date())
+        let firstDayOfMonth = calendar.date(from: dateComponents)
+        
+        // Create a dateFormatter to get the day of the week
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E" // This format will give you the day of the week like "SUN", "MON", etc.
+        
+        // Generate the days of the week
+        var daysOfWeek = [String]()
+        if let startDate = firstDayOfMonth {
+            for i in 0..<7 {
+                if let date = calendar.date(byAdding: .day, value: i, to: startDate) {
+                    let dayOfWeek = dateFormatter.string(from: date)
+                    daysOfWeek.append(dayOfWeek)
+                }
+            }
+        }
+        
+        return daysOfWeek
+    }
+
     
     func getDate(week: Int, day: Int) -> Date {
         // Get the first day of the current month
@@ -68,6 +91,26 @@ struct CalendarHeatMap: View {
         
         return date
     }
+    
+    func getMockDate(day: Int) -> Date {
+        // Calculate the date based on the day, month, and year
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.year = 2022
+        dateComponents.month = 5 // May
+        dateComponents.day = day
+
+        // Calculate the week and weekday based on the day
+        guard let date = calendar.date(from: dateComponents)
+              else {
+            // Handle this error in a way that makes sense for your app
+            print("Error calculating date")
+            return Date()
+        }
+
+        return date
+    }
+
     
     
     func getColor(value: Int) -> Color {
@@ -94,7 +137,8 @@ struct CellView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .fill(getColor(value))
+                .fill(Color.green)
+//                .fill(getColor(value))
                 .frame(width: cellSize, height: cellSize)
             
             Text("\(value)")
