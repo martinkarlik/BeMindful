@@ -11,6 +11,7 @@ struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
     @ObservedObject var viewModel: OccurenceViewModel
     @State private var showWelcomePopup = true
+    // @State private var timeRange: TimeRange = .lastHour
     let selectedBehavior: String
     
     var body: some View {
@@ -38,6 +39,7 @@ struct DashboardView: View {
                 Spacer()
                 LineChartDetails(data: viewModel.lineChartData)
                 Spacer()
+                HeartGraphDetails(data: LineChartData.mockHeart)
                 Divider()
             }
             

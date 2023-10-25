@@ -15,6 +15,7 @@ class OccurenceViewModel: ObservableObject {
     @Published var occurences: [Occurence] = []
     @Published var trendData = TrendDataContainer()
     @Published var lineChartData = LineChartData()
+    @Published var heartRateData = LineChartData() // might need to be changed, added for mock
     @Published var historyData = HistoryDataContainer()
 
     private let dataController: DataController
@@ -36,11 +37,13 @@ class OccurenceViewModel: ObservableObject {
     // Used for generating a mock viewModel 
     private init(trendData: TrendDataContainer,
                  lineChartData: LineChartData,
+                 heartRateData: LineChartData,
                  historyData: HistoryDataContainer) {
         self.dataController = DataController(containerName: "Occurences", inMemory: true)
         self.occurences = []
         self.trendData = trendData
         self.lineChartData = lineChartData
+        self.heartRateData = heartRateData
         self.historyData = historyData
     }
     
@@ -108,6 +111,7 @@ extension OccurenceViewModel {
     static var mock: OccurenceViewModel {
         let viewModel = OccurenceViewModel(trendData: TrendDataContainer.mock,
                                            lineChartData: LineChartData.mock,
+                                           heartRateData: LineChartData.mockHeart,
                                            historyData: HistoryDataContainer.mock)
         return viewModel
     }

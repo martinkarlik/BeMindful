@@ -1,3 +1,5 @@
 *.xcsettings
 *.xcuserstate
 *.xcbkptlist
+BeMindfulMobile.entitlements
+BeMindfulWatch.entitlements

@@ -8,7 +8,7 @@
 import Charts
 import SwiftUI
 
-struct HourlyLineChart: View {
+struct HeartRateGraph: View {
     @ObservedObject var data: ChartDataContainer
     var timeRange: TimeRange
     
@@ -48,47 +48,45 @@ struct HourlyLineChart: View {
         let minCount = data.grouped.map { $0.value }.min() ?? 0
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
         
+        let curColor = Color(.systemPink)
+        let curGradient = LinearGradient(
+                    gradient: Gradient (
+                        colors: [
+                            curColor.opacity(0.5),
+                            curColor.opacity(0.2),
+                            curColor.opacity(0.05),
+                        ]
+                    ),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+        
         ZStack{
             
             Chart(data.grouped, id: \.key) { (date, count) in
-                BarMark(
+                AreaMark(
                     x: .value("Day", date, unit: xComponent),
                     y: .value("Occurrences", count)
                 )
-                .foregroundStyle(.purple)
+                .foregroundStyle(curGradient)
                 .symbol(.circle)
                 
-                .interpolationMethod(.catmullRom)
-                .opacity(0.8)
+                RuleMark(
+                    y: .value("Occurrences", dataAverage)
+                )
+                .foregroundStyle(.gray)
+                .lineStyle(StrokeStyle(lineWidth: 2, dash: [9, 2]))
                 
             }
             .chartForegroundStyleScale([
-                "Nail Biting": .purple,
-                "Average": .yellow
+                "Heart Rate": .pink
             ])
             .chartYAxis {
                 AxisMarks(
-                    values: [0, Double(minCount), Double(maxCount), Double(maxCount + 2)]
+                    values: [0, Double(minCount), dataAverage, Double(maxCount), Double(maxCount + 20)]
                 )
             }
-            Chart(data.grouped, id: \.key) { (date, count) in
-                LineMark(
-                    x: .value("Day", date, unit: xComponent),
-                    y: .value("Occurrences", dataAverage)
-                )
-                .foregroundStyle(.yellow)
-                .lineStyle(StrokeStyle(lineWidth: 2, dash: [9, 2]))
-                .interpolationMethod(.catmullRom)
-            }
-            .chartYAxis {
-                AxisMarks(
-                    values: [0, Double(minCount),dataAverage, Double(maxCount), Double(maxCount + 2)]
-                )
-            }
-            .chartForegroundStyleScale([
-                "Nail Biting": .purple,
-                "Average": .yellow
-            ])
+            
             
         }
 //        This modifier causes the crash, I'll leave it commented out for now
@@ -100,9 +98,10 @@ struct HourlyLineChart: View {
     }
 }
 
-struct LineChartDetails: View {
+struct HeartGraphDetails: View {
     @State private var timeRange: TimeRange = .lastHour
     @ObservedObject var data: LineChartData
+    // @ObservedObject var timeRangeData: TimeRangePickerData
     
     var chartData: ChartDataContainer {
         switch timeRange {
@@ -123,14 +122,11 @@ struct LineChartDetails: View {
 //                TimeRangePicker(value: $timeRange)
 //                    .padding(.bottom)
                 
-                Text("Habit occurrences")
+                Text("Heart Rate Data")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                 
-                Text("Nail biting occurrences")
-                    .font(.title2.bold())
-                
-                HourlyLineChart(data: chartData, timeRange: timeRange)
+                HeartRateGraph(data: chartData, timeRange: timeRange)
                     .frame(height: 240)
             }
             .listRowSeparator(.hidden)
@@ -140,9 +136,9 @@ struct LineChartDetails: View {
     }
 }
 
-struct LineChartDetails_Previews: PreviewProvider {
+struct HeartGraphDetails_Previews: PreviewProvider {
     static var previews: some View {
-        LineChartDetails(data: LineChartData.mock)
+        HeartGraphDetails(data: LineChartData.mockHeart)
     }
 }
 
