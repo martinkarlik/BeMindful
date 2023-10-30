@@ -13,8 +13,7 @@ struct BeMindfulMobileApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //OnboardingView(logoImage: "LaunchIcon")
-            ContainerView()
+            ManagerView()
         }
     }
 }
