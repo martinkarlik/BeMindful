@@ -29,7 +29,7 @@ class OccurenceViewModel: ObservableObject {
         if !inMemory {
             occurences = dataController.fetchData(request: request)
             trendData = getTrendData(from: occurences)
-//            lineChartData = getLineChartData(from: occurences)
+            lineChartData = getLineChartData(from: occurences)
         }
     }
 
@@ -93,15 +93,53 @@ class OccurenceViewModel: ObservableObject {
         )
     }
 
-//    private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
-//        let lastHour = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
-//        let lastDay = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInDay }
-//        let lastWeek = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
-//        // TODO: find a way to filter for month, as seconds would be over the Integer threshold I think
-//        let lastMonth = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
-//
-//        return LineChartData(hour: lastHour, day: lastDay, week: lastWeek, month: lastMonth)
-//    }
+    private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
+        let lastHour = occurences
+            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
+            .sorted()
+        let lastDay = occurences
+            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInDay }
+            .sorted()
+        let lastWeek = occurences
+            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+            .sorted()
+        let lastMonth = occurences
+            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+            .sorted()
+
+        let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
+        let lastDayDict = groupDataByCustomTimeInterval(data: lastDay, timeInterval: .hour)
+        let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekdayOrdinal)
+        let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
+
+        return LineChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
+    }
+
+    private func groupDataByCustomTimeInterval(data: [Occurence], timeInterval: Calendar.Component) -> [Date: Int] {
+        guard let first = data.first else { return [:] }
+        var result: [Date: Int] = [:]
+        var currentDate = first.timestamp
+        var currentSum: Int = 0
+
+        let calendar = Calendar.current
+
+        for occurence in data {
+            let currentComponent = calendar.component(timeInterval, from: currentDate)
+            let occurenceComponent = calendar.component(timeInterval, from: occurence.timestamp)
+            if occurenceComponent == currentComponent {
+                currentSum += 1
+            } else {
+                result[currentDate] = currentSum
+                currentDate = occurence.timestamp
+                currentSum = 0
+            }
+        }
+
+        // Add the last interval
+        result[currentDate] = currentSum
+
+        return result
+    }
 }
 
 extension OccurenceViewModel {

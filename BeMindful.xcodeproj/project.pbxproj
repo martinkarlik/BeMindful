@@ -21,6 +21,8 @@
 		4236653E2A0AD11A00994F6B /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423665392A0AD03000994F6B /* LineChart.swift */; };
 		4236653F2A0AD11C00994F6B /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236653B2A0AD06A00994F6B /* History.swift */; };
 		423E77B429F9D55F00FB3B27 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
+		425004F82AEFAF02008CFFC7 /* Occurence+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004F72AEFAF02008CFFC7 /* Occurence+Comparable.swift */; };
+		425004F92AEFAF02008CFFC7 /* Occurence+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004F72AEFAF02008CFFC7 /* Occurence+Comparable.swift */; };
 		425EB00329F9485F0076058F /* Occurence+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */; };
 		425EB00429F9485F0076058F /* Occurence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */; };
 		425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */; };
@@ -112,6 +114,7 @@
 		423665372A0AD01600994F6B /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		423665392A0AD03000994F6B /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		4236653B2A0AD06A00994F6B /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		425004F72AEFAF02008CFFC7 /* Occurence+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+Comparable.swift"; sourceTree = "<group>"; };
 		425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataClass.swift"; sourceTree = "<group>"; };
 		425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4299E7302A0031A200896C3B /* TrendDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDataContainer.swift; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 			children = (
 				425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */,
 				425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */,
+				425004F72AEFAF02008CFFC7 /* Occurence+Comparable.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -558,6 +562,7 @@
 				B04534652A004CAD00AB367E /* WelcomePopUp.swift in Sources */,
 				42D58AA129FDA06D001A025B /* TrendData.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
+				425004F82AEFAF02008CFFC7 /* Occurence+Comparable.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4236653A2A0AD03000994F6B /* LineChart.swift in Sources */,
 				4299E7312A0031A200896C3B /* TrendDataContainer.swift in Sources */,
@@ -596,6 +601,7 @@
 				4236653F2A0AD11C00994F6B /* History.swift in Sources */,
 				4236653E2A0AD11A00994F6B /* LineChart.swift in Sources */,
 				425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */,
+				425004F92AEFAF02008CFFC7 /* Occurence+Comparable.swift in Sources */,
 				4299E7362A00442D00896C3B /* TrendDataContainer.swift in Sources */,
 				423665352A0AA64500994F6B /* HistoryDataContainer.swift in Sources */,
 				425EB00629F951970076058F /* Occurence+CoreDataProperties.swift in Sources */,
