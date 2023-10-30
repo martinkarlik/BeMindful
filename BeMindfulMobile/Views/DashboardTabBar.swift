@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DashboardTabBar: View {
-    @ObservedObject var viewModel : OccurenceViewModel
+    @ObservedObject var viewModel: OccurenceViewModel
     let selectedBehavior: String
     
     enum Tab {
@@ -28,7 +28,14 @@ struct DashboardTabBar: View {
                 .tag(Tab.dashboard)
             
             
-            HistoryView(data: viewModel.historyData, selectedBehavior: selectedBehavior)
+//            HistoryView(data: viewModel.historyData, selectedBehavior: selectedBehavior)
+//                .tabItem {
+//                    Image(systemName: "clock.arrow.circlepath")
+//                    Text("History")
+//                }
+//                .tag(Tab.history)
+            
+            ListView(viewModel: viewModel, selectedBehavior: selectedBehavior)
                 .tabItem {
                     Image(systemName: "clock.arrow.circlepath")
                     Text("History")

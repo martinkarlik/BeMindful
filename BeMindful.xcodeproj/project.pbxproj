@@ -35,10 +35,9 @@
 		4E2693CB29F3A92C00401A96 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C529F3A92C00401A96 /* LaunchView.swift */; };
 		4E2693CD29F3A92C00401A96 /* TrackedBehaviorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C729F3A92C00401A96 /* TrackedBehaviorView.swift */; };
 		4E2693CE29F3A92C00401A96 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C829F3A92C00401A96 /* OnboardingView.swift */; };
-		4E2693CF29F3A92C00401A96 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C929F3A92C00401A96 /* ContainerView.swift */; };
+		4E2693CF29F3A92C00401A96 /* ManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2693C929F3A92C00401A96 /* ManagerView.swift */; };
 		4E2B289D29DC3BC100843D39 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2B289C29DC3BC100843D39 /* CoreMotion.framework */; };
 		4E36CAA729B8B3F500F380CC /* BeMindfulMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */; };
-		4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAA829B8B3F500F380CC /* MobileAppView.swift */; };
 		4E36CAAB29B8B3F700F380CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAAA29B8B3F700F380CC /* Assets.xcassets */; };
 		4E36CAAE29B8B3F700F380CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E36CAAD29B8B3F700F380CC /* Preview Assets.xcassets */; };
 		4E36CAB829B8B3F800F380CC /* BeMindfulMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E36CAB729B8B3F800F380CC /* BeMindfulMobileTests.swift */; };
@@ -52,6 +51,7 @@
 		4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
 		4E4FD1B429CB189200DADB21 /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */; };
 		4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */; };
+		4E899E8E2A168A24004B54AA /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E899E8D2A168A24004B54AA /* ListView.swift */; };
 		4E9BDF3729EA89B300CA432A /* Occurences.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3529EA89B300CA432A /* Occurences.xcdatamodeld */; };
 		4E9BDF3829EA89B300CA432A /* Occurences.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3529EA89B300CA432A /* Occurences.xcdatamodeld */; };
 		4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
@@ -122,11 +122,10 @@
 		4E2693C529F3A92C00401A96 /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		4E2693C729F3A92C00401A96 /* TrackedBehaviorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackedBehaviorView.swift; sourceTree = "<group>"; };
 		4E2693C829F3A92C00401A96 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		4E2693C929F3A92C00401A96 /* ContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		4E2693C929F3A92C00401A96 /* ManagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerView.swift; sourceTree = "<group>"; };
 		4E2B289C29DC3BC100843D39 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		4E36CAA329B8B3F500F380CC /* BeMindfulMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMindfulMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulMobileApp.swift; sourceTree = "<group>"; };
-		4E36CAA829B8B3F500F380CC /* MobileAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAppView.swift; sourceTree = "<group>"; };
 		4E36CAAA29B8B3F700F380CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E36CAAD29B8B3F700F380CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E36CAB329B8B3F800F380CC /* BeMindfulMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeMindfulMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +139,7 @@
 		4E36CADF29B8B3F900F380CC /* BeMindfulWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeMindfulWatchAppTests.swift; sourceTree = "<group>"; };
 		4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
 		4E805FB529DED9880087F178 /* MotionDetectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetectionProvider.swift; sourceTree = "<group>"; };
+		4E899E8D2A168A24004B54AA /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		4E9BDF3629EA89B300CA432A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		4E9BDF3929EA8CCF00CA432A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccurenceViewModel.swift; sourceTree = "<group>"; };
@@ -237,9 +237,10 @@
 				4E2693C729F3A92C00401A96 /* TrackedBehaviorView.swift */,
 				4E2693C829F3A92C00401A96 /* OnboardingView.swift */,
 				B04534642A004CAD00AB367E /* WelcomePopUp.swift */,
-				4E2693C929F3A92C00401A96 /* ContainerView.swift */,
+				4E2693C929F3A92C00401A96 /* ManagerView.swift */,
 				B09CDC4329F934B80089E686 /* HistoryView.swift */,
 				B04534662A00611500AB367E /* CalendarPickerView.swift */,
+				4E899E8D2A168A24004B54AA /* ListView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -284,7 +285,6 @@
 				B099273B29CB3F620099FBFB /* Visualisations */,
 				B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */,
 				4E36CAA629B8B3F500F380CC /* BeMindfulMobileApp.swift */,
-				4E36CAA829B8B3F500F380CC /* MobileAppView.swift */,
 				4E36CAAA29B8B3F700F380CC /* Assets.xcassets */,
 				4E36CAAC29B8B3F700F380CC /* Preview Content */,
 			);
@@ -545,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E899E8E2A168A24004B54AA /* ListView.swift in Sources */,
 				42049C0C29FEED5300ACF1B1 /* LineChartData.swift in Sources */,
 				4E4FD1B329CB189200DADB21 /* ConnectivityProvider.swift in Sources */,
 				B09CDC3B29F91F950089E686 /* RealTimeCounterView.swift in Sources */,
@@ -553,8 +554,7 @@
 				B09CDC4429F934B80089E686 /* HistoryView.swift in Sources */,
 				4E9BDF3729EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
 				B0DA5B1E29CB486100EAEA24 /* HourlyLineChart.swift in Sources */,
-				4E2693CF29F3A92C00401A96 /* ContainerView.swift in Sources */,
-				4E36CAA929B8B3F500F380CC /* MobileAppView.swift in Sources */,
+				4E2693CF29F3A92C00401A96 /* ManagerView.swift in Sources */,
 				B04534652A004CAD00AB367E /* WelcomePopUp.swift in Sources */,
 				42D58AA129FDA06D001A025B /* TrendData.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
