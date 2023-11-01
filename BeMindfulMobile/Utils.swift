@@ -35,3 +35,15 @@ enum TrackedBehavior: String, CaseIterable {
     case behavior4 = "Hair Pulling"
     case behavior5 = "Other..."
 }
+
+extension Dictionary where Key == Date, Value == Int {
+    func findValue(at date: Date, toGranularity component: Calendar.Component) -> Int? {
+        let calendar = Calendar.current
+        for (key, value) in self {
+            if calendar.isDate(key, equalTo: date, toGranularity: component) {
+                return value
+            }
+        }
+        return nil
+    }
+}

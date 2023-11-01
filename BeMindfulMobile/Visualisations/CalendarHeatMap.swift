@@ -30,8 +30,9 @@ struct CalendarHeatMap: View {
 
                 ForEach(0..<6) { week in
                     HStack {
-                        ForEach(0..<7) { day in
-                            if let value = data.monthly[getMockDate(day: day)] {
+                        ForEach(1..<8) { day in
+                            let date = getMockDate(day: week * 7 + day)
+                            if let value = data.monthly.findValue(at: date, toGranularity: .day) {
                                 CellView(value: value, getColor: self.getColor)
                             } else {
                                 EmptyCellView()
