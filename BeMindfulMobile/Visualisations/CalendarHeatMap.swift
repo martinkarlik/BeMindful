@@ -31,9 +31,10 @@ struct CalendarHeatMap: View {
                 ForEach(0..<6) { week in
                     HStack {
                         ForEach(1..<8) { day in
-                            let date = getMockDate(day: week * 7 + day)
+                            let weekday = week * 7 + day
+                            let date = getMockDate(day: weekday)
                             if let value = data.monthly.findValue(at: date, toGranularity: .day) {
-                                CellView(value: value, getColor: self.getColor)
+                                CellView(value: weekday, getColor: self.getColor)
                             } else {
                                 EmptyCellView()
                             }
@@ -125,7 +126,7 @@ struct CalendarHeatMap: View {
         let intensity = Double(clampedValue) / Double(maxValue)
         
         // Return a color from white to red based on the intensity
-        return Color(red: intensity, green: 1.0 - intensity, blue: 1.0 - intensity)
+        return Color(red: 1 + intensity, green: 0.6 - intensity, blue: 0.4 - intensity)
     }
     
 }
@@ -138,8 +139,8 @@ struct CellView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.green)
-//                .fill(getColor(value))
+                //.fill(Color.green)
+                .fill(getColor(value))
                 .frame(width: cellSize, height: cellSize)
             
             Text("\(value)")
@@ -154,7 +155,8 @@ struct EmptyCellView: View {
 
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
-            .fill(Color.blue)
+            .fill(Color.gray)
+            .opacity(0.3)
             .frame(width: cellSize, height: cellSize)
     }
 }
