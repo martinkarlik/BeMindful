@@ -48,6 +48,12 @@ struct HeartRateGraph: View {
         let minCount = data.grouped.map { $0.value }.min() ?? 0
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
         
+        let hourBoundsForMinDate = LineChartData.getMockDate(day: Calendar.current.component(.day, from: minDate),
+                                                hour: Calendar.current.component(.hour, from: minDate))
+        // Assuming maxDate is a Date value
+        let xScaleDomain: [Date] = [hourBoundsForMinDate.start, hourBoundsForMinDate.end]
+        
+        
         let curColor = Color(.systemPink)
         let curGradient = LinearGradient(
             gradient: Gradient (
@@ -78,16 +84,16 @@ struct HeartRateGraph: View {
                 .lineStyle(StrokeStyle(lineWidth: 2, dash: [9, 2]))
                 
             }
-            .chartForegroundStyleScale([
-                "Heart Rate": .pink
-            ])
             .chartYAxis {
                 AxisMarks(
                     values: [0, Double(minCount), dataAverage, Double(maxCount), Double(maxCount + 20)]
                 )
             }
-            
-            
+            .chartXScale(domain: xScaleDomain)
+            .chartForegroundStyleScale([
+                "Heart Rate": .pink,
+                "Average": .gray
+            ])
         }
         //        This modifier causes the crash, I'll leave it commented out for now
         //        .chartSymbolScale([

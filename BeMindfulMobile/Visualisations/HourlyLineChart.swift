@@ -37,6 +37,7 @@ struct HourlyLineChart: View {
             return .dateTime.day()
         }
     }
+
     
     var body: some View {
         let dataAverage = Double(data.grouped.map {
@@ -48,6 +49,12 @@ struct HourlyLineChart: View {
         let minCount = data.grouped.map { $0.value }.min() ?? 0
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
         
+        // Calculate the start of the hour for the minimum date
+        let hourBoundsForMinDate = LineChartData.getMockDate(day: Calendar.current.component(.day, from: minDate),
+                                                hour: Calendar.current.component(.hour, from: minDate))
+        // Assuming maxDate is a Date value
+        let xScaleDomain: [Date] = [hourBoundsForMinDate.start, hourBoundsForMinDate.end]
+
         ZStack{
             
             Chart(data.grouped, id: \.key) { (date, count) in
@@ -72,6 +79,8 @@ struct HourlyLineChart: View {
                     values: [0, Double(minCount),dataAverage, Double(maxCount), Double(maxCount + 2)]
                 )
             }
+            // Use xScaleDomain in chartXScale
+            .chartXScale(domain: xScaleDomain)
             .chartForegroundStyleScale([
                 "Nail Biting": .purple,
                 "Average": .yellow
