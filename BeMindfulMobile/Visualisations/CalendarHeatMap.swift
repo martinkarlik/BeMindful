@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct CalendarHeatMap: View {
-    @State var data: LineChartData
+    @State var data: HeatMapDataContainer
     let cellSize: CGFloat = 30 // Specific size for each cell
     
     var body: some View {
@@ -37,40 +37,39 @@ struct CalendarHeatMap: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-                
             }
-            VStack(alignment: .center) {
-                // Displays day of the week headers
-                HStack {
-                    ForEach(getDaysOfWeekStartingFromMonday(), id: \.self) { day in
-                        Text(day)
-                            .frame(width: cellSize, height: cellSize)
-                            .font(.caption2)
-                    }
-                }
-                ForEach(0..<6) { week in
-                    HStack {
-                        ForEach(0..<7) { day in
-                            let weekday = week * 7 + day
-                            let date = getMockDate(day: weekday)
-                            
-                            if let startOfMonth = getStartOfMonth(month: 5) {
-                                if date < startOfMonth {
-                                    // Display empty cell for days before the start of the month
-                                    EmptyCellView()
-                                } else {
-                                    // Display cell with color and date for days on or after the start of the month
-                                    if let value = data.monthly.findValue(at: date, toGranularity: .day) {
-                                        CellView(weekday: weekday, value: value, getColor: self.getColor)
-                                    } else {
-                                        EmptyCellView()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+//            VStack(alignment: .center) {
+//                // Displays day of the week headers
+//                HStack {
+//                    ForEach(getDaysOfWeekStartingFromMonday(), id: \.self) { day in
+//                        Text(day)
+//                            .frame(width: cellSize, height: cellSize)
+//                            .font(.caption2)
+//                    }
+//                }
+//                ForEach(0..<6) { week in
+//                    HStack {
+//                        ForEach(0..<7) { day in
+//                            let weekday = week * 7 + day
+//                            let date = getMockDate(day: weekday)
+//                            
+//                            if let startOfMonth = getStartOfMonth(month: 5) {
+//                                if date < startOfMonth {
+//                                    // Display empty cell for days before the start of the month
+//                                    EmptyCellView()
+//                                } else {
+//                                    // Display cell with color and date for days on or after the start of the month
+//                                    if let value = data.monthly.findValue(at: date, toGranularity: .day) {
+//                                        CellView(weekday: weekday, value: value, getColor: self.getColor)
+//                                    } else {
+//                                        EmptyCellView()
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
         }
     }
     
@@ -207,5 +206,5 @@ struct EmptyCellView: View {
 }
 
 #Preview {
-    CalendarHeatMap(data: LineChartData.mock)
+    CalendarHeatMap(data: HeatMapDataContainer.mock)
 }

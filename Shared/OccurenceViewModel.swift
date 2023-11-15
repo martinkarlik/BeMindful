@@ -12,14 +12,18 @@ import CoreData
 
 class OccurenceViewModel: ObservableObject {
 
+    // We can probably make occurences not published after all the data and history is done
     @Published var occurences: [Occurence] = []
     @Published var trendData = TrendDataContainer()
     @Published var lineChartData = LineChartData()
     @Published var heartRateData = LineChartData() // might need to be changed, added for mock
     @Published var historyData = HistoryDataContainer()
+    @Published var heatMapData = HeatMapDataContainer()
+
 
     private let dataController: DataController
     private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
+    private let calendar = Calendar.current
 
     private let secondsInHour: Double = 3600
     private let secondsInDay: Double = 86400
@@ -30,7 +34,8 @@ class OccurenceViewModel: ObservableObject {
         if !inMemory {
             occurences = dataController.fetchData(request: request)
             trendData = getTrendData(from: occurences)
-//            lineChartData = getLineChartData(from: occurences)
+            lineChartData = getLineChartData(from: occurences)
+            heatMapData = getHeatmapData()
         }
     }
 
@@ -96,15 +101,66 @@ class OccurenceViewModel: ObservableObject {
         )
     }
 
-//    private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
-//        let lastHour = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
-//        let lastDay = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInDay }
-//        let lastWeek = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
-//        // TODO: find a way to filter for month, as seconds would be over the Integer threshold I think
-//        let lastMonth = occurences.filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
-//
-//        return LineChartData(hour: lastHour, day: lastDay, week: lastWeek, month: lastMonth)
-//    }
+    private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
+        let lastHour = occurences
+            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
+            .sorted()
+        let lastDay = occurences
+            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInDay }
+            .sorted()
+        let lastWeek = occurences
+            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+            .sorted()
+        let lastMonth = occurences
+            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+            .sorted()
+
+        let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
+        let lastDayDict = groupDataByCustomTimeInterval(data: lastDay, timeInterval: .hour)
+        let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekdayOrdinal)
+        let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
+
+        return LineChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
+    }
+
+    private func getHeatmapData() -> HeatMapDataContainer {
+        var dateComponents = DateComponents()
+        dateComponents.year = calendar.component(.year, from: Date())
+        dateComponents.month = calendar.component(.month, from: Date())
+        guard let currentDate = calendar.date(from: dateComponents) else { return HeatMapDataContainer() }
+
+        var cellData: [HeatmapCellData] = []
+        for (date, count) in lineChartData.monthly where calendar.isDate(date, equalTo: currentDate, toGranularity: .month){
+            let data = HeatmapCellData(date: date, count: count)
+            cellData.append(data)
+        }
+
+        return HeatMapDataContainer(heatmapData: cellData.sorted{ $0.date < $1.date })
+    }
+
+    private func groupDataByCustomTimeInterval(data: [Occurence], timeInterval: Calendar.Component) -> [Date: Int] {
+        guard let first = data.first else { return [:] }
+        var result: [Date: Int] = [:]
+        var currentDate = first.timestamp
+        var currentSum: Int = 0
+
+        for occurence in data {
+            let currentComponent = calendar.component(timeInterval, from: currentDate)
+            let occurenceComponent = calendar.component(timeInterval, from: occurence.timestamp)
+            if occurenceComponent == currentComponent {
+                currentSum += 1
+            } else {
+                result[currentDate] = currentSum
+                currentDate = occurence.timestamp
+                currentSum = 0
+            }
+        }
+
+        // Add the last interval
+        result[currentDate] = currentSum
+
+        return result
+    }
 }
 
 extension OccurenceViewModel {

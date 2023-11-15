@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HourlyLineChart: View {
     @ObservedObject var data: ChartDataContainer
+    let selectedBehavior: String
     var timeRange: TimeRange
     
     var xComponent: Calendar.Component {
@@ -82,7 +83,7 @@ struct HourlyLineChart: View {
             // Use xScaleDomain in chartXScale
             .chartXScale(domain: xScaleDomain)
             .chartForegroundStyleScale([
-                "Nail Biting": .purple,
+                selectedBehavior: .purple,
                 "Average": .yellow
             ])
             
@@ -99,7 +100,8 @@ struct HourlyLineChart: View {
 struct LineChartDetails: View {
     @State private var timeRange: TimeRange = .lastHour
     @ObservedObject var data: LineChartData
-    
+    let selectedBehavior: String
+
     var chartData: ChartDataContainer {
         switch timeRange {
         case .lastHour:
@@ -123,10 +125,10 @@ struct LineChartDetails: View {
                 .font(.callout)
                 .foregroundStyle(.secondary)
             
-            Text("Nail biting occurrences")
+            Text("\(selectedBehavior) occurrences")
                 .font(.title2.bold())
             
-            HourlyLineChart(data: chartData, timeRange: timeRange)
+            HourlyLineChart(data: chartData,selectedBehavior: selectedBehavior, timeRange: timeRange)
                 .frame(height: 240)
         }
     }
@@ -134,7 +136,7 @@ struct LineChartDetails: View {
 
 struct LineChartDetails_Previews: PreviewProvider {
     static var previews: some View {
-        LineChartDetails(data: LineChartData.mock)
+        LineChartDetails(data: LineChartData.mock, selectedBehavior: "Nail biting")
     }
 }
 

@@ -38,18 +38,17 @@ struct DashboardView: View {
                     }
                     Spacer()
                     List {
-                        LineChartDetails(data: viewModel.lineChartData)
+                        LineChartDetails(data: viewModel.lineChartData, selectedBehavior: selectedBehavior)
                             .listRowSeparator(.hidden)
                         HeartGraphDetails(data: LineChartData.mockHeart)
                             .listRowSeparator(.hidden)
-                        CalendarHeatMap(data: LineChartData.mock)
+                        CalendarHeatMap(data: HeatMapDataContainer.mock)
                             .frame(maxWidth: .infinity)
                             .listRowSeparator(.hidden)
                         }
                         .listStyle(.plain)
                     Divider()
-                }
-                
+                }                
                 .onAppear {
                     if !isTrackedBehaviorViewActive {
                         showWelcomePopup = false
@@ -68,6 +67,7 @@ struct DashboardView: View {
                         // if there are data we should set the
                         // showRealTimeCounter = true
                     })
+
                 }
             }
             .navigationTitle("")
