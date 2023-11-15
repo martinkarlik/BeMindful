@@ -48,7 +48,7 @@ extension LineChartData {
                                  occurrenceDate(year: 2022, month: 5, day: 6): 2,
                                  occurrenceDate(year: 2022, month: 5, day: 7): 5]
 
-        let month: [Date: Int] = [occurrenceDate(year: 2022, month: 5, day: 1): 5,
+        let month: [Date: Int] = [occurrenceDate(year: 2022, month: 5, day: 1): 0,
                                   occurrenceDate(year: 2022, month: 5, day: 2): 5,
                                   occurrenceDate(year: 2022, month: 5, day: 3): 6,
                                   occurrenceDate(year: 2022, month: 5, day: 4): 1,
