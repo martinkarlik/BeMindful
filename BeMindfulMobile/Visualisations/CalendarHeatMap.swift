@@ -46,16 +46,16 @@ struct CalendarHeatMap: View {
     }
 
     func getDaysOfWeek() -> [String] {
-        // Get the first day of the current month
+        // Gets the first day of the current month
         let calendar = Calendar.current
         let dateComponents = calendar.dateComponents([.year, .month], from: Date())
         let firstDayOfMonth = calendar.date(from: dateComponents)
         
-        // Create a dateFormatter to get the day of the week
+        // Creates a dateFormatter to get the day of the week
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E" // This format will give you the day of the week like "SUN", "MON", etc.
+        dateFormatter.dateFormat = "E" // This format gives the day of the week like "SUN", "MON", etc.
         
-        // Generate the days of the week
+        // Generates the days of the week
         var daysOfWeek = [String]()
         if let startDate = firstDayOfMonth {
             for i in 0..<7 {
@@ -71,22 +71,22 @@ struct CalendarHeatMap: View {
 
     
     func getDate(week: Int, day: Int) -> Date {
-        // Get the first day of the current month
+        // Gets the first day of the current month
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month], from: Date())
         guard let firstDayOfMonth = calendar.date(from: components) else {
-            // Handle this error in a way that makes sense for your app
+            // Error handling
             print("Error getting first day of month")
             return Date()
         }
         
-        // Calculate the date for the given week and day
+        // Calculates the date for the given week and day
         var dateComponents = DateComponents()
         dateComponents.weekOfMonth = week
         dateComponents.weekday = day
         
         guard let date = calendar.date(byAdding: dateComponents, to: firstDayOfMonth) else {
-            // Handle this error in a way that makes sense for your app
+            // Error handling
             print("Error calculating date")
             return Date()
         }
