@@ -15,9 +15,15 @@ struct TrackedBehaviorView: View {
     @State private var showAlert = false
     @State private var showConfirmationPopup = false
     @State private var showDashboardView = false
-    @State var selectedBehavior: TrackedBehavior?
+    @State var selectedBehavior: String?
     @State var customBehavior: String = ""
-    
+
+    @State var behaviorList = ["Nail picking",
+                        "Nail biting",
+                        "Cheek biting",
+                        "Hair pulling",
+                        "Other..."]
+
     var body: some View {
         NavigationView {
             ZStack{
@@ -34,8 +40,8 @@ struct TrackedBehaviorView: View {
                     
                     Spacer()
                     
-                    ForEach(TrackedBehavior.allCases, id: \.self) { behavior in
-                        
+                    ForEach(behaviorList, id: \.self) { behavior in
+
                         Button(action: {
                             if behavior == selectedBehavior {
                                 // Deselect the button if it's already selected
@@ -47,10 +53,11 @@ struct TrackedBehaviorView: View {
                         }) {
                             HStack {
                                 if selectedBehavior == behavior {
-                                    if behavior == .behavior5 {
+                                    if behavior == "Other..." {
                                         TextField("Enter custom behavior", text: $customBehavior, onCommit: {
                                             if !customBehavior.isEmpty {
-                                                selectedBehavior = .behavior5
+                                                behaviorList.insert(customBehavior, at: behaviorList.count - 1)
+                                                selectedBehavior = customBehavior
                                             }
                                         })
                                         .foregroundColor(.white)
@@ -61,7 +68,7 @@ struct TrackedBehaviorView: View {
                                         .cornerRadius(8)
                                         .shadow(color: Color.gray.opacity(1), radius: 4, x: 0, y: 2)
                                     } else {
-                                        Label(behavior.rawValue, systemImage: "checkmark")
+                                        Label(behavior, systemImage: "checkmark")
                                             .foregroundColor(.white)
                                             .fontWeight(.regular)
                                             .frame(maxWidth: 350, minHeight: 41)
@@ -72,7 +79,7 @@ struct TrackedBehaviorView: View {
                                     }
                                 }
                                 else {
-                                    Text(behavior.rawValue)
+                                    Text(behavior)
                                         .foregroundColor(Color.white)
                                         .fontWeight(.regular)
                                         .frame(maxWidth: 350, minHeight: 41)
@@ -120,11 +127,11 @@ struct TrackedBehaviorView: View {
                     if let selectedBehavior {
                         ConfirmationPopup(
                             title: "Great!",
-                            message: "From now on you can track your \(selectedBehavior.rawValue) behaviour.\n\nYou are already one step closer to breaking the habit!",
+                            message: "From now on you can track your \(selectedBehavior) behaviour.\n\nYou are already one step closer to breaking the habit!",
                             onConfirm: {
                                 print("Confirmed")
                                 showConfirmationPopup = false
-                                navigateToDashboardTabBar(selectedBehavior: "\(selectedBehavior.rawValue)")
+                                navigateToDashboardTabBar(selectedBehavior: "\(selectedBehavior)")
                             },
                             onCancel: {
                                 print("Canceled")

@@ -12,13 +12,17 @@ import CoreData
 
 class OccurenceViewModel: ObservableObject {
 
+    // We can probably make occurences not published after all the data and history is done
     @Published var occurences: [Occurence] = []
     @Published var trendData = TrendDataContainer()
     @Published var lineChartData = LineChartData()
     @Published var historyData = HistoryDataContainer()
+    @Published var heatMapData = HeatMapDataContainer()
+
 
     private let dataController: DataController
     private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
+    private let calendar = Calendar.current
 
     private let secondsInHour: Double = 3600
     private let secondsInDay: Double = 86400
@@ -30,6 +34,7 @@ class OccurenceViewModel: ObservableObject {
             occurences = dataController.fetchData(request: request)
             trendData = getTrendData(from: occurences)
             lineChartData = getLineChartData(from: occurences)
+            heatMapData = getHeatmapData()
         }
     }
 
@@ -115,13 +120,26 @@ class OccurenceViewModel: ObservableObject {
         return LineChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
     }
 
+    private func getHeatmapData() -> HeatMapDataContainer {
+        var dateComponents = DateComponents()
+        dateComponents.year = calendar.component(.year, from: Date())
+        dateComponents.month = calendar.component(.month, from: Date())
+        guard let currentDate = calendar.date(from: dateComponents) else { return HeatMapDataContainer() }
+
+        var cellData: [HeatmapCellData] = []
+        for (date, count) in lineChartData.monthly where calendar.isDate(date, equalTo: currentDate, toGranularity: .month){
+            let data = HeatmapCellData(date: date, count: count)
+            cellData.append(data)
+        }
+
+        return HeatMapDataContainer(heatmapData: cellData.sorted{ $0.date < $1.date })
+    }
+
     private func groupDataByCustomTimeInterval(data: [Occurence], timeInterval: Calendar.Component) -> [Date: Int] {
         guard let first = data.first else { return [:] }
         var result: [Date: Int] = [:]
         var currentDate = first.timestamp
         var currentSum: Int = 0
-
-        let calendar = Calendar.current
 
         for occurence in data {
             let currentComponent = calendar.component(timeInterval, from: currentDate)
