@@ -35,6 +35,7 @@ struct OnboardingView: View {
                     
                     // Spacer()
                 }
+                // Might need to check this out as I cannot get the behavior selection screen to show
                 NavigationLink(
                     destination: TrackedBehaviorView(),
                     isActive: $showTrackedBehaviorView,
