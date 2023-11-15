@@ -34,7 +34,7 @@ struct CalendarHeatMap: View {
                             let weekday = week * 7 + day
                             let date = getMockDate(day: weekday)
                             if let value = data.monthly.findValue(at: date, toGranularity: .day) {
-                                CellView(value: weekday, getColor: self.getColor)
+                                CellView(weekday: weekday, value: value, getColor: self.getColor)
                             } else {
                                 EmptyCellView()
                             }
@@ -117,7 +117,7 @@ struct CalendarHeatMap: View {
     
     func getColor(value: Int) -> Color {
         // Define the maximum value that corresponds to full red
-        let maxValue = 100
+        let maxValue = 10
         
         // Clamp the value between 0 and maxValue
         let clampedValue = min(max(value, 0), maxValue)
@@ -126,12 +126,13 @@ struct CalendarHeatMap: View {
         let intensity = Double(clampedValue) / Double(maxValue)
         
         // Return a color from white to red based on the intensity
-        return Color(red: 1 + intensity, green: 0.6 - intensity, blue: 0.4 - intensity)
+        return Color(red: 1 + intensity, green: 0.8 - intensity, blue: 0.4 - intensity)
     }
     
 }
 
 struct CellView: View {
+    let weekday: Int
     let value: Int
     let cellSize: CGFloat = 30
     let getColor: (Int) -> Color
@@ -143,7 +144,7 @@ struct CellView: View {
                 .fill(getColor(value))
                 .frame(width: cellSize, height: cellSize)
             
-            Text("\(value)")
+            Text("\(weekday)")
                 .font(.subheadline)
                 .foregroundColor(.white)
         }
