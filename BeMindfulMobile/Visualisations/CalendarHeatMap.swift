@@ -10,57 +10,76 @@ import SwiftUI
 
 struct CalendarHeatMap: View {
     @State var data: HeatMapDataContainer
-    let cellSize: CGFloat = 30 // Specific size for each cell
+    let cellSize: CGFloat = 30
+    
     
     var body: some View {
+        let currentDate = Date()
+        
         VStack(alignment: .leading) {
             VStack(alignment: .leading){
                 Text("Calendar")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                 
-                Text("MAY 2022")
+                Text(getMonthName(from: currentDate))
                     .font(.callout)
                     .foregroundStyle(.secondary)
                 HStack{
                     HStack {
-                        EmptyCellView(getColor: Color(red: 1, green: 0.8 - 0, blue: 0.4 - 0))
+                        EmptyCellView(getColor: Color(red: 1 + 1, green: 0.8 - 0, blue: 0.4 - 0))
                         Text("Less")
                             .font(.callout)
                             .foregroundStyle(.secondary)
                     }
                     Text("")
                     HStack {
-                        EmptyCellView(getColor: Color(red: 1, green: 0.8 - 1, blue: 0.4 - 1))
+                        EmptyCellView(getColor: Color(red: 1 + 1, green: 0.8 - 1, blue: 0.4 - 1))
                         Text("Many")
                             .font(.callout)
                             .foregroundStyle(.secondary)
                     }
                 }
             }
-//            VStack(alignment: .center) {
-//                // Displays day of the week headers
-//                HStack {
-//                    ForEach(getDaysOfWeekStartingFromMonday(), id: \.self) { day in
-//                        Text(day)
-//                            .frame(width: cellSize, height: cellSize)
-//                            .font(.caption2)
-//                    }
-//                }
+            VStack(alignment: .center) {
+                // Displays day of the week headers
+                HStack {
+                    ForEach(getDaysOfWeekStartingFromMonday(), id: \.self) { day in
+                        Text(day)
+                            .frame(width: cellSize, height: cellSize)
+                            .font(.caption2)
+                    }
+                }
+                ForEach(0..<5) { week in
+                    HStack {
+                        ForEach(0..<7) { day in
+                            let weekday = week * 7 + day
+                            let date = getDate(week: week, day: day)
+                            // add month data from real data
+                            // if let value = data.heatmapData
+                            CellView(weekday: weekday, value: day, getColor: self.getColor)
+
+                        }
+                    }
+                }
 //                ForEach(0..<6) { week in
 //                    HStack {
 //                        ForEach(0..<7) { day in
 //                            let weekday = week * 7 + day
-//                            let date = getMockDate(day: weekday)
+//                            let date = getDate(week: week, day: day)
 //                            
-//                            if let startOfMonth = getStartOfMonth(month: 5) {
+//                            if let value = data.monthly.findValue(at: date, toGranularity: .day) {
+//                                CellView(weekday: weekday, value: value, getColor: self.getColor)
+//                                
+
+//                            if let startOfMonth = Date() {
 //                                if date < startOfMonth {
-//                                    // Display empty cell for days before the start of the month
+//                                    // Displays empty cell for days before the start of the month
 //                                    EmptyCellView()
 //                                } else {
-//                                    // Display cell with color and date for days on or after the start of the month
-//                                    if let value = data.monthly.findValue(at: date, toGranularity: .day) {
-//                                        CellView(weekday: weekday, value: value, getColor: self.getColor)
+                                    // Displays cell with color and date for days on or after the start of the month
+                                    
+                                        
 //                                    } else {
 //                                        EmptyCellView()
 //                                    }
@@ -69,8 +88,14 @@ struct CalendarHeatMap: View {
 //                        }
 //                    }
 //                }
-//            }
+            }
         }
+    }
+    
+    func getMonthName(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: date)
     }
     
     func getDaysOfWeekStartingFromMonday() -> [String] {
@@ -99,31 +124,26 @@ struct CalendarHeatMap: View {
         }
     }
     
-    func getStartOfMonth(month: Int) -> Date? {
-        let calendar = Calendar.current
-        var components = DateComponents()
-        components.year = 2022
-        components.month = month
-        return calendar.date(from: components)
-    }
-    
     
     func getDate(week: Int, day: Int) -> Date {
-        // Gets the first day of the current month
+        // Gets the current calendar
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month], from: Date())
-        guard let firstDayOfMonth = calendar.date(from: components) else {
+
+        // Get the current date components
+        var currentDateComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+
+        // Get the first day of the month
+        guard let firstDayOfMonth = calendar.date(from: currentDateComponents) else {
             // Error handling
             print("Error getting first day of month")
             return Date()
         }
-        
-        // Calculates the date for the given week and day
-        var dateComponents = DateComponents()
-        dateComponents.weekOfMonth = week
-        dateComponents.weekday = day
-        
-        guard let date = calendar.date(byAdding: dateComponents, to: firstDayOfMonth) else {
+
+        // Calculate the date for the given week and day
+        currentDateComponents.weekOfMonth = week
+        currentDateComponents.weekday = day
+
+        guard let date = calendar.date(bySetting: .day, value: currentDateComponents.day ?? 1, of: firstDayOfMonth) else {
             // Error handling
             print("Error calculating date")
             return Date()
@@ -131,6 +151,7 @@ struct CalendarHeatMap: View {
         
         return date
     }
+
     
     func getMockDate(day: Int) -> Date {
         // Calculate the date based on the day, month, and year
@@ -199,7 +220,7 @@ struct EmptyCellView: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
-            .fill(getColor ?? Color.gray) // Use getColor if not nil, otherwise use Color.gray
+            .fill(getColor ?? Color.gray)
             .opacity(0.3)
             .frame(width: cellSize, height: cellSize)
     }

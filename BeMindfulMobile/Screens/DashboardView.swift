@@ -10,7 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
     @ObservedObject var viewModel: OccurenceViewModel
-    @State private var showWelcomePopup = true
+    @State private var showWelcomePopup = false
     // @State private var timeRange: TimeRange = .lastHour
     let selectedBehavior: String
     
@@ -26,7 +26,7 @@ struct DashboardView: View {
                             .padding(.leading)
                         Spacer()
                     }
-                    Text("Last Synced: 9:39 AM")
+                    Text("Last Synced: viewModel.lineChartData.daily.dropLast())")
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .padding(.leading)

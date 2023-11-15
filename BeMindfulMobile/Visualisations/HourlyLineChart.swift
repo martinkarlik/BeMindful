@@ -41,6 +41,7 @@ struct HourlyLineChart: View {
 
     
     var body: some View {
+        
         let dataAverage = Double(data.grouped.map {
             $0.value
         }.reduce(0, +)) / Double(data.grouped.count)
@@ -50,7 +51,7 @@ struct HourlyLineChart: View {
         let minCount = data.grouped.map { $0.value }.min() ?? 0
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
         
-        // Calculate the start of the hour for the minimum date
+        // Calculates the start of the hour for the minimum date
         let hourBoundsForMinDate = LineChartData.getMockDate(day: Calendar.current.component(.day, from: minDate),
                                                 hour: Calendar.current.component(.hour, from: minDate))
         // Assuming maxDate is a Date value
@@ -88,11 +89,6 @@ struct HourlyLineChart: View {
             ])
             
         }
-        //        This modifier causes the crash, I'll leave it commented out for now
-        //        .chartSymbolScale([
-        //            "Nail Biting": Circle().strokeBorder(lineWidth: 2)
-        //        ])
-        
         .chartLegend(position: .top)
     }
 }
@@ -128,7 +124,7 @@ struct LineChartDetails: View {
             Text("\(selectedBehavior) occurrences")
                 .font(.title2.bold())
             
-            HourlyLineChart(data: chartData,selectedBehavior: selectedBehavior, timeRange: timeRange)
+            HourlyLineChart(data: chartData, selectedBehavior: selectedBehavior, timeRange: timeRange)
                 .frame(height: 240)
         }
     }
