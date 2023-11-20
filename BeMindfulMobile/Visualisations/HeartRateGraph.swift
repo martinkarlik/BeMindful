@@ -48,8 +48,7 @@ struct HeartRateGraph: View {
         let minCount = data.grouped.map { $0.value }.min() ?? 0
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
         
-        let hourBoundsForMinDate = LineChartData.getMockDate(day: Calendar.current.component(.day, from: minDate),
-                                                hour: Calendar.current.component(.hour, from: minDate))
+        let hourBoundsForMinDate = LineChartData.getHourEdges(from: minDate)
         // Assuming maxDate is a Date value
         let xScaleDomain: [Date] = [hourBoundsForMinDate.start, hourBoundsForMinDate.end]
         

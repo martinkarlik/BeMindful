@@ -89,34 +89,4 @@ extension LineChartData {
 
         Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
     }
-    
-    static func getMockDate(day: Int, hour: Int) -> (start: Date, end: Date) {
-        // Calculate the date based on the day, month, and year
-        let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.year = 2022
-        dateComponents.month = 5 // May
-        dateComponents.day = day
-        dateComponents.hour = hour
-
-        // Calculate the start of the hour
-        guard let startDate = calendar.date(from: dateComponents),
-              let startOfHour = calendar.date(bySetting: .minute, value: 0, of: startDate)
-        else {
-            // Handle this error in a way that makes sense for your app
-            print("Error calculating start date")
-            return (Date(), Date())
-        }
-
-        // Calculate the end of the hour
-        guard let endOfHour = calendar.date(bySetting: .minute, value: 59, of: startDate)
-        else {
-            // Handle this error in a way that makes sense for your app
-            print("Error calculating end date")
-            return (Date(), Date())
-        }
-
-        return (startOfHour, endOfHour)
-    }
-
 }
