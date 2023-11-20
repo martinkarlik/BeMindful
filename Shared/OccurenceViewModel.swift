@@ -102,17 +102,18 @@ class OccurenceViewModel: ObservableObject {
     }
 
     private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
+        let now = Date()
         let lastHour = occurences
-            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .hour) }
             .sorted()
         let lastDay = occurences
-            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInDay }
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .day) }
             .sorted()
         let lastWeek = occurences
-            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .weekOfYear) }
             .sorted()
         let lastMonth = occurences
-            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .month) }
             .sorted()
 
         let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
@@ -140,11 +141,12 @@ class OccurenceViewModel: ObservableObject {
 
     private func groupDataByCustomTimeInterval(data: [Occurence], timeInterval: Calendar.Component) -> [Date: Int] {
         guard let first = data.first else { return [:] }
+        let remaining = data.dropFirst()
         var result: [Date: Int] = [:]
         var currentDate = first.timestamp
-        var currentSum: Int = 0
+        var currentSum: Int = 1
 
-        for occurence in data {
+        for occurence in remaining {
             let currentComponent = calendar.component(timeInterval, from: currentDate)
             let occurenceComponent = calendar.component(timeInterval, from: occurence.timestamp)
             if occurenceComponent == currentComponent {
@@ -152,7 +154,7 @@ class OccurenceViewModel: ObservableObject {
             } else {
                 result[currentDate] = currentSum
                 currentDate = occurence.timestamp
-                currentSum = 0
+                currentSum = 1
             }
         }
 
@@ -160,6 +162,34 @@ class OccurenceViewModel: ObservableObject {
         result[currentDate] = currentSum
 
         return result
+    }
+
+    private func isSameDate(date1: Date, date2: Date, toGranularity component: Calendar.Component) -> Bool {
+        let components1 = calendar.dateComponents([.year, .month, .weekOfYear, .day, .hour], from: date1)
+        let components2 = calendar.dateComponents([.year, .month, .weekOfYear, .day, .hour], from: date2)
+        switch component {
+        case .month:
+            return components1.year == components2.year 
+            && components1.month == components2.month
+        case .weekOfYear:
+            return components1.year == components2.year
+            && components1.month == components2.month
+            && components1.weekOfYear == components2.weekOfYear
+        case .day:
+            return components1.year == components2.year
+            && components1.month == components2.month
+            && components1.weekOfYear == components2.weekOfYear
+            && components1.day == components2.day
+        case .hour:
+            return components1.year == components2.year
+            && components1.month == components2.month
+            && components1.weekOfYear == components2.weekOfYear
+            && components1.day == components2.day
+            && components1.hour == components2.hour
+        default:
+            // Not needed for now, so skipping implementation
+            return false
+        }
     }
 }
 
