@@ -67,6 +67,8 @@ struct BarChart: View {
                     y: .value("Occurrences", count)
                 )
                 .foregroundStyle(.purple)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
                 .symbol(.circle)
                 
                 .interpolationMethod(.catmullRom)

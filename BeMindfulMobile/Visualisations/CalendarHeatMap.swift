@@ -27,14 +27,14 @@ struct CalendarHeatMap: View {
                     .foregroundStyle(.secondary)
                 HStack{
                     HStack {
-                        EmptyCellView(getColor: Color(red: 1 + 1, green: 0.8 - 0, blue: 0.4 - 0))
+                        EmptyCellView(getColor: Color(red: 1 + 0, green: 0.8 - 0, blue: 0.4 - 0))
                         Text("Less")
                             .font(.callout)
                             .foregroundStyle(.secondary)
                     }
                     Text("")
                     HStack {
-                        EmptyCellView(getColor: Color(red: 1 + 1, green: 0.8 - 1, blue: 0.4 - 1))
+                        EmptyCellView(getColor: Color(red: 1, green: 0.8 - 1, blue: 0.4 - 1))
                         Text("Many")
                             .font(.callout)
                             .foregroundStyle(.secondary)
