@@ -57,6 +57,9 @@ struct HourlyLineChart: View {
         // Assuming maxDate is a Date value
         let xScaleDomain: [Date] = [hourBoundsForMinDate.start, hourBoundsForMinDate.end]
 
+        let yDomain = [0,
+                       maxCount + 1]
+
         ZStack{
             
             Chart(data.grouped, id: \.key) { (date, count) in
@@ -76,11 +79,7 @@ struct HourlyLineChart: View {
                 .foregroundStyle(.yellow)
                 .lineStyle(StrokeStyle(lineWidth: 2, dash: [9, 2]))
             }
-            .chartYAxis {
-                AxisMarks(
-                    values: [0, Double(minCount),dataAverage, Double(maxCount), Double(maxCount + 2)]
-                )
-            }
+            .chartYScale(domain: yDomain, type: .linear)
             // Use xScaleDomain in chartXScale
             .chartXScale(domain: xScaleDomain)
             .chartForegroundStyleScale([
