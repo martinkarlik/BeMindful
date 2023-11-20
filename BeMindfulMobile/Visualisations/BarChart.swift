@@ -8,7 +8,7 @@
 import Charts
 import SwiftUI
 
-struct HourlyLineChart: View {
+struct BarChart: View {
     @ObservedObject var data: ChartDataContainer
     let selectedBehavior: String
     var timeRange: TimeRange
@@ -52,7 +52,7 @@ struct HourlyLineChart: View {
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
         
         // Calculates the start of the hour for the minimum date
-        let hourBoundsForMinDate = LineChartData.getHourEdges(from: minDate)
+        let hourBoundsForMinDate = BarChartData.getHourEdges(from: minDate)
         // Assuming maxDate is a Date value
         let xScaleDomain: [Date] = [hourBoundsForMinDate.start, hourBoundsForMinDate.end]
 
@@ -91,9 +91,9 @@ struct HourlyLineChart: View {
     }
 }
 
-struct LineChartDetails: View {
+struct BarChartDetails: View {
     @State private var timeRange: TimeRange = .lastHour
-    @ObservedObject var data: LineChartData
+    @ObservedObject var data: BarChartData
     let selectedBehavior: String
 
     var chartData: ChartDataContainer {
@@ -122,15 +122,15 @@ struct LineChartDetails: View {
             Text("\(selectedBehavior) occurrences")
                 .font(.title2.bold())
             
-            HourlyLineChart(data: chartData, selectedBehavior: selectedBehavior, timeRange: timeRange)
+            BarChart(data: chartData, selectedBehavior: selectedBehavior, timeRange: timeRange)
                 .frame(height: 240)
         }
     }
 }
 
-struct LineChartDetails_Previews: PreviewProvider {
+struct BarChartDetails_Previews: PreviewProvider {
     static var previews: some View {
-        LineChartDetails(data: LineChartData.mock, selectedBehavior: "Nail biting")
+        BarChartDetails(data: BarChartData.mock, selectedBehavior: "Nail biting")
     }
 }
 

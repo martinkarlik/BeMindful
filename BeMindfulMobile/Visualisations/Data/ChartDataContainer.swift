@@ -17,6 +17,6 @@ class ChartDataContainer: ObservableObject {
 
 extension ChartDataContainer {
     static var mock: ChartDataContainer {
-        return ChartDataContainer(grouped: LineChartData.mock.hourly)
+        return ChartDataContainer(grouped: BarChartData.mock.hourly)
     }
 }

@@ -38,9 +38,9 @@ struct DashboardView: View {
                     }
                     Spacer()
                     List {
-                        LineChartDetails(data: viewModel.lineChartData, selectedBehavior: selectedBehavior)
+                        BarChartDetails(data: viewModel.lineChartData, selectedBehavior: selectedBehavior)
                             .listRowSeparator(.hidden)
-                        HeartGraphDetails(data: LineChartData.mockHeart)
+                        HeartGraphDetails(data: BarChartData.mockHeart)
                             .listRowSeparator(.hidden)
                         CalendarHeatMap(data: HeatMapDataContainer.mock)
                             .frame(maxWidth: .infinity)

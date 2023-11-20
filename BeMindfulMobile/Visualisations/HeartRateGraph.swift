@@ -48,7 +48,7 @@ struct HeartRateGraph: View {
         let minCount = data.grouped.map { $0.value }.min() ?? 0
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
         
-        let hourBoundsForMinDate = LineChartData.getHourEdges(from: minDate)
+        let hourBoundsForMinDate = BarChartData.getHourEdges(from: minDate)
         // Assuming maxDate is a Date value
         let xScaleDomain: [Date] = [hourBoundsForMinDate.start, hourBoundsForMinDate.end]
         
@@ -105,7 +105,7 @@ struct HeartRateGraph: View {
 
 struct HeartGraphDetails: View {
     @State private var timeRange: TimeRange = .lastHour
-    @ObservedObject var data: LineChartData
+    @ObservedObject var data: BarChartData
     // @ObservedObject var timeRangeData: TimeRangePickerData
     
     var chartData: ChartDataContainer {
@@ -138,7 +138,7 @@ struct HeartGraphDetails: View {
 
 struct HeartGraphDetails_Previews: PreviewProvider {
     static var previews: some View {
-        HeartGraphDetails(data: LineChartData.mockHeart)
+        HeartGraphDetails(data: BarChartData.mockHeart)
     }
 }
 

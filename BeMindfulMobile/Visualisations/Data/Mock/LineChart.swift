@@ -7,21 +7,21 @@
 
 import Foundation
 
-extension LineChartData {
-    static var emptyMock: LineChartData {
+extension BarChartData {
+    static var emptyMock: BarChartData {
         let hour: [Date: Int] = [:]
         let day: [Date: Int] = [:]
 
         let week: [Date: Int] = [:]
 
         let month: [Date: Int] = [:]
-        return LineChartData(hour: hour,
+        return BarChartData(hour: hour,
                              day: day,
                              week: week,
                              month: month)
     }
 
-    static var mock: LineChartData {
+    static var mock: BarChartData {
         let hour: [Date: Int] = [occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 8): 5,
                                  occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 10): 6,
                                  occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 14): 1,
@@ -79,7 +79,7 @@ extension LineChartData {
                                   occurrenceDate(year: 2022, month: 5, day: 29): 1,
                                   occurrenceDate(year: 2022, month: 5, day: 30): 3,
                                   occurrenceDate(year: 2022, month: 5, day: 31): 2]
-        return LineChartData(hour: hour,
+        return BarChartData(hour: hour,
                              day: day,
                              week: week,
                              month: month)

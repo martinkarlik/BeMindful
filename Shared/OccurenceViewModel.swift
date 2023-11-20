@@ -15,8 +15,8 @@ class OccurenceViewModel: ObservableObject {
     // We can probably make occurences not published after all the data and history is done
     @Published var occurences: [Occurence] = []
     @Published var trendData = TrendDataContainer()
-    @Published var lineChartData = LineChartData()
-    @Published var heartRateData = LineChartData() // might need to be changed, added for mock
+    @Published var lineChartData = BarChartData()
+    @Published var heartRateData = BarChartData() // might need to be changed, added for mock
     @Published var historyData = HistoryDataContainer()
     @Published var heatMapData = HeatMapDataContainer()
 
@@ -41,8 +41,8 @@ class OccurenceViewModel: ObservableObject {
 
     // Used for generating a mock viewModel 
     private init(trendData: TrendDataContainer,
-                 lineChartData: LineChartData,
-                 heartRateData: LineChartData,
+                 lineChartData: BarChartData,
+                 heartRateData: BarChartData,
                  historyData: HistoryDataContainer) {
         self.dataController = DataController(containerName: "Occurences", inMemory: true)
         self.occurences = []
@@ -101,7 +101,7 @@ class OccurenceViewModel: ObservableObject {
         )
     }
 
-    private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
+    private func getLineChartData(from occurences: [Occurence]) -> BarChartData {
         let now = Date()
         let lastHour = occurences
             .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .hour) }
@@ -121,7 +121,7 @@ class OccurenceViewModel: ObservableObject {
         let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekdayOrdinal)
         let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
 
-        return LineChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
+        return BarChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
     }
 
     private func getHeatmapData() -> HeatMapDataContainer {
@@ -196,8 +196,8 @@ class OccurenceViewModel: ObservableObject {
 extension OccurenceViewModel {
     static var mock: OccurenceViewModel {
         let viewModel = OccurenceViewModel(trendData: TrendDataContainer.mock,
-                                           lineChartData: LineChartData.mock,
-                                           heartRateData: LineChartData.mockHeart,
+                                           lineChartData: BarChartData.mock,
+                                           heartRateData: BarChartData.mockHeart,
                                            historyData: HistoryDataContainer.mock)
         return viewModel
     }

@@ -14,6 +14,14 @@ enum TimeRange {
     case lastMonth
 }
 
+struct Utils {
+    static func round(value: Double, decimalPlaces: Int = 0) -> Double {
+        let multiplier = pow(10.0, Double(decimalPlaces))
+        return Darwin.round(value * multiplier) / multiplier
+    }
+}
+
+
 struct TimeRangePicker: View {
     @Binding var value: TimeRange
 
