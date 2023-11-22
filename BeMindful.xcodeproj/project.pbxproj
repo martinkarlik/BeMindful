@@ -63,6 +63,8 @@
 		4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
 		4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */; };
 		4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */; };
+		B003F4FB2B0E3441006DE425 /* HeartDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F4FA2B0E3441006DE425 /* HeartDataContainer.swift */; };
+		B003F4FE2B0E3A2C006DE425 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */; };
 		B04008AE29F861D000B3BC6C /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */; };
 		B04534652A004CAD00AB367E /* WelcomePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04534642A004CAD00AB367E /* WelcomePopUp.swift */; };
 		B04534672A00611500AB367E /* CalendarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04534662A00611500AB367E /* CalendarPickerView.swift */; };
@@ -158,6 +160,9 @@
 		4E9BDF3929EA8CCF00CA432A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccurenceViewModel.swift; sourceTree = "<group>"; };
 		4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTypes.swift; sourceTree = "<group>"; };
+		B003F4FA2B0E3441006DE425 /* HeartDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartDataContainer.swift; sourceTree = "<group>"; };
+		B003F4FC2B0E3824006DE425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopup.swift; sourceTree = "<group>"; };
 		B04534642A004CAD00AB367E /* WelcomePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePopUp.swift; sourceTree = "<group>"; };
 		B04534662A00611500AB367E /* CalendarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerView.swift; sourceTree = "<group>"; };
@@ -220,6 +225,7 @@
 				423665362A0AD00A00994F6B /* Mock */,
 				42D58AA029FDA06D001A025B /* TrendData.swift */,
 				42049C0B29FEED5300ACF1B1 /* BarChartData.swift */,
+				B003F4FA2B0E3441006DE425 /* HeartDataContainer.swift */,
 				4299E7302A0031A200896C3B /* TrendDataContainer.swift */,
 				4299E7342A003FC600896C3B /* ChartDataContainer.swift */,
 				423665302A0A95B700994F6B /* HistoryData.swift */,
@@ -302,6 +308,7 @@
 		4E36CAA529B8B3F500F380CC /* BeMindfulMobile */ = {
 			isa = PBXGroup;
 			children = (
+				B003F4FC2B0E3824006DE425 /* Info.plist */,
 				4E2693C329F3A92C00401A96 /* Screens */,
 				4E37301729EB14580016D348 /* Persistency */,
 				42049C0929FEA95E00ACF1B1 /* Views */,
@@ -335,6 +342,7 @@
 			children = (
 				4E37301829EB317C0016D348 /* Motion */,
 				4E36CACE29B8B3F800F380CC /* BeMindfulWatchApp.swift */,
+				B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */,
 				4E36CAD029B8B3F800F380CC /* WatchAppView.swift */,
 				4E36CAD229B8B3F900F380CC /* Assets.xcassets */,
 				4E36CAD429B8B3F900F380CC /* Preview Content */,
@@ -587,6 +595,7 @@
 				42D58AA129FDA06D001A025B /* TrendData.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
 				425004F82AEFAF02008CFFC7 /* Occurence+Comparable.swift in Sources */,
+				B003F4FB2B0E3441006DE425 /* HeartDataContainer.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4236653A2A0AD03000994F6B /* Bar.swift in Sources */,
 				4299E7312A0031A200896C3B /* TrendDataContainer.swift in Sources */,
@@ -623,6 +632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B003F4FE2B0E3A2C006DE425 /* HealthKitManager.swift in Sources */,
 				4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */,
 				4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */,
 				4236653F2A0AD11C00994F6B /* History.swift in Sources */,
@@ -800,6 +810,8 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mare.BeMindful;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -832,6 +844,8 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mare.BeMindful;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -866,8 +880,10 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMindfulMobile/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BeMindful;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -903,8 +919,10 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMindfulMobile/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BeMindful;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
