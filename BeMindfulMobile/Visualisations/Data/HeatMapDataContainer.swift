@@ -11,6 +11,6 @@ class HeatMapDataContainer: ObservableObject {
     @Published var heatmapData: [HeatmapCellData]
 
     init(heatmapData: [HeatmapCellData] = []) {
-        self.heatmapData = heatmapData
+        self.heatmapData = heatmapData.sorted{ $0.date < $1.date }
     }
 }

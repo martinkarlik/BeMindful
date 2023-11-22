@@ -146,7 +146,7 @@ class OccurenceViewModel: ObservableObject {
             cellData.append(data)
         }
 
-        return HeatMapDataContainer(heatmapData: cellData.sorted{ $0.date < $1.date })
+        return HeatMapDataContainer(heatmapData: cellData)
     }
 
     private func groupDataByCustomTimeInterval(data: [Occurence], timeInterval: Calendar.Component) -> [Date: Int] {
