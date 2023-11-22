@@ -15,9 +15,11 @@ class OccurenceViewModel: ObservableObject {
     // We can probably make occurences not published after all the data and history is done
     @Published var occurences: [Occurence] = []
     @Published var trendData = TrendDataContainer()
-    @Published var lineChartData = LineChartData()
+    @Published var lineChartData = BarChartData()
+    @Published var heartRateData = BarChartData() // might need to be changed, added for mock
     @Published var historyData = HistoryDataContainer()
     @Published var heatMapData = HeatMapDataContainer()
+    @Published var lastSynced = Date()
 
 
     private let dataController: DataController
@@ -35,17 +37,20 @@ class OccurenceViewModel: ObservableObject {
             trendData = getTrendData(from: occurences)
             lineChartData = getLineChartData(from: occurences)
             heatMapData = getHeatmapData()
+            lastSynced = Date()
         }
     }
 
     // Used for generating a mock viewModel 
     private init(trendData: TrendDataContainer,
-                 lineChartData: LineChartData,
+                 lineChartData: BarChartData,
+                 heartRateData: BarChartData,
                  historyData: HistoryDataContainer) {
         self.dataController = DataController(containerName: "Occurences", inMemory: true)
         self.occurences = []
         self.trendData = trendData
         self.lineChartData = lineChartData
+        self.heartRateData = heartRateData
         self.historyData = historyData
     }
     
@@ -53,7 +58,15 @@ class OccurenceViewModel: ObservableObject {
         _ = Occurence(context: dataController.context, timestamp: occurenceTimestamp, type: "Hair pulling")
         dataController.saveData()
         // Until I find a prettier solution to auto-update after save
+        refreshData(request: request)
+    }
+
+    private func refreshData(request: NSFetchRequest<Occurence>) {
         occurences = dataController.fetchData(request: request)
+        trendData = getTrendData(from: occurences)
+        lineChartData = getLineChartData(from: occurences)
+        heatMapData = getHeatmapData()
+        lastSynced = Date()
     }
 
     private func getTrendData(from occurences: [Occurence]) -> TrendDataContainer {
@@ -98,18 +111,19 @@ class OccurenceViewModel: ObservableObject {
         )
     }
 
-    private func getLineChartData(from occurences: [Occurence]) -> LineChartData {
+    private func getLineChartData(from occurences: [Occurence]) -> BarChartData {
+        let now = Date()
         let lastHour = occurences
-            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .hour) }
             .sorted()
         let lastDay = occurences
-            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInDay }
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .day) }
             .sorted()
         let lastWeek = occurences
-            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .weekOfYear) }
             .sorted()
         let lastMonth = occurences
-            .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .month) }
             .sorted()
 
         let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
@@ -117,7 +131,7 @@ class OccurenceViewModel: ObservableObject {
         let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekdayOrdinal)
         let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
 
-        return LineChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
+        return BarChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
     }
 
     private func getHeatmapData() -> HeatMapDataContainer {
@@ -132,16 +146,17 @@ class OccurenceViewModel: ObservableObject {
             cellData.append(data)
         }
 
-        return HeatMapDataContainer(heatmapData: cellData.sorted{ $0.date < $1.date })
+        return HeatMapDataContainer(heatmapData: cellData)
     }
 
     private func groupDataByCustomTimeInterval(data: [Occurence], timeInterval: Calendar.Component) -> [Date: Int] {
         guard let first = data.first else { return [:] }
+        let remaining = data.dropFirst()
         var result: [Date: Int] = [:]
         var currentDate = first.timestamp
-        var currentSum: Int = 0
+        var currentSum: Int = 1
 
-        for occurence in data {
+        for occurence in remaining {
             let currentComponent = calendar.component(timeInterval, from: currentDate)
             let occurenceComponent = calendar.component(timeInterval, from: occurence.timestamp)
             if occurenceComponent == currentComponent {
@@ -149,7 +164,7 @@ class OccurenceViewModel: ObservableObject {
             } else {
                 result[currentDate] = currentSum
                 currentDate = occurence.timestamp
-                currentSum = 0
+                currentSum = 1
             }
         }
 
@@ -158,12 +173,41 @@ class OccurenceViewModel: ObservableObject {
 
         return result
     }
+
+    private func isSameDate(date1: Date, date2: Date, toGranularity component: Calendar.Component) -> Bool {
+        let components1 = calendar.dateComponents([.year, .month, .weekOfYear, .day, .hour], from: date1)
+        let components2 = calendar.dateComponents([.year, .month, .weekOfYear, .day, .hour], from: date2)
+        switch component {
+        case .month:
+            return components1.year == components2.year 
+            && components1.month == components2.month
+        case .weekOfYear:
+            return components1.year == components2.year
+            && components1.month == components2.month
+            && components1.weekOfYear == components2.weekOfYear
+        case .day:
+            return components1.year == components2.year
+            && components1.month == components2.month
+            && components1.weekOfYear == components2.weekOfYear
+            && components1.day == components2.day
+        case .hour:
+            return components1.year == components2.year
+            && components1.month == components2.month
+            && components1.weekOfYear == components2.weekOfYear
+            && components1.day == components2.day
+            && components1.hour == components2.hour
+        default:
+            // Not needed for now, so skipping implementation
+            return false
+        }
+    }
 }
 
 extension OccurenceViewModel {
     static var mock: OccurenceViewModel {
         let viewModel = OccurenceViewModel(trendData: TrendDataContainer.mock,
-                                           lineChartData: LineChartData.mock,
+                                           lineChartData: BarChartData.mock,
+                                           heartRateData: BarChartData.mockHeart,
                                            historyData: HistoryDataContainer.mock)
         return viewModel
     }

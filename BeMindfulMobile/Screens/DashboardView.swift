@@ -10,59 +10,64 @@ import SwiftUI
 struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
     @ObservedObject var viewModel: OccurenceViewModel
-    @State private var showWelcomePopup = true
+    @State private var showWelcomePopup = false
+    // @State private var timeRange: TimeRange = .lastHour
     let selectedBehavior: String
-    
-    var body: some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: 16) {
-                Spacer()
-                HStack {
-                    Text("Dashboard: \(selectedBehavior)")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("DarkPurple"))
-                        .padding(.leading)
-                    Spacer()
-                }
-                Text("Last Synced: 9:39 AM")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .padding(.leading)
-                Spacer()
-                HStack {
-                    Spacer()
-                    RealTimeCounter(data: viewModel.trendData)
-                    Spacer()
-                }
-                Spacer()
-                LineChartDetails(data: viewModel.lineChartData, selectedBehavior: selectedBehavior)
-                Spacer()
-                Divider()
-            }
-            
-            .onAppear {
-                if !isTrackedBehaviorViewActive {
-                    showWelcomePopup = false
-                } else {
-                    showWelcomePopup = true
-                }
-            }
-            
-            if showWelcomePopup {
-                WelcomePopUp(title: "Welcome!",
-                             message: "You don’t have any data yet.\n\nWhenever you notice yourself biting your nails, track it in the watch app by pressing the button.\nThen you’ll be able to see your data here.",
-                             onCancel: {
-                    showWelcomePopup = false
-                    isTrackedBehaviorViewActive = false
 
-                    // if there are data we should set the
-                    // showRealTimeCounter = true
-                })
+    var body: some View {
+            ZStack {
+                VStack(alignment: .leading, spacing: 16) {
+                    Spacer()
+                    HStack {
+                        Text("Dashboard: \(selectedBehavior)")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("DarkPurple"))
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    Text("Last Synced: \(Utils.formatDate(date: viewModel.lastSynced, to: "HH:mm") ?? "Unknown")")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.leading)
+                    List {
+                        HStack {
+                            RealTimeCounter(data: viewModel.trendData)
+                        }
+                        BarChartDetails(data: viewModel.lineChartData, selectedBehavior: selectedBehavior)
+                            .listRowSeparator(.hidden)
+                        HeartGraphDetails(data: BarChartData.mockHeart)
+                            .listRowSeparator(.hidden)
+                        CalendarHeatMap(data: HeatMapDataContainer.mock)
+                            .frame(maxWidth: .infinity)
+                            .listRowSeparator(.hidden)
+                        }
+                        .listStyle(.plain)
+                    Divider()
+                }                
+                .onAppear {
+                    if !isTrackedBehaviorViewActive {
+                        showWelcomePopup = false
+                    } else {
+                        showWelcomePopup = true
+                    }
+                }
+                
+                if showWelcomePopup {
+                    WelcomePopUp(title: "Welcome!",
+                                 message: "You don’t have any data yet.\n\nWhenever you notice yourself biting your nails, track it in the watch app by pressing the button.\nThen you’ll be able to see your data here.",
+                                 onCancel: {
+                        showWelcomePopup = false
+                        isTrackedBehaviorViewActive = false
+                        
+                        // if there are data we should set the
+                        // showRealTimeCounter = true
+                    })
+
+                }
             }
-        }
-        .navigationTitle("")
-        .navigationBarHidden(true)
+            .navigationTitle("")
+            .navigationBarHidden(true)
     }
 }
 
