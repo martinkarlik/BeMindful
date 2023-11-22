@@ -19,6 +19,12 @@ struct Utils {
         let multiplier = pow(10.0, Double(decimalPlaces))
         return Darwin.round(value * multiplier) / multiplier
     }
+
+    static func formatDate(date: Date, to format: String) -> String? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: date)
+    }
 }
 
 

@@ -13,7 +13,7 @@ struct DashboardView: View {
     @State private var showWelcomePopup = false
     // @State private var timeRange: TimeRange = .lastHour
     let selectedBehavior: String
-    
+
     var body: some View {
             ZStack {
                 VStack(alignment: .leading, spacing: 16) {
@@ -26,7 +26,7 @@ struct DashboardView: View {
                             .padding(.leading)
                         Spacer()
                     }
-                    Text("Last Synced: viewModel.lineChartData.daily.dropLast())")
+                    Text("Last Synced: \(Utils.formatDate(date: viewModel.lastSynced, to: "HH:mm") ?? "Unknown")")
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .padding(.leading)

@@ -19,6 +19,7 @@ class OccurenceViewModel: ObservableObject {
     @Published var heartRateData = BarChartData() // might need to be changed, added for mock
     @Published var historyData = HistoryDataContainer()
     @Published var heatMapData = HeatMapDataContainer()
+    @Published var lastSynced = Date()
 
 
     private let dataController: DataController
@@ -36,6 +37,7 @@ class OccurenceViewModel: ObservableObject {
             trendData = getTrendData(from: occurences)
             lineChartData = getLineChartData(from: occurences)
             heatMapData = getHeatmapData()
+            lastSynced = Date()
         }
     }
 
@@ -56,7 +58,15 @@ class OccurenceViewModel: ObservableObject {
         _ = Occurence(context: dataController.context, timestamp: occurenceTimestamp, type: "Hair pulling")
         dataController.saveData()
         // Until I find a prettier solution to auto-update after save
+        refreshData(request: request)
+    }
+
+    private func refreshData(request: NSFetchRequest<Occurence>) {
         occurences = dataController.fetchData(request: request)
+        trendData = getTrendData(from: occurences)
+        lineChartData = getLineChartData(from: occurences)
+        heatMapData = getHeatmapData()
+        lastSynced = Date()
     }
 
     private func getTrendData(from occurences: [Occurence]) -> TrendDataContainer {
