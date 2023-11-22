@@ -30,14 +30,10 @@ struct DashboardView: View {
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .padding(.leading)
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        RealTimeCounter(data: viewModel.trendData)
-                        Spacer()
-                    }
-                    Spacer()
                     List {
+                        HStack {
+                            RealTimeCounter(data: viewModel.trendData)
+                        }
                         BarChartDetails(data: viewModel.lineChartData, selectedBehavior: selectedBehavior)
                             .listRowSeparator(.hidden)
                         HeartGraphDetails(data: BarChartData.mockHeart)
