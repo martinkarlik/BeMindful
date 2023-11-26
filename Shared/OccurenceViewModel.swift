@@ -11,6 +11,8 @@ import SwiftUI
 import CoreData
 
 class OccurenceViewModel: ObservableObject {
+    private var cancellables: Set<AnyCancellable> = []
+    var healthKitManager = HealthKitManager()
 
     // We can probably make occurences not published after all the data and history is done
     @Published var occurences: [Occurence] = []
@@ -39,6 +41,23 @@ class OccurenceViewModel: ObservableObject {
             heatMapData = getHeatmapData()
             lastSynced = Date()
         }
+        
+        if healthKitManager.isAuthorized() {
+            print("Heart rate authorized")
+            recordLiveHeartRate()
+            
+        } else {
+            // Request health authorization.
+            self.requestAuthorization()
+        }
+        
+        // Schedule the recordLiveHeartRate function to be called every 30 seconds
+                Timer.publish(every: 30.0, tolerance: 5.0, on: .main, in: .common)
+                    .autoconnect()
+                    .sink { _ in
+                        self.recordLiveHeartRate()
+                    }
+                    .store(in: &cancellables)
     }
 
     // Used for generating a mock viewModel 
@@ -199,6 +218,38 @@ class OccurenceViewModel: ObservableObject {
         default:
             // Not needed for now, so skipping implementation
             return false
+        }
+    }
+    
+    func recordLiveHeartRate() {
+            // Your existing function implementation
+        healthKitManager.recordLiveHeartRate { result in
+            switch result {
+            case .success(let BMP):
+                print("Heart rate recorded successfully in the viewModel: \(BMP) BPM")
+                
+            case .failure(let error):
+                // Handle the error
+                print("Authorization error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func requestAuthorization() {
+        healthKitManager.requestAuthorization { result in
+            switch result {
+            case .success(let success):
+                if success {
+                    self.recordLiveHeartRate()
+                } else {
+                    // Authorization denied
+                    print("Authorization denied")
+                }
+                
+            case .failure(let error):
+                // Handle the error
+                print("Authorization error: \(error.localizedDescription)")
+            }
         }
     }
 }

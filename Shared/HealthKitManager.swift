@@ -11,6 +11,7 @@ enum HealthKitError: Error {
     case invalidType
     case notAuthorized
     case noData
+    case unknown
     
     
     var errorDescription: String? {
@@ -21,6 +22,8 @@ enum HealthKitError: Error {
                 return "HealthKit authorization denied."
             case .noData:
                 return "No data to return"
+            case .unknown:
+                return "Unknown"
             }
         }
 }
@@ -57,13 +60,14 @@ class HealthKitManager {
     }
 
     // Function to record live heart rate
-    func recordLiveHeartRate(completion: @escaping (Double?, Error?) -> Void) {
+    func recordLiveHeartRate(completion: @escaping (Result<Double, HealthKitError>) -> Void) {
         
         // Automate it every 30 seconds
+        // try to handle that with publisher
 
         // Define the type for heart rate
         guard let heartRateType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
-            completion(nil, HealthKitError.invalidType)
+            completion(.failure(.invalidType))
             return
         }
 
@@ -72,7 +76,7 @@ class HealthKitManager {
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
         let query = HKSampleQuery(sampleType: heartRateType, predicate: mostRecentPredicate, limit: 1, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
             if let error = error {
-                completion(nil, error)
+                completion(.failure(.invalidType))
                 return
             }
 
@@ -80,10 +84,10 @@ class HealthKitManager {
             if let sample = samples?.first as? HKQuantitySample {
                 let heartRateUnit = HKUnit.count().unitDivided(by: HKUnit.minute())
                 let heartRate = sample.quantity.doubleValue(for: heartRateUnit)
-                completion(heartRate, nil)
+                completion(.success(heartRate))
             } else {
                 // No heart rate data found
-                completion(nil, HealthKitError.noData)
+                completion(.failure(.noData))
             }
         }
 

@@ -28,22 +28,7 @@ struct WatchAppView: View {
                     
                 } else {
                     // Request health authorization.
-                    // Call the requestAuthorization method
-                    healthKitManager.requestAuthorization { result in
-                        switch result {
-                        case .success(let success):
-                            if success {
-                                recordLiveHeartRate()
-                            } else {
-                                // Authorization denied
-                                print("Authorization denied")
-                            }
-                            
-                        case .failure(let error):
-                            // Handle the error
-                            print("Authorization error: \(error.localizedDescription)")
-                        }
-                    }
+                    requestAuthorization()
                 }
             }
         }
@@ -59,13 +44,37 @@ struct WatchAppView: View {
     
     func recordLiveHeartRate() {
         // HealthKit is already authorized, proceed with recording live heart rate data.
-        healthKitManager.recordLiveHeartRate { heartRate, error in
-            if let heartRate = heartRate {
+        healthKitManager.recordLiveHeartRate { result in
+            switch result {
+            case .success(let heartRate):
                 // Heart rate recorded successfully
                 print("Heart rate recorded successfully: \(heartRate) BPM")
-            } else if let error = error {
+
+                // Handle the recorded heart rate as needed
+                // For example, you might update your UI or store the data.
+
+            case .failure(let error):
                 // Handle the error
                 print("Error recording heart rate: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
+    func requestAuthorization() {
+        healthKitManager.requestAuthorization { result in
+            switch result {
+            case .success(let success):
+                if success {
+                    recordLiveHeartRate()
+                } else {
+                    // Authorization denied
+                    print("Authorization denied")
+                }
+                
+            case .failure(let error):
+                // Handle the error
+                print("Authorization error: \(error.localizedDescription)")
             }
         }
     }
