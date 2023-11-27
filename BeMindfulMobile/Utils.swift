@@ -4,15 +4,8 @@
 //
 //  Created by Marina Epitropakis on 22/03/2023.
 //
-
-import SwiftUI
-
-enum TimeRange {
-    case lastHour
-    case lastDay
-    case lastWeek
-    case lastMonth
-}
+import Foundation
+import Charts
 
 struct Utils {
     static func round(value: Double, decimalPlaces: Int = 0) -> Double {
@@ -25,20 +18,116 @@ struct Utils {
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
-}
 
+    private static func getHourEdges(from date: Date) -> (start: Date, end: Date) {
+        let calendar = Calendar.current
+        var startComponent = DateComponents()
+        startComponent.minute = 0
+        var endComponent = DateComponents()
+        endComponent.minute = 59
+        guard let start = calendar.nextDate(after: date, matching: startComponent, matchingPolicy: .nextTime, direction: .backward),
+              let end = calendar.nextDate(after: date, matching: endComponent, matchingPolicy: .nextTime) 
+        else { return (Date(), Date()) }
 
-struct TimeRangePicker: View {
-    @Binding var value: TimeRange
+        return (start, end)
+    }
 
-    var body: some View {
-        Picker("Time Range", selection: $value.animation(.easeInOut)) {
-            Text("Hour").tag(TimeRange.lastHour)
-            Text("Day").tag(TimeRange.lastDay)
-            Text("Week").tag(TimeRange.lastWeek)
-            Text("Month").tag(TimeRange.lastMonth)
+    private static func getDayEdges(from date: Date) -> (start: Date, end: Date) {
+        let calendar = Calendar.current
+        var startComponent = DateComponents()
+        startComponent.hour = 0
+        var endComponent = DateComponents()
+        endComponent.hour = 23
+        guard let start = calendar.nextDate(after: date, matching: startComponent, matchingPolicy: .nextTime, direction: .backward),
+              let end = calendar.nextDate(after: date, matching: endComponent, matchingPolicy: .nextTime) 
+        else { return (Date(), Date()) }
+
+        return (start, end)
+    }
+
+    private static func getWeekEdges(from date: Date) -> (start: Date, end: Date) {
+        let calendar = Calendar.current
+        var startComponent = DateComponents()
+        startComponent.weekday = 1
+        var endComponent = DateComponents()
+        endComponent.weekday = 7
+        endComponent.hour = 23
+        guard let start = calendar.nextDate(after: date, matching: startComponent, matchingPolicy: .nextTime, direction: .backward),
+              let end = calendar.nextDate(after: date, matching: endComponent, matchingPolicy: .nextTime)
+        else { return (Date(), Date()) }
+
+        return (start, end)
+    }
+
+    private static func getMonthEdges(from date: Date) -> (start: Date, end: Date) {
+        let calendar = Calendar.current
+        guard let interval = calendar.dateInterval(of: .month, for: date) else { return (Date(), Date()) }
+        var startComponent = DateComponents()
+        startComponent.day = 1
+        var endComponent = DateComponents()
+        endComponent.day = calendar.component(.day, from: interval.end)
+        guard let start = calendar.nextDate(after: date, matching: startComponent, matchingPolicy: .nextTime, direction: .backward),
+              let end = calendar.nextDate(after: date, matching: endComponent, matchingPolicy: .nextTime)
+        else { return (Date(), Date()) }
+
+        return (start, end)
+    }
+
+    static func getXDomain(for timeRange: TimeRange) -> [Date] {
+        let date = Date()
+        switch timeRange {
+        case .hour:
+            let hourBounds = getHourEdges(from: date)
+            return [hourBounds.start, hourBounds.end]
+        case .day:
+            let dayBounds = getDayEdges(from: date)
+            return [dayBounds.start, dayBounds.end]
+        case .week:
+            let weekBounds = getWeekEdges(from: date)
+            return [weekBounds.start, weekBounds.end]
+        case .month:
+            let monthBounds = getMonthEdges(from: date)
+            return [monthBounds.start, monthBounds.end]
         }
-        .pickerStyle(.segmented)
+    }
+
+    static func getXComponent(for timeRange: TimeRange) -> Calendar.Component {
+        switch timeRange {
+        case .hour:
+            return .minute
+        case .day:
+            return .hour
+        case .week:
+            return .weekday
+        case .month:
+            return .day
+        }
+    }
+
+    static func getXFormat(for timeRange: TimeRange) -> Date.FormatStyle {
+        switch timeRange {
+        case .hour:
+            return .dateTime.hour().minute()
+        case .day:
+            return .dateTime.hour(.defaultDigits(amPM: .abbreviated)).minute()
+        case .week:
+            return .dateTime.weekday(.abbreviated)
+        case .month:
+            return .dateTime.month().day()
+        }
+    }
+
+    static func getXValues(for timeRange: TimeRange) -> AxisMarkValues {
+        switch timeRange {
+        case .hour:
+            return .automatic
+        case .day:
+            return .automatic
+        case .week:
+            return .automatic(desiredCount: 7)
+        case .month:
+            return .automatic
+        }
     }
 }
 

@@ -11,7 +11,7 @@ struct DashboardView: View {
     @AppStorage("tracking") var isTrackedBehaviorViewActive: Bool = true
     @ObservedObject var viewModel: OccurenceViewModel
     @State private var showWelcomePopup = false
-    // @State private var timeRange: TimeRange = .lastHour
+    @State private var timeRange: TimeRange = .hour
     let selectedBehavior: String
 
     var body: some View {
@@ -34,9 +34,15 @@ struct DashboardView: View {
                         HStack {
                             RealTimeCounter(data: viewModel.trendData)
                         }
-                        BarChartDetails(data: viewModel.lineChartData, selectedBehavior: selectedBehavior)
+
+                        TimeRangePicker(value: $timeRange)
+                            .padding(.bottom)
+                        BarChartDetails(data: viewModel.lineChartData,
+                                        timeRange: $timeRange,
+                                        selectedBehavior: selectedBehavior)
                             .listRowSeparator(.hidden)
-                        HeartGraphDetails(data: BarChartData.mockHeart)
+                        HeartGraphDetails(data: BarChartData.mockHeart,
+                                          timeRange: $timeRange)
                             .listRowSeparator(.hidden)
                         CalendarHeatMap(data: HeatMapDataContainer.mock)
                             .frame(maxWidth: .infinity)
