@@ -24,7 +24,7 @@ struct Utils {
         var startComponent = DateComponents()
         startComponent.minute = 0
         var endComponent = DateComponents()
-        endComponent.minute = 59
+        endComponent.minute = 0
         guard let start = calendar.nextDate(after: date, matching: startComponent, matchingPolicy: .nextTime, direction: .backward),
               let end = calendar.nextDate(after: date, matching: endComponent, matchingPolicy: .nextTime) 
         else { return (Date(), Date()) }
@@ -37,7 +37,7 @@ struct Utils {
         var startComponent = DateComponents()
         startComponent.hour = 0
         var endComponent = DateComponents()
-        endComponent.hour = 23
+        endComponent.hour = 0
         guard let start = calendar.nextDate(after: date, matching: startComponent, matchingPolicy: .nextTime, direction: .backward),
               let end = calendar.nextDate(after: date, matching: endComponent, matchingPolicy: .nextTime) 
         else { return (Date(), Date()) }
@@ -65,6 +65,7 @@ struct Utils {
         var startComponent = DateComponents()
         startComponent.day = 1
         var endComponent = DateComponents()
+        // This possibly needs adjustment
         endComponent.day = calendar.component(.day, from: interval.end)
         guard let start = calendar.nextDate(after: date, matching: startComponent, matchingPolicy: .nextTime, direction: .backward),
               let end = calendar.nextDate(after: date, matching: endComponent, matchingPolicy: .nextTime)
