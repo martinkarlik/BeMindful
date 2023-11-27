@@ -34,6 +34,7 @@
 		4299E7312A0031A200896C3B /* TrendDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299E7302A0031A200896C3B /* TrendDataContainer.swift */; };
 		4299E7352A003FC600896C3B /* ChartDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299E7342A003FC600896C3B /* ChartDataContainer.swift */; };
 		4299E7362A00442D00896C3B /* TrendDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299E7302A0031A200896C3B /* TrendDataContainer.swift */; };
+		42C849482B0E507400195AEA /* TimeRangePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C849472B0E507400195AEA /* TimeRangePicker.swift */; };
 		42D58AA129FDA06D001A025B /* TrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D58AA029FDA06D001A025B /* TrendData.swift */; };
 		4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
 		4E24756929EFDAA000622706 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24756729EFDAA000622706 /* CheckmarkView.swift */; };
@@ -130,6 +131,7 @@
 		425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occurence+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4299E7302A0031A200896C3B /* TrendDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDataContainer.swift; sourceTree = "<group>"; };
 		4299E7342A003FC600896C3B /* ChartDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataContainer.swift; sourceTree = "<group>"; };
+		42C849472B0E507400195AEA /* TimeRangePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangePicker.swift; sourceTree = "<group>"; };
 		42D58AA029FDA06D001A025B /* TrendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendData.swift; sourceTree = "<group>"; };
 		4E24756729EFDAA000622706 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		4E2693C429F3A92C00401A96 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */,
 				B09CDC4029F92C330089E686 /* DashboardTabBar.swift */,
+				42C849472B0E507400195AEA /* TimeRangePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */,
 				4E2693CE29F3A92C00401A96 /* OnboardingView.swift in Sources */,
 				4299E7352A003FC600896C3B /* ChartDataContainer.swift in Sources */,
+				42C849482B0E507400195AEA /* TimeRangePicker.swift in Sources */,
 				B088C2832B051BD700396BDA /* HeatMap.swift in Sources */,
 				B04008AE29F861D000B3BC6C /* ConfirmationPopup.swift in Sources */,
 			);
