@@ -1,5 +1,5 @@
 //
-//  HeartRate.swift
+//  Heart.swift
 //  BeMindfulMobile
 //
 //  Created by Marina Epitropakis on 22/10/2023.
