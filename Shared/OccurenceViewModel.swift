@@ -90,6 +90,7 @@ class OccurenceViewModel: ObservableObject {
         heartRate = dataController.fetchData(request: requestHeartRate)
         trendData = getTrendData(from: occurences)
         lineChartData = getLineChartData(from: occurences)
+        heartChartData = getHeartChartData(from: heartRate)
         heatMapData = getHeatmapData()
         lastSynced = Date()
     }
