@@ -61,9 +61,6 @@ class HealthKitManager {
 
     // Function to record live heart rate
     func recordLiveHeartRate(completion: @escaping (Result<Double, HealthKitError>) -> Void) {
-        
-        // Automate it every 30 seconds
-        // try to handle that with publisher
 
         // Define the type for heart rate
         guard let heartRateType = HKObjectType.quantityType(forIdentifier: .heartRate) else {

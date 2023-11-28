@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 import WatchConnectivity
 import CoreMotion
 

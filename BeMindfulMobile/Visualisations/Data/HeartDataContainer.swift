@@ -8,3 +8,4 @@
 import HealthKit
 
 // include timestamp and BPM
+class HeartDataContainer: ChartDataContainer {}

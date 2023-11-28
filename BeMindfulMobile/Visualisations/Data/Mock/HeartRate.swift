@@ -7,21 +7,21 @@
 
 import Foundation
 
-extension BarChartData {
-    static var emptyMockHeart: BarChartData {
+extension HeartChartData {
+    static var emptyMockHeart: HeartChartData {
         let hour: [Date: Int] = [:]
         let day: [Date: Int] = [:]
 
         let week: [Date: Int] = [:]
 
         let month: [Date: Int] = [:]
-        return BarChartData(hour: hour,
+        return HeartChartData(hour: hour,
                              day: day,
                              week: week,
                              month: month)
     }
 
-    static var mockHeart: BarChartData {
+    static var mockHeart: HeartChartData {
         let hour: [Date: Int] = [occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 0): 62,
                                  occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 1): 64,
                                  occurrenceDate(year: 2022, month: 5, day: 2, hour: 8, minute: 2): 79,
@@ -114,7 +114,7 @@ extension BarChartData {
                                   occurrenceDate(year: 2022, month: 5, day: 29): 71,
                                   occurrenceDate(year: 2022, month: 5, day: 30): 73,
                                   occurrenceDate(year: 2022, month: 5, day: 31): 72]
-        return BarChartData(hour: hour,
+        return HeartChartData(hour: hour,
                              day: day,
                              week: week,
                              month: month)

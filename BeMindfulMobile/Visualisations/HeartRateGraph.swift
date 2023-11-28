@@ -9,7 +9,7 @@ import Charts
 import SwiftUI
 
 struct HeartRateGraph: View {
-    @ObservedObject var data: ChartDataContainer
+    @ObservedObject var data: HeartDataContainer
     var timeRange: TimeRange
     
     var xComponent: Calendar.Component {
@@ -48,7 +48,7 @@ struct HeartRateGraph: View {
         let minCount = data.grouped.map { $0.value }.min() ?? 0
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
         
-        let hourBoundsForMinDate = BarChartData.getHourEdges(from: minDate)
+        let hourBoundsForMinDate = HeartChartData.getHourEdges(from: minDate)
         // Assuming maxDate is a Date value
         let xScaleDomain: [Date] = [hourBoundsForMinDate.start, hourBoundsForMinDate.end]
         
@@ -105,19 +105,19 @@ struct HeartRateGraph: View {
 
 struct HeartGraphDetails: View {
     @State private var timeRange: TimeRange = .lastHour
-    @ObservedObject var data: BarChartData
+    @ObservedObject var data: HeartChartData
     // @ObservedObject var timeRangeData: TimeRangePickerData
     
-    var chartData: ChartDataContainer {
+    var chartData: HeartDataContainer {
         switch timeRange {
         case .lastHour:
-            return ChartDataContainer(grouped: data.hourly)
+            return HeartDataContainer(grouped: data.hourly)
         case .lastDay:
-            return ChartDataContainer(grouped: data.daily)
+            return HeartDataContainer(grouped: data.daily)
         case .lastWeek:
-            return ChartDataContainer(grouped: data.weekly)
+            return HeartDataContainer(grouped: data.weekly)
         case .lastMonth:
-            return ChartDataContainer(grouped: data.monthly)
+            return HeartDataContainer(grouped: data.monthly)
         }
     }
     
@@ -138,7 +138,7 @@ struct HeartGraphDetails: View {
 
 struct HeartGraphDetails_Previews: PreviewProvider {
     static var previews: some View {
-        HeartGraphDetails(data: BarChartData.mockHeart)
+        HeartGraphDetails(data: HeartChartData.mockHeart)
     }
 }
 

@@ -36,7 +36,7 @@ struct DashboardView: View {
                         }
                         BarChartDetails(data: viewModel.lineChartData, selectedBehavior: selectedBehavior)
                             .listRowSeparator(.hidden)
-                        HeartGraphDetails(data: BarChartData.mockHeart)
+                        HeartGraphDetails(data: viewModel.heartChartData)
                             .listRowSeparator(.hidden)
                         CalendarHeatMap(data: HeatMapDataContainer.mock)
                             .frame(maxWidth: .infinity)

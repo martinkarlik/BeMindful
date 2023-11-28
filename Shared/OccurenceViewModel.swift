@@ -13,21 +13,23 @@ import CoreData
 class OccurenceViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     var healthKitManager = HealthKitManager()
-
+    
     // We can probably make occurences not published after all the data and history is done
     @Published var occurences: [Occurence] = []
+    @Published var heartRate: [HeartRate] = []
     @Published var trendData = TrendDataContainer()
     @Published var lineChartData = BarChartData()
-    @Published var heartRateData = BarChartData() // might need to be changed, added for mock
+    @Published var heartChartData = HeartChartData()
     @Published var historyData = HistoryDataContainer()
     @Published var heatMapData = HeatMapDataContainer()
     @Published var lastSynced = Date()
-
-
+    
+    
     private let dataController: DataController
     private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
+    private let requestHeart = NSFetchRequest<HeartRate>(entityName: "HeartRate")
     private let calendar = Calendar.current
-
+    
     private let secondsInHour: Double = 3600
     private let secondsInDay: Double = 86400
     private let secondsInWeek: Double = 604800
@@ -36,8 +38,10 @@ class OccurenceViewModel: ObservableObject {
         dataController = DataController(containerName: "Occurences", inMemory: inMemory)
         if !inMemory {
             occurences = dataController.fetchData(request: request)
+            heartRate = dataController.fetchData(request: requestHeart)
             trendData = getTrendData(from: occurences)
             lineChartData = getLineChartData(from: occurences)
+            heartChartData = getHeartChartData(from: occurences)
             heatMapData = getHeatmapData()
             lastSynced = Date()
         }
@@ -52,24 +56,24 @@ class OccurenceViewModel: ObservableObject {
         }
         
         // Schedule the recordLiveHeartRate function to be called every 30 seconds
-                Timer.publish(every: 30.0, tolerance: 5.0, on: .main, in: .common)
-                    .autoconnect()
-                    .sink { _ in
-                        self.recordLiveHeartRate()
-                    }
-                    .store(in: &cancellables)
+        Timer.publish(every: 30.0, tolerance: 5.0, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+                self.recordLiveHeartRate()
+            }
+            .store(in: &cancellables)
     }
-
-    // Used for generating a mock viewModel 
+    
+    // Used for generating a mock viewModel
     private init(trendData: TrendDataContainer,
                  lineChartData: BarChartData,
-                 heartRateData: BarChartData,
+                 heartChartData: HeartChartData,
                  historyData: HistoryDataContainer) {
         self.dataController = DataController(containerName: "Occurences", inMemory: true)
         self.occurences = []
         self.trendData = trendData
         self.lineChartData = lineChartData
-        self.heartRateData = heartRateData
+        self.heartChartData = heartChartData
         self.historyData = historyData
     }
     
@@ -79,7 +83,7 @@ class OccurenceViewModel: ObservableObject {
         // Until I find a prettier solution to auto-update after save
         refreshData(request: request)
     }
-
+    
     private func refreshData(request: NSFetchRequest<Occurence>) {
         occurences = dataController.fetchData(request: request)
         trendData = getTrendData(from: occurences)
@@ -87,7 +91,7 @@ class OccurenceViewModel: ObservableObject {
         heatMapData = getHeatmapData()
         lastSynced = Date()
     }
-
+    
     private func getTrendData(from occurences: [Occurence]) -> TrendDataContainer {
         let lastHour = occurences
             .filter { -$0.timestamp.timeIntervalSinceNow < secondsInHour }
@@ -98,7 +102,7 @@ class OccurenceViewModel: ObservableObject {
         let lastWeek = occurences
             .filter { -$0.timestamp.timeIntervalSinceNow < secondsInWeek }
             .count
-
+        
         let hourBefore = occurences
             .filter { occurence in
                 let from = Date() - secondsInHour * 2
@@ -123,13 +127,13 @@ class OccurenceViewModel: ObservableObject {
                 return range.contains(occurence.timestamp)
             }
             .count
-
+        
         return TrendDataContainer(trendData: [TrendData(current: lastHour, previous: hourBefore),
                                               TrendData(current: lastDay, previous: dayBefore),
                                               TrendData(current: lastWeek, previous: weekBefore)]
         )
     }
-
+    
     private func getLineChartData(from occurences: [Occurence]) -> BarChartData {
         let now = Date()
         let lastHour = occurences
@@ -144,37 +148,60 @@ class OccurenceViewModel: ObservableObject {
         let lastMonth = occurences
             .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .month) }
             .sorted()
-
+        
         let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
         let lastDayDict = groupDataByCustomTimeInterval(data: lastDay, timeInterval: .hour)
         let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekdayOrdinal)
         let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
-
+        
         return BarChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
     }
-
+    
+    private func getHeartChartData(from occurences: [HeartRate]) -> HeartChartData {
+        let now = Date()
+        let lastHour = occurences
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .hour) }
+            .sorted()
+        let lastDay = occurences
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .day) }
+            .sorted()
+        let lastWeek = occurences
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .weekOfYear) }
+            .sorted()
+        let lastMonth = occurences
+            .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .month) }
+            .sorted()
+        
+        let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
+        let lastDayDict = groupDataByCustomTimeInterval(data: lastDay, timeInterval: .hour)
+        let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekdayOrdinal)
+        let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
+        
+        return HeartChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
+    }
+    
     private func getHeatmapData() -> HeatMapDataContainer {
         var dateComponents = DateComponents()
         dateComponents.year = calendar.component(.year, from: Date())
         dateComponents.month = calendar.component(.month, from: Date())
         guard let currentDate = calendar.date(from: dateComponents) else { return HeatMapDataContainer() }
-
+        
         var cellData: [HeatmapCellData] = []
         for (date, count) in lineChartData.monthly where calendar.isDate(date, equalTo: currentDate, toGranularity: .month){
             let data = HeatmapCellData(date: date, count: count)
             cellData.append(data)
         }
-
+        
         return HeatMapDataContainer(heatmapData: cellData)
     }
-
+    
     private func groupDataByCustomTimeInterval(data: [Occurence], timeInterval: Calendar.Component) -> [Date: Int] {
         guard let first = data.first else { return [:] }
         let remaining = data.dropFirst()
         var result: [Date: Int] = [:]
         var currentDate = first.timestamp
         var currentSum: Int = 1
-
+        
         for occurence in remaining {
             let currentComponent = calendar.component(timeInterval, from: currentDate)
             let occurenceComponent = calendar.component(timeInterval, from: occurence.timestamp)
@@ -186,19 +213,19 @@ class OccurenceViewModel: ObservableObject {
                 currentSum = 1
             }
         }
-
+        
         // Add the last interval
         result[currentDate] = currentSum
-
+        
         return result
     }
-
+    
     private func isSameDate(date1: Date, date2: Date, toGranularity component: Calendar.Component) -> Bool {
         let components1 = calendar.dateComponents([.year, .month, .weekOfYear, .day, .hour], from: date1)
         let components2 = calendar.dateComponents([.year, .month, .weekOfYear, .day, .hour], from: date2)
         switch component {
         case .month:
-            return components1.year == components2.year 
+            return components1.year == components2.year
             && components1.month == components2.month
         case .weekOfYear:
             return components1.year == components2.year
@@ -222,7 +249,7 @@ class OccurenceViewModel: ObservableObject {
     }
     
     func recordLiveHeartRate() {
-            // Your existing function implementation
+        // Your existing function implementation
         healthKitManager.recordLiveHeartRate { result in
             switch result {
             case .success(let BMP):
@@ -258,7 +285,7 @@ extension OccurenceViewModel {
     static var mock: OccurenceViewModel {
         let viewModel = OccurenceViewModel(trendData: TrendDataContainer.mock,
                                            lineChartData: BarChartData.mock,
-                                           heartRateData: BarChartData.mockHeart,
+                                           heartChartData: HeartChartData.mockHeart,
                                            historyData: HistoryDataContainer.mock)
         return viewModel
     }
