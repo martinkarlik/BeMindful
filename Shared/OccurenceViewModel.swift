@@ -26,8 +26,8 @@ class OccurenceViewModel: ObservableObject {
     
     
     private let dataController: DataController
-    private let request = NSFetchRequest<Occurence>(entityName: "Occurence")
-    private let requestHeart = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    private let requestOccurences = NSFetchRequest<Occurence>(entityName: "Occurence")
+    private let requestHeartRate = NSFetchRequest<HeartRate>(entityName: "HeartRate")
     private let calendar = Calendar.current
     
     private let secondsInHour: Double = 3600
@@ -37,8 +37,8 @@ class OccurenceViewModel: ObservableObject {
     init(inMemory: Bool = false) {
         dataController = DataController(containerName: "Occurences", inMemory: inMemory)
         if !inMemory {
-            occurences = dataController.fetchData(request: request)
-            heartRate = dataController.fetchData(request: requestHeart)
+            occurences = dataController.fetchData(request: requestOccurences)
+            heartRate = dataController.fetchData(request: requestHeartRate)
             trendData = getTrendData(from: occurences)
             lineChartData = getLineChartData(from: occurences)
             heartChartData = getHeartChartData(from: heartRate)
@@ -79,13 +79,15 @@ class OccurenceViewModel: ObservableObject {
     
     func addOccurence(occurenceTimestamp: Date) {
         _ = Occurence(context: dataController.context, timestamp: occurenceTimestamp, type: "Hair pulling")
+        _ = HeartRate(context: dataController.context, timestamp: occurenceTimestamp)
         dataController.saveData()
         // Until I find a prettier solution to auto-update after save
-        refreshData(request: request)
+        refreshData(request: requestOccurences, requestHeart: requestHeartRate)
     }
     
-    private func refreshData(request: NSFetchRequest<Occurence>) {
-        occurences = dataController.fetchData(request: request)
+    private func refreshData(request: NSFetchRequest<Occurence>, requestHeart: NSFetchRequest<HeartRate>) {
+        occurences = dataController.fetchData(request: requestOccurences)
+        heartRate = dataController.fetchData(request: requestHeartRate)
         trendData = getTrendData(from: occurences)
         lineChartData = getLineChartData(from: occurences)
         heatMapData = getHeatmapData()
@@ -159,16 +161,16 @@ class OccurenceViewModel: ObservableObject {
     
     private func getHeartChartData(from heartRate: [HeartRate]) -> HeartChartData {
         let now = Date()
-        let lastHour = occurences
+        let lastHour = heartRate
             .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .hour) }
             .sorted()
-        let lastDay = occurences
+        let lastDay = heartRate
             .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .day) }
             .sorted()
-        let lastWeek = occurences
+        let lastWeek = heartRate
             .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .weekOfYear) }
             .sorted()
-        let lastMonth = occurences
+        let lastMonth = heartRate
             .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .month) }
             .sorted()
         
@@ -196,6 +198,32 @@ class OccurenceViewModel: ObservableObject {
     }
     
     private func groupDataByCustomTimeInterval(data: [Occurence], timeInterval: Calendar.Component) -> [Date: Int] {
+        guard let first = data.first else { return [:] }
+        let remaining = data.dropFirst()
+        var result: [Date: Int] = [:]
+        var currentDate = first.timestamp
+        var currentSum: Int = 1
+        
+        for occurence in remaining {
+            let currentComponent = calendar.component(timeInterval, from: currentDate)
+            let occurenceComponent = calendar.component(timeInterval, from: occurence.timestamp)
+            if occurenceComponent == currentComponent {
+                currentSum += 1
+            } else {
+                result[currentDate] = currentSum
+                currentDate = occurence.timestamp
+                currentSum = 1
+            }
+        }
+        
+        // Add the last interval
+        result[currentDate] = currentSum
+        
+        return result
+    }
+    
+    // For HeartRateData
+    private func groupDataByCustomTimeInterval(data: [HeartRate], timeInterval: Calendar.Component) -> [Date: Int] {
         guard let first = data.first else { return [:] }
         let remaining = data.dropFirst()
         var result: [Date: Int] = [:]
