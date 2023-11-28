@@ -153,7 +153,7 @@ class OccurenceViewModel: ObservableObject {
         
         let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
         let lastDayDict = groupDataByCustomTimeInterval(data: lastDay, timeInterval: .hour)
-        let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekdayOrdinal)
+        let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekday)
         let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
         
         return BarChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
@@ -176,7 +176,7 @@ class OccurenceViewModel: ObservableObject {
         
         let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
         let lastDayDict = groupDataByCustomTimeInterval(data: lastDay, timeInterval: .hour)
-        let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekdayOrdinal)
+        let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekday)
         let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
         
         return HeartChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)

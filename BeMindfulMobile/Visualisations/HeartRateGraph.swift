@@ -9,50 +9,24 @@ import Charts
 import SwiftUI
 
 struct HeartRateGraph: View {
+
     @ObservedObject var data: HeartDataContainer
-    var timeRange: TimeRange
-    
-    var xComponent: Calendar.Component {
-        switch timeRange {
-        case .lastHour:
-            return .minute
-        case .lastDay:
-            return .hour
-        case .lastWeek:
-            return .weekday
-        case .lastMonth:
-            return .day
-        }
-    }
-    
-    var xFormat: Date.FormatStyle {
-        switch timeRange {
-        case .lastHour:
-            return .dateTime.minute()
-        case .lastDay:
-            return .dateTime.hour()
-        case .lastWeek:
-            return .dateTime.weekday(.abbreviated)
-        case .lastMonth:
-            return .dateTime.day()
-        }
-    }
+    @Binding var timeRange: TimeRange
     
     var body: some View {
         let dataAverage = Double(data.grouped.map {
             $0.value
         }.reduce(0, +)) / Double(data.grouped.count)
         // Calculate the minimum and maximum dates from your data
-        let minDate = data.grouped.map { $0.key }.min() ?? Date()
-        let maxDate = data.grouped.map { $0.key }.max() ?? Date()
         let minCount = data.grouped.map { $0.value }.min() ?? 0
         let maxCount = data.grouped.map { $0.value }.max() ?? 10
-        
-        let hourBoundsForMinDate = HeartChartData.getHourEdges(from: minDate)
+
         // Assuming maxDate is a Date value
-        let xScaleDomain: [Date] = [hourBoundsForMinDate.start, hourBoundsForMinDate.end]
-        
-        
+        let xComponent = Utils.getXComponent(for: timeRange)
+        let xFormat = Utils.getXFormat(for: timeRange)
+        let xScaleDomain = Utils.getXDomain(for: timeRange)
+        let xValues = Utils.getXValues(for: timeRange)
+
         let curColor = Color(.systemPink)
         let curGradient = LinearGradient(
             gradient: Gradient (
@@ -89,48 +63,45 @@ struct HeartRateGraph: View {
                 )
             }
             .chartXScale(domain: xScaleDomain)
+            .chartXAxis {
+                AxisMarks(format: xFormat, values: xValues)
+            }
             .chartForegroundStyleScale([
                 "Heart Rate": .pink,
                 "Average": .gray
             ])
         }
-        //        This modifier causes the crash, I'll leave it commented out for now
-        //        .chartSymbolScale([
-        //            "Nail Biting": Circle().strokeBorder(lineWidth: 2)
-        //        ])
         
         .chartLegend(position: .top)
     }
 }
 
 struct HeartGraphDetails: View {
-    @State private var timeRange: TimeRange = .lastHour
+
     @ObservedObject var data: HeartChartData
-    // @ObservedObject var timeRangeData: TimeRangePickerData
-    
+    @Binding var timeRange: TimeRange
+
     var chartData: HeartDataContainer {
         switch timeRange {
-        case .lastHour:
+        case .hour:
             return HeartDataContainer(grouped: data.hourly)
-        case .lastDay:
+        case .day:
             return HeartDataContainer(grouped: data.daily)
-        case .lastWeek:
+        case .week:
             return HeartDataContainer(grouped: data.weekly)
-        case .lastMonth:
+        case .month:
             return HeartDataContainer(grouped: data.monthly)
         }
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            //                TimeRangePicker(value: $timeRange)
-            //                    .padding(.bottom)
             
             Text("Heart Rate Data")
                 .font(.callout)
                 .foregroundStyle(.secondary)
             
-            HeartRateGraph(data: chartData, timeRange: timeRange)
+            HeartRateGraph(data: chartData, timeRange: $timeRange)
                 .frame(height: 240)
         }
     }
@@ -138,7 +109,8 @@ struct HeartGraphDetails: View {
 
 struct HeartGraphDetails_Previews: PreviewProvider {
     static var previews: some View {
-        HeartGraphDetails(data: HeartChartData.mockHeart)
+        HeartGraphDetails(data: HeartChartData.mockHeart, timeRange: .constant(.hour))
+
     }
 }
 
