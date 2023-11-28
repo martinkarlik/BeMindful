@@ -68,6 +68,10 @@
 		B003F4FF2B0E5B63006DE425 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */; };
 		B003F5012B13CDE6006DE425 /* HeartChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F5002B13CDE6006DE425 /* HeartChartData.swift */; };
 		B003F5022B13CFFB006DE425 /* HeartChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F5002B13CDE6006DE425 /* HeartChartData.swift */; };
+		B033F9262B16AD9800C8A78B /* HeartRate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F9242B16AD9800C8A78B /* HeartRate+CoreDataClass.swift */; };
+		B033F9272B16AD9800C8A78B /* HeartRate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F9242B16AD9800C8A78B /* HeartRate+CoreDataClass.swift */; };
+		B033F9282B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F9252B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift */; };
+		B033F9292B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F9252B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift */; };
 		B04008AE29F861D000B3BC6C /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */; };
 		B04534652A004CAD00AB367E /* WelcomePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04534642A004CAD00AB367E /* WelcomePopUp.swift */; };
 		B04534672A00611500AB367E /* CalendarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04534662A00611500AB367E /* CalendarPickerView.swift */; };
@@ -167,6 +171,8 @@
 		B003F4FC2B0E3824006DE425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		B003F5002B13CDE6006DE425 /* HeartChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartChartData.swift; sourceTree = "<group>"; };
+		B033F9242B16AD9800C8A78B /* HeartRate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeartRate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B033F9252B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeartRate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopup.swift; sourceTree = "<group>"; };
 		B04534642A004CAD00AB367E /* WelcomePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePopUp.swift; sourceTree = "<group>"; };
 		B04534662A00611500AB367E /* CalendarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerView.swift; sourceTree = "<group>"; };
@@ -259,6 +265,8 @@
 				425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */,
 				425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */,
 				425004F72AEFAF02008CFFC7 /* Occurence+Comparable.swift */,
+				B033F9242B16AD9800C8A78B /* HeartRate+CoreDataClass.swift */,
+				B033F9252B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -599,12 +607,14 @@
 				B04534652A004CAD00AB367E /* WelcomePopUp.swift in Sources */,
 				42D58AA129FDA06D001A025B /* TrendData.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
+				B033F9282B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift in Sources */,
 				425004F82AEFAF02008CFFC7 /* Occurence+Comparable.swift in Sources */,
 				B003F4FB2B0E3441006DE425 /* HeartDataContainer.swift in Sources */,
 				B003F4FF2B0E5B63006DE425 /* HealthKitManager.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4236653A2A0AD03000994F6B /* Bar.swift in Sources */,
 				4299E7312A0031A200896C3B /* TrendDataContainer.swift in Sources */,
+				B033F9262B16AD9800C8A78B /* HeartRate+CoreDataClass.swift in Sources */,
 				4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
 				423665312A0A95B700994F6B /* HistoryData.swift in Sources */,
@@ -641,8 +651,10 @@
 			files = (
 				B003F4FE2B0E3A2C006DE425 /* HealthKitManager.swift in Sources */,
 				4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */,
+				B033F9292B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift in Sources */,
 				4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */,
 				4236653F2A0AD11C00994F6B /* History.swift in Sources */,
+				B033F9272B16AD9800C8A78B /* HeartRate+CoreDataClass.swift in Sources */,
 				4236653E2A0AD11A00994F6B /* Bar.swift in Sources */,
 				425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */,
 				B0B11DB12AE493A900F23532 /* Heart.swift in Sources */,

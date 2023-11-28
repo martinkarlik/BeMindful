@@ -41,7 +41,7 @@ class OccurenceViewModel: ObservableObject {
             heartRate = dataController.fetchData(request: requestHeart)
             trendData = getTrendData(from: occurences)
             lineChartData = getLineChartData(from: occurences)
-            heartChartData = getHeartChartData(from: occurences)
+            heartChartData = getHeartChartData(from: heartRate)
             heatMapData = getHeatmapData()
             lastSynced = Date()
         }
@@ -157,7 +157,7 @@ class OccurenceViewModel: ObservableObject {
         return BarChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
     }
     
-    private func getHeartChartData(from occurences: [HeartRate]) -> HeartChartData {
+    private func getHeartChartData(from heartRate: [HeartRate]) -> HeartChartData {
         let now = Date()
         let lastHour = occurences
             .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .hour) }
