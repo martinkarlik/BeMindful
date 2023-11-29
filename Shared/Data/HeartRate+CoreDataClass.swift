@@ -14,12 +14,12 @@ public class HeartRate: NSManagedObject {
     
     @NSManaged public private(set) var id: UUID
     @NSManaged public private(set) var timestamp: Date
-    @NSManaged public private(set) var bpm: Int
+    @NSManaged public private(set) var bpm: Int32
 
     public init(context: NSManagedObjectContext,
                 id: UUID = UUID(),
                 timestamp: Date,
-                bpm: Int) {
+                bpm: Int32) {
         guard let entity = NSEntityDescription.entity(forEntityName: "HeartRate", in: context) else {
             fatalError("HeartRate entity not found")
         }

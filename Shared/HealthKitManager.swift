@@ -69,9 +69,15 @@ class HealthKitManager {
         }
 
         // Create a query to get the most recent heart rate sample
-        let mostRecentPredicate = HKQuery.predicateForSamples(withStart: Date.distantPast, end: Date(), options: .strictEndDate)
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-        let query = HKSampleQuery(sampleType: heartRateType, predicate: mostRecentPredicate, limit: 1, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+        let mostRecentPredicate = HKQuery.predicateForSamples(withStart: Date.distantPast, 
+                                                              end: Date(),
+                                                              options: .strictEndDate)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate,
+                                              ascending: false)
+        let query = HKSampleQuery(sampleType: heartRateType,
+                                  predicate: mostRecentPredicate,
+                                  limit: 1,
+                                  sortDescriptors: [sortDescriptor]) { (query, samples, error) in
             if let error = error {
                 completion(.failure(.invalidType))
                 return

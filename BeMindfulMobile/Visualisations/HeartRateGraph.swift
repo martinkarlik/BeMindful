@@ -93,7 +93,7 @@ struct HeartRateStatsView: View {
             Spacer()
             CounterDivider()
             Spacer()
-            StatView(title: "Average", value: Int(dataAverage))
+            StatView(title: "Average", value: Int32(dataAverage))
             Spacer()
             CounterDivider()
             Spacer()
@@ -108,7 +108,7 @@ struct HeartRateStatsView: View {
 
 struct StatView: View {
     let title: String
-    let value: Int
+    let value: Int32
 
     var body: some View {
         VStack(alignment: .center, spacing: 1) {

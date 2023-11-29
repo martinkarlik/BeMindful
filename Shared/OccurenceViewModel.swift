@@ -84,6 +84,14 @@ class OccurenceViewModel: ObservableObject {
         refreshData()
     }
 
+    func addHeartRate(heartRateTimestamp: Date, bpm: Int32) {
+        _ = HeartRate(context: dataController.context, timestamp: heartRateTimestamp, bpm: bpm)
+        dataController.saveData()
+        // Until I find a prettier solution to auto-update after save
+        refreshData()
+    }
+    
+    
     private func refreshData() {
         occurences = dataController.fetchData(request: requestOccurences)
         heartRate = dataController.fetchData(request: requestHeartRate)
@@ -224,13 +232,13 @@ class OccurenceViewModel: ObservableObject {
     }
     
     // For HeartRateData
-    private func averageDataByCustomTimeInterval(data: [HeartRate], timeInterval: Calendar.Component) -> [Date: Int] {
+    private func averageDataByCustomTimeInterval(data: [HeartRate], timeInterval: Calendar.Component) -> [Date: Int32] {
         guard let first = data.first else { return [:] }
         let remaining = data.dropFirst()
-        var result: [Date: Int] = [:]
+        var result: [Date: Int32] = [:]
         var currentDate = first.timestamp
-        var currentSum: Int = 0
-        var currentNum: Int = 1
+        var currentSum: Int32 = first.bpm
+        var currentNum: Int32 = 1
 
         for heartRate in remaining {
             let currentComponent = calendar.component(timeInterval, from: currentDate)
@@ -241,7 +249,7 @@ class OccurenceViewModel: ObservableObject {
             } else {
                 result[currentDate] = currentSum / currentNum
                 currentDate = heartRate.timestamp
-                currentSum = 0
+                currentSum = heartRate.bpm
                 currentNum = 1
             }
         }
@@ -287,9 +295,9 @@ class OccurenceViewModel: ObservableObject {
             switch result {
             case .success(let BPM):
                 print("Heart rate recorded successfully in the viewModel: \(BPM) BPM")
-                _ = HeartRate(context: self.dataController.context, timestamp: Date(), bpm: Int(BPM))
+                _ = HeartRate(context: self.dataController.context, timestamp: Date(), bpm: Int32(BPM))
                 self.dataController.saveData()
-                self.refreshData()
+                //self.refreshData()
             case .failure(let error):
                 // Handle the error
                 print("Authorization error: \(error.localizedDescription)")

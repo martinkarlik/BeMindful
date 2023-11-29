@@ -9,12 +9,12 @@ import Foundation
 
 extension HeartChartData {
     static var emptyMockHeart: HeartChartData {
-        let hour: [Date: Int] = [:]
-        let day: [Date: Int] = [:]
+        let hour: [Date: Int32] = [:]
+        let day: [Date: Int32] = [:]
 
-        let week: [Date: Int] = [:]
+        let week: [Date: Int32] = [:]
 
-        let month: [Date: Int] = [:]
+        let month: [Date: Int32] = [:]
         return HeartChartData(hour: hour,
                              day: day,
                              week: week,
@@ -22,7 +22,7 @@ extension HeartChartData {
     }
 
     static var mockHeart: HeartChartData {
-        let hour: [Date: Int] = [occurrenceDate(year: 2023, month: 11, day: 29, hour: 14, minute: 0): 62,
+        let hour: [Date: Int32] = [occurrenceDate(year: 2023, month: 11, day: 29, hour: 14, minute: 0): 62,
                                  occurrenceDate(year: 2023, month: 11, day: 29, hour: 14, minute: 1): 64,
                                  occurrenceDate(year: 2023, month: 11, day: 29, hour: 14, minute: 2): 79,
                                  occurrenceDate(year: 2023, month: 11, day: 29, hour: 14, minute: 3): 72,
@@ -63,7 +63,7 @@ extension HeartChartData {
                                  occurrenceDate(year: 2023, month: 11, day: 29, hour: 14, minute: 38): 112,
                                  occurrenceDate(year: 2023, month: 11, day: 29, hour: 14, minute: 39): 122,
                                  occurrenceDate(year: 2023, month: 11, day: 29, hour: 14, minute: 40): 88]
-        let day: [Date: Int] = [occurrenceDate(year: 2023, month: 11, day: 29, hour: 8): 57,
+        let day: [Date: Int32] = [occurrenceDate(year: 2023, month: 11, day: 29, hour: 8): 57,
                                 occurrenceDate(year: 2023, month: 11, day: 29, hour: 9): 68,
                                 occurrenceDate(year: 2023, month: 11, day: 29, hour: 10): 120,
                                 occurrenceDate(year: 2023, month: 11, day: 29, hour: 11): 73,
@@ -76,11 +76,11 @@ extension HeartChartData {
                                 occurrenceDate(year: 2023, month: 11, day: 29, hour: 18): 72,
                                 occurrenceDate(year: 2023, month: 11, day: 29, hour: 19): 75]
 
-        let week: [Date: Int] = [occurrenceDate(year: 2023, month: 11, day: 27): 75,
+        let week: [Date: Int32] = [occurrenceDate(year: 2023, month: 11, day: 27): 75,
                                  occurrenceDate(year: 2023, month: 11, day: 28): 76,
                                  occurrenceDate(year: 2023, month: 11, day: 29): 71]
 
-        let month: [Date: Int] = [occurrenceDate(year: 2023, month: 11, day: 1): 75,
+        let month: [Date: Int32] = [occurrenceDate(year: 2023, month: 11, day: 1): 75,
                                   occurrenceDate(year: 2023, month: 11, day: 2): 75,
                                   occurrenceDate(year: 2023, month: 11, day: 3): 76,
                                   occurrenceDate(year: 2023, month: 11, day: 4): 71,
@@ -113,6 +113,11 @@ extension HeartChartData {
                              day: day,
                              week: week,
                              month: month)
+    }
+    
+    static func occurrenceDate(year: Int, month: Int, day: Int = 1, hour: Int = 7, minute: Int = 0) -> Date {
+
+        Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)) ?? Date()
     }
 }
 
