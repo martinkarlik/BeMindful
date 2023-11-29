@@ -44,6 +44,7 @@ struct DashboardView: View {
                         HeartGraphDetails(data: viewModel.heartChartData,
                                           timeRange: $timeRange)
                             .listRowSeparator(.hidden)
+                        Divider()
                         CalendarHeatMap(data: HeatMapDataContainer.mock)
                             .frame(maxWidth: .infinity)
                             .listRowSeparator(.hidden)
