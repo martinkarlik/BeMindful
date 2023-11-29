@@ -18,13 +18,15 @@ public class HeartRate: NSManagedObject {
 
     public init(context: NSManagedObjectContext,
                 id: UUID = UUID(),
-                timestamp: Date) {
+                timestamp: Date,
+                bpm: Int) {
         guard let entity = NSEntityDescription.entity(forEntityName: "HeartRate", in: context) else {
             fatalError("HeartRate entity not found")
         }
         super.init(entity: entity, insertInto: context)
         self.id = id
         self.timestamp = timestamp
+        self.bpm = bpm
     }
 
     @objc

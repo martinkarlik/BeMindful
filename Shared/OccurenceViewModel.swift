@@ -79,13 +79,12 @@ class OccurenceViewModel: ObservableObject {
     
     func addOccurence(occurenceTimestamp: Date) {
         _ = Occurence(context: dataController.context, timestamp: occurenceTimestamp, type: "Hair pulling")
-        _ = HeartRate(context: dataController.context, timestamp: occurenceTimestamp)
         dataController.saveData()
         // Until I find a prettier solution to auto-update after save
-        refreshData(request: requestOccurences, requestHeart: requestHeartRate)
+        refreshData()
     }
-    
-    private func refreshData(request: NSFetchRequest<Occurence>, requestHeart: NSFetchRequest<HeartRate>) {
+
+    private func refreshData() {
         occurences = dataController.fetchData(request: requestOccurences)
         heartRate = dataController.fetchData(request: requestHeartRate)
         trendData = getTrendData(from: occurences)
@@ -180,8 +179,8 @@ class OccurenceViewModel: ObservableObject {
         let lastWeekDict = averageDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekday)
         let lastMonthDict = averageDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
 
-//        return HeartChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
-        return HeartChartData.mockHeart
+        return HeartChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
+//        return HeartChartData.mockHeart
     }
     
     private func getHeatmapData() -> HeatMapDataContainer {
@@ -283,11 +282,14 @@ class OccurenceViewModel: ObservableObject {
     
     func recordLiveHeartRate() {
         // Your existing function implementation
-        healthKitManager.recordLiveHeartRate { result in
+        healthKitManager.recordLiveHeartRate { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let BMP):
-                print("Heart rate recorded successfully in the viewModel: \(BMP) BPM")
-                
+            case .success(let BPM):
+                print("Heart rate recorded successfully in the viewModel: \(BPM) BPM")
+                _ = HeartRate(context: self.dataController.context, timestamp: Date(), bpm: Int(BPM))
+                self.dataController.saveData()
+                self.refreshData()
             case .failure(let error):
                 // Handle the error
                 print("Authorization error: \(error.localizedDescription)")
