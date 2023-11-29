@@ -26,6 +26,7 @@ struct HeartRateGraph: View {
         let xFormat = Utils.getXFormat(for: timeRange)
         let xScaleDomain = Utils.getXDomain(for: timeRange)
         let xValues = Utils.getXValues(for: timeRange)
+        let yDomain = [0, maxCount + 24]
 
         let curColor = Color(.systemPink)
         let curGradient = LinearGradient(
@@ -45,23 +46,19 @@ struct HeartRateGraph: View {
             Chart(data.grouped, id: \.key) { (date, count) in
                 AreaMark(
                     x: .value("Day", date, unit: xComponent),
-                    y: .value("Occurrences", count)
+                    y: .value("HeartRate", count)
                 )
                 .foregroundStyle(curGradient)
                 .symbol(.circle)
                 
                 RuleMark(
-                    y: .value("Occurrences", dataAverage)
+                    y: .value("HeartRate", dataAverage)
                 )
                 .foregroundStyle(.gray)
                 .lineStyle(StrokeStyle(lineWidth: 2, dash: [9, 2]))
                 
             }
-            .chartYAxis {
-                AxisMarks(
-                    values: [0, Double(minCount), dataAverage, Double(maxCount), Double(maxCount + 20)]
-                )
-            }
+            .chartYScale(domain: yDomain, type: .linear)
             .chartXScale(domain: xScaleDomain)
             .chartXAxis {
                 AxisMarks(format: xFormat, values: xValues)
