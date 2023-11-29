@@ -16,7 +16,7 @@ class OccurenceViewModel: ObservableObject {
     
     // We can probably make occurences not published after all the data and history is done
     @Published var occurences: [Occurence] = []
-    @Published var heartRate: [HeartRate] = []
+    private var heartRate: [HeartRate] = []
     @Published var trendData = TrendDataContainer()
     @Published var lineChartData = BarChartData()
     @Published var heartChartData = HeartChartData()
@@ -175,12 +175,13 @@ class OccurenceViewModel: ObservableObject {
             .filter { isSameDate(date1: $0.timestamp, date2: now, toGranularity: .month) }
             .sorted()
         
-        let lastHourDict = groupDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
-        let lastDayDict = groupDataByCustomTimeInterval(data: lastDay, timeInterval: .hour)
-        let lastWeekDict = groupDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekday)
-        let lastMonthDict = groupDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
-        
-        return HeartChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
+        let lastHourDict = averageDataByCustomTimeInterval(data: lastHour, timeInterval: .minute)
+        let lastDayDict = averageDataByCustomTimeInterval(data: lastDay, timeInterval: .hour)
+        let lastWeekDict = averageDataByCustomTimeInterval(data: lastWeek, timeInterval: .weekday)
+        let lastMonthDict = averageDataByCustomTimeInterval(data: lastMonth, timeInterval: .day)
+
+//        return HeartChartData(hour: lastHourDict, day: lastDayDict, week: lastWeekDict, month: lastMonthDict)
+        return HeartChartData.mockHeart
     }
     
     private func getHeatmapData() -> HeatMapDataContainer {
@@ -224,31 +225,34 @@ class OccurenceViewModel: ObservableObject {
     }
     
     // For HeartRateData
-    private func groupDataByCustomTimeInterval(data: [HeartRate], timeInterval: Calendar.Component) -> [Date: Int] {
+    private func averageDataByCustomTimeInterval(data: [HeartRate], timeInterval: Calendar.Component) -> [Date: Int] {
         guard let first = data.first else { return [:] }
         let remaining = data.dropFirst()
         var result: [Date: Int] = [:]
         var currentDate = first.timestamp
-        var currentSum: Int = 1
-        
-        for occurence in remaining {
+        var currentSum: Int = 0
+        var currentNum: Int = 1
+
+        for heartRate in remaining {
             let currentComponent = calendar.component(timeInterval, from: currentDate)
-            let occurenceComponent = calendar.component(timeInterval, from: occurence.timestamp)
-            if occurenceComponent == currentComponent {
-                currentSum += 1
+            let heartRateComponent = calendar.component(timeInterval, from: heartRate.timestamp)
+            if heartRateComponent == currentComponent {
+                currentSum += heartRate.bpm
+                currentNum += 1
             } else {
-                result[currentDate] = currentSum
-                currentDate = occurence.timestamp
-                currentSum = 1
+                result[currentDate] = currentSum / currentNum
+                currentDate = heartRate.timestamp
+                currentSum = 0
+                currentNum = 1
             }
         }
-        
+
         // Add the last interval
-        result[currentDate] = currentSum
-        
+        result[currentDate] = currentSum / currentNum
+
         return result
     }
-    
+
     private func isSameDate(date1: Date, date2: Date, toGranularity component: Calendar.Component) -> Bool {
         let components1 = calendar.dateComponents([.year, .month, .weekOfYear, .day, .hour], from: date1)
         let components2 = calendar.dateComponents([.year, .month, .weekOfYear, .day, .hour], from: date2)

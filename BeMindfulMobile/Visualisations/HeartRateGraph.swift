@@ -76,12 +76,16 @@ struct HeartRateStatsView: View {
     @ObservedObject var data: HeartDataContainer
 
     var body: some View {
-        let dataAverage = Double(data.grouped.map {
-            $0.value
-        }.reduce(0, +)) / Double(data.grouped.count)
+        let dataAverage: Double = {
+            if data.grouped.count != 0 {
+                return Double(data.grouped.map { $0.value }.reduce(0, +)) / Double(data.grouped.count)
+            } else {
+                return 0
+            }
+        }()
         // Calculate the minimum and maximum dates from your data
         let minHeartRate = data.grouped.map { $0.value }.min() ?? 0
-        let maxHeartRate = data.grouped.map { $0.value }.max() ?? 10
+        let maxHeartRate = data.grouped.map { $0.value }.max() ?? 0
         
         HStack(alignment: .center, spacing: 1) {
             Spacer()

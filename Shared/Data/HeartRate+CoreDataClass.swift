@@ -14,6 +14,7 @@ public class HeartRate: NSManagedObject {
     
     @NSManaged public private(set) var id: UUID
     @NSManaged public private(set) var timestamp: Date
+    @NSManaged public private(set) var bpm: Int
 
     public init(context: NSManagedObjectContext,
                 id: UUID = UUID(),
