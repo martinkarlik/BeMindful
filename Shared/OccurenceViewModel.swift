@@ -48,20 +48,12 @@ class OccurenceViewModel: ObservableObject {
         
         if healthKitManager.isAuthorized() {
             print("Heart rate authorized")
-            recordLiveHeartRate()
+            self.startObservingHeartRateChanges()
             
         } else {
             // Request health authorization.
             self.requestAuthorization()
         }
-        
-        // Schedule the recordLiveHeartRate function to be called every 30 seconds
-        Timer.publish(every: 30.0, tolerance: 5.0, on: .main, in: .common)
-            .autoconnect()
-            .sink { _ in
-                self.recordLiveHeartRate()
-            }
-            .store(in: &cancellables)
     }
     
     // Used for generating a mock viewModel
@@ -84,22 +76,29 @@ class OccurenceViewModel: ObservableObject {
         refreshData()
     }
 
+    // 
     func addHeartRate(heartRateTimestamp: Date, bpm: Int32) {
         _ = HeartRate(context: dataController.context, timestamp: heartRateTimestamp, bpm: bpm)
         dataController.saveData()
         // Until I find a prettier solution to auto-update after save
-        refreshData()
+        self.refreshHeartRateData()
     }
     
     
     private func refreshData() {
         occurences = dataController.fetchData(request: requestOccurences)
-        heartRate = dataController.fetchData(request: requestHeartRate)
+        //heartRate = dataController.fetchData(request: requestHeartRate)
         trendData = getTrendData(from: occurences)
         lineChartData = getLineChartData(from: occurences)
-        heartChartData = getHeartChartData(from: heartRate)
+        //heartChartData = getHeartChartData(from: heartRate)
         heatMapData = getHeatmapData()
         lastSynced = Date()
+    }
+    
+    private func refreshHeartRateData() {
+        heartRate = dataController.fetchData(request: requestHeartRate)
+        heartChartData = getHeartChartData(from: heartRate)
+        //lastSynced = Date()
     }
     
     private func getTrendData(from occurences: [Occurence]) -> TrendDataContainer {
@@ -288,16 +287,22 @@ class OccurenceViewModel: ObservableObject {
         }
     }
     
-    func recordLiveHeartRate() {
-        // Your existing function implementation
-        healthKitManager.recordLiveHeartRate { [weak self] result in
+    func startObservingHeartRateChanges() {
+        
+        healthKitManager.startObservingHeartRateChanges{ [weak self] result in
             guard let self = self else { return }
+            var bpm: Int32
             switch result {
-            case .success(let BPM):
-                print("Heart rate recorded successfully in the viewModel: \(BPM) BPM")
-                _ = HeartRate(context: self.dataController.context, timestamp: Date(), bpm: Int32(BPM))
-                self.dataController.saveData()
-                //self.refreshData()
+            case .success(let heartRate):
+                bpm = Int32(heartRate)
+                print("Heart rate recorded successfully in the viewModel: \(bpm) BPM")
+                
+                // Use DispatchQueue.main.async to perform UI-related updates on the main thread
+                DispatchQueue.main.async {
+                    _ = HeartRate(context: self.dataController.context, timestamp: Date(), bpm: bpm)
+                    self.dataController.saveData()
+                    self.refreshHeartRateData()
+                }
             case .failure(let error):
                 // Handle the error
                 print("Authorization error: \(error.localizedDescription)")
@@ -310,7 +315,7 @@ class OccurenceViewModel: ObservableObject {
             switch result {
             case .success(let success):
                 if success {
-                    self.recordLiveHeartRate()
+                    self.startObservingHeartRateChanges()
                 } else {
                     // Authorization denied
                     print("Authorization denied")

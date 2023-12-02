@@ -180,6 +180,7 @@
 		B04534662A00611500AB367E /* CalendarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerView.swift; sourceTree = "<group>"; };
 		B051DD432AE425FE008E07B0 /* HeartRateGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateGraph.swift; sourceTree = "<group>"; };
 		B088C2822B051BD700396BDA /* HeatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
+		B0965C672B1BAEDA00DB2927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B099DBAE2AE94E9F00B68227 /* CalendarHeatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeatMap.swift; sourceTree = "<group>"; };
 		B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCounterView.swift; sourceTree = "<group>"; };
 		B09CDC4029F92C330089E686 /* DashboardTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBar.swift; sourceTree = "<group>"; };
@@ -356,6 +357,7 @@
 		4E36CACD29B8B3F800F380CC /* BeMindfulWatch */ = {
 			isa = PBXGroup;
 			children = (
+				B0965C672B1BAEDA00DB2927 /* Info.plist */,
 				4E37301829EB317C0016D348 /* Motion */,
 				4E36CACE29B8B3F800F380CC /* BeMindfulWatchApp.swift */,
 				4E36CAD029B8B3F800F380CC /* WatchAppView.swift */,
@@ -834,6 +836,7 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMindfulWatch/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -868,6 +871,7 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMindfulWatch/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

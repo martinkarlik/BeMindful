@@ -38,9 +38,9 @@ class ConnectivityProvider: NSObject {
         }
     }
     
-    func sendHeartRateToiPhone() {
+    func sendHeartRateToiPhone(bpm: Int32) {
         if session.isReachable {
-            let message: [String: Any] = ["timestamp": Date(), "bpm": Int32()]
+            let message: [String: Any] = ["timestamp": Date(), "bpm": bpm]
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }
@@ -69,7 +69,6 @@ extension ConnectivityProvider: WCSessionDelegate {
         guard let viewModel = occurenceViewModel else {
             return
         }
-        
         
         if let bpm = message["bpm"] as? Int32,
            let timestamp = message["timestamp"] as? Date {

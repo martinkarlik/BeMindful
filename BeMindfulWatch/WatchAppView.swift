@@ -14,6 +14,7 @@ struct WatchAppView: View {
     var healthKitManager = HealthKitManager()
     var connectivityProvider = ConnectivityProvider()
     var motionDetectionProvider = MotionDetectionProvider()
+    var occurenceViewModel = OccurenceViewModel()
     
     var body: some View {
         VStack {
@@ -23,7 +24,7 @@ struct WatchAppView: View {
                 
                 if healthKitManager.isAuthorized() {
                     print("Heart rate authorized")
-                    recordLiveHeartRate()
+                    occurenceViewModel.startObservingHeartRateChanges()
                     
                 } else {
                     // Request health authorization.
@@ -37,26 +38,62 @@ struct WatchAppView: View {
             if Constants.gestureDetection {
                 motionDetectionProvider.monitorRotationRate()
             }
+            
+            
+            if healthKitManager.isAuthorized() {
+                print("Heart rate authorized")
+                occurenceViewModel.startObservingHeartRateChanges()
+                
+            } else {
+                // Request health authorization.
+                requestAuthorization()
+            }
+            // cll timer if fail
         }
         .padding()
     }
     
-    func recordLiveHeartRate() {
+//    private func startObservingHeartRateChanges() {
+//        var bpm: Int32
+//        healthKitManager.startObservingHeartRateChanges { result in
+//            switch result {
+//            case .success(let heartRate):
+//                bpm = Int32(heartRate)
+//                // Handle the recorded heart rate as needed
+//                self.connectivityProvider.sendHeartRateToiPhone(bpm: bpm)
+//                // Now you can also use occurrenceViewModel here if needed
+//                self.occurenceViewModel.addHeartRate(heartRateTimestamp: Date(), bpm: bpm)
+//                
+//            case .failure(let error):
+//                // Handle the error
+//                print("Error recording heart rate: \(error.localizedDescription)")
+//            }
+//        }
+//    }
+    
+    func recordLiveHeartRate()-> Int32? {
         // HealthKit is already authorized, proceed with recording live heart rate data.
-        healthKitManager.recordLiveHeartRate { result in
+        var bpm: Int32?
+        healthKitManager.startObservingHeartRateChanges { result in
             switch result {
             case .success(let heartRate):
                 // Heart rate recorded successfully
-                print("Heart rate recorded successfully: \(heartRate) BPM")
+                bpm = Int32(heartRate)
+                self.connectivityProvider.sendHeartRateToiPhone(bpm: bpm ?? 0)
+                self.occurenceViewModel.addHeartRate(heartRateTimestamp: Date(), bpm: bpm ?? 0)
+                print("Heart rate recorded successfully: \(String(describing: bpm)) BPM")
 
+                
                 // Handle the recorded heart rate as needed
                 // For example, you might update your UI or store the data.
 
             case .failure(let error):
                 // Handle the error
                 print("Error recording heart rate: \(error.localizedDescription)")
+                bpm = nil
             }
         }
+        return bpm
     }
     
     
@@ -74,6 +111,21 @@ struct WatchAppView: View {
             case .failure(let error):
                 // Handle the error
                 print("Authorization error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func timer() {
+        // Schedule the recordLiveHeartRate function to be called every 30 seconds
+        Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { timer in
+            // Check if HealthKit is authorized before recording heart rate
+            if healthKitManager.isAuthorized() {
+                // this should save the bpm
+                if let bpm = recordLiveHeartRate() {
+                    // and pass it here
+                    connectivityProvider.sendHeartRateToiPhone(bpm: bpm)
+                }
+
             }
         }
     }
