@@ -17,6 +17,7 @@ struct UserInputView: View {
         VStack {
             Text(question)
                 .padding()
+                .font(.headline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
             TextField(placeholder, text: $reflectionText)

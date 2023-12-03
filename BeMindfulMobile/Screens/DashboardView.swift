@@ -47,8 +47,11 @@ struct DashboardView: View {
                         CalendarHeatMap(data: HeatMapDataContainer.mock)
                             .frame(maxWidth: .infinity)
                             .listRowSeparator(.visible)
-
-                        SelfReflectionView()
+                        // This will appear all the time
+                        UserInputView(question: "Self Reflect: \n\nWhat were you doing the last time you added an occurrence?", placeholder: "Enter your reflection..", buttonText: "Save Reflection")
+                            .frame(maxWidth: .infinity)
+                        // This will only appear once in a while
+                        UserInputView(question: "Help Others: \n\nWhat helps you stop when you do the behavior?", placeholder: "Enter your advice..", buttonText: "Save")
                         }
                         .listStyle(.plain)
                     Divider()
