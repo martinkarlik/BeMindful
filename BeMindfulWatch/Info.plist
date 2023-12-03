@@ -4,9 +4,11 @@
 <dict>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
-		<string>processing</string>
 		<string>remote-notification</string>
+	</array>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>workout-processing</string>
 	</array>
 </dict>
 </plist>

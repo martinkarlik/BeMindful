@@ -64,6 +64,15 @@
 		4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDF3929EA8CCF00CA432A /* DataController.swift */; };
 		4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */; };
 		4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */; };
+		B003F4FB2B0E3441006DE425 /* HeartDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F4FA2B0E3441006DE425 /* HeartDataContainer.swift */; };
+		B003F4FE2B0E3A2C006DE425 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */; };
+		B003F4FF2B0E5B63006DE425 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */; };
+		B003F5012B13CDE6006DE425 /* HeartChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F5002B13CDE6006DE425 /* HeartChartData.swift */; };
+		B003F5022B13CFFB006DE425 /* HeartChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003F5002B13CDE6006DE425 /* HeartChartData.swift */; };
+		B033F9262B16AD9800C8A78B /* HeartRate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F9242B16AD9800C8A78B /* HeartRate+CoreDataClass.swift */; };
+		B033F9272B16AD9800C8A78B /* HeartRate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F9242B16AD9800C8A78B /* HeartRate+CoreDataClass.swift */; };
+		B033F9282B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F9252B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift */; };
+		B033F9292B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033F9252B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift */; };
 		B04008AE29F861D000B3BC6C /* ConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */; };
 		B04534652A004CAD00AB367E /* WelcomePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04534642A004CAD00AB367E /* WelcomePopUp.swift */; };
 		B04534672A00611500AB367E /* CalendarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04534662A00611500AB367E /* CalendarPickerView.swift */; };
@@ -74,8 +83,8 @@
 		B09CDC3B29F91F950089E686 /* RealTimeCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */; };
 		B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC4029F92C330089E686 /* DashboardTabBar.swift */; };
 		B09CDC4429F934B80089E686 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC4329F934B80089E686 /* HistoryView.swift */; };
-		B0B11DAD2AE485E600F23532 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B11DAC2AE485E600F23532 /* HeartRate.swift */; };
-		B0B11DB12AE493A900F23532 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B11DAC2AE485E600F23532 /* HeartRate.swift */; };
+		B0B11DAD2AE485E600F23532 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B11DAC2AE485E600F23532 /* Heart.swift */; };
+		B0B11DB12AE493A900F23532 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B11DAC2AE485E600F23532 /* Heart.swift */; };
 		B0DA5B1E29CB486100EAEA24 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1D29CB486100EAEA24 /* BarChart.swift */; };
 		B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -161,17 +170,24 @@
 		4E9BDF3929EA8CCF00CA432A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccurenceViewModel.swift; sourceTree = "<group>"; };
 		4EC5749D29DB23AA006E23C1 /* MotionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTypes.swift; sourceTree = "<group>"; };
+		B003F4FA2B0E3441006DE425 /* HeartDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartDataContainer.swift; sourceTree = "<group>"; };
+		B003F4FC2B0E3824006DE425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		B003F5002B13CDE6006DE425 /* HeartChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartChartData.swift; sourceTree = "<group>"; };
+		B033F9242B16AD9800C8A78B /* HeartRate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeartRate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B033F9252B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeartRate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopup.swift; sourceTree = "<group>"; };
 		B04534642A004CAD00AB367E /* WelcomePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePopUp.swift; sourceTree = "<group>"; };
 		B04534662A00611500AB367E /* CalendarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerView.swift; sourceTree = "<group>"; };
 		B051DD432AE425FE008E07B0 /* HeartRateGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateGraph.swift; sourceTree = "<group>"; };
 		B088C2822B051BD700396BDA /* HeatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
 		B0965C682B1BFE7F00DB2927 /* UserInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputView.swift; sourceTree = "<group>"; };
+		B0965C672B1BAEDA00DB2927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B099DBAE2AE94E9F00B68227 /* CalendarHeatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeatMap.swift; sourceTree = "<group>"; };
 		B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCounterView.swift; sourceTree = "<group>"; };
 		B09CDC4029F92C330089E686 /* DashboardTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBar.swift; sourceTree = "<group>"; };
 		B09CDC4329F934B80089E686 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		B0B11DAC2AE485E600F23532 /* HeartRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
+		B0B11DAC2AE485E600F23532 /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
 		B0DA5B1D29CB486100EAEA24 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		B0DA5B1F29CB4CAA00EAEA24 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,6 +242,8 @@
 				423665362A0AD00A00994F6B /* Mock */,
 				42D58AA029FDA06D001A025B /* TrendData.swift */,
 				42049C0B29FEED5300ACF1B1 /* BarChartData.swift */,
+				B003F5002B13CDE6006DE425 /* HeartChartData.swift */,
+				B003F4FA2B0E3441006DE425 /* HeartDataContainer.swift */,
 				4299E7302A0031A200896C3B /* TrendDataContainer.swift */,
 				4299E7342A003FC600896C3B /* ChartDataContainer.swift */,
 				423665302A0A95B700994F6B /* HistoryData.swift */,
@@ -242,7 +260,7 @@
 				423665372A0AD01600994F6B /* Trend.swift */,
 				423665392A0AD03000994F6B /* Bar.swift */,
 				4236653B2A0AD06A00994F6B /* History.swift */,
-				B0B11DAC2AE485E600F23532 /* HeartRate.swift */,
+				B0B11DAC2AE485E600F23532 /* Heart.swift */,
 				B088C2822B051BD700396BDA /* HeatMap.swift */,
 			);
 			path = Mock;
@@ -254,6 +272,8 @@
 				425EB00229F9485F0076058F /* Occurence+CoreDataProperties.swift */,
 				425EB00129F9485F0076058F /* Occurence+CoreDataClass.swift */,
 				425004F72AEFAF02008CFFC7 /* Occurence+Comparable.swift */,
+				B033F9242B16AD9800C8A78B /* HeartRate+CoreDataClass.swift */,
+				B033F9252B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -308,6 +328,7 @@
 		4E36CAA529B8B3F500F380CC /* BeMindfulMobile */ = {
 			isa = PBXGroup;
 			children = (
+				B003F4FC2B0E3824006DE425 /* Info.plist */,
 				4E2693C329F3A92C00401A96 /* Screens */,
 				4E37301729EB14580016D348 /* Persistency */,
 				42049C0929FEA95E00ACF1B1 /* Views */,
@@ -339,6 +360,7 @@
 		4E36CACD29B8B3F800F380CC /* BeMindfulWatch */ = {
 			isa = PBXGroup;
 			children = (
+				B0965C672B1BAEDA00DB2927 /* Info.plist */,
 				4E37301829EB317C0016D348 /* Motion */,
 				4E36CACE29B8B3F800F380CC /* BeMindfulWatchApp.swift */,
 				4E36CAD029B8B3F800F380CC /* WatchAppView.swift */,
@@ -387,6 +409,7 @@
 			children = (
 				425EB00729F951B10076058F /* Data */,
 				4E4FD1B229CB189200DADB21 /* ConnectivityProvider.swift */,
+				B003F4FD2B0E3A2C006DE425 /* HealthKitManager.swift */,
 				4EBE554629BE3616006ECF5A /* OccurenceViewModel.swift */,
 				4E24756729EFDAA000622706 /* CheckmarkView.swift */,
 			);
@@ -593,10 +616,14 @@
 				B04534652A004CAD00AB367E /* WelcomePopUp.swift in Sources */,
 				42D58AA129FDA06D001A025B /* TrendData.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,
+				B033F9282B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift in Sources */,
 				425004F82AEFAF02008CFFC7 /* Occurence+Comparable.swift in Sources */,
+				B003F4FB2B0E3441006DE425 /* HeartDataContainer.swift in Sources */,
+				B003F4FF2B0E5B63006DE425 /* HealthKitManager.swift in Sources */,
 				4E24756829EFDAA000622706 /* CheckmarkView.swift in Sources */,
 				4236653A2A0AD03000994F6B /* Bar.swift in Sources */,
 				4299E7312A0031A200896C3B /* TrendDataContainer.swift in Sources */,
+				B033F9262B16AD9800C8A78B /* HeartRate+CoreDataClass.swift in Sources */,
 				4E2693CA29F3A92C00401A96 /* DashboardView.swift in Sources */,
 				B0DA5B2029CB4CAA00EAEA24 /* Utils.swift in Sources */,
 				423665312A0A95B700994F6B /* HistoryData.swift in Sources */,
@@ -608,8 +635,9 @@
 				4EBE554729BE3616006ECF5A /* OccurenceViewModel.swift in Sources */,
 				423665382A0AD01600994F6B /* Trend.swift in Sources */,
 				422E1F922B04F02B004C905A /* HeatMapDataContainer.swift in Sources */,
+				B003F5012B13CDE6006DE425 /* HeartChartData.swift in Sources */,
 				425EB00329F9485F0076058F /* Occurence+CoreDataClass.swift in Sources */,
-				B0B11DAD2AE485E600F23532 /* HeartRate.swift in Sources */,
+				B0B11DAD2AE485E600F23532 /* Heart.swift in Sources */,
 				B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */,
 				4E2693CE29F3A92C00401A96 /* OnboardingView.swift in Sources */,
 				4299E7352A003FC600896C3B /* ChartDataContainer.swift in Sources */,
@@ -631,12 +659,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B003F4FE2B0E3A2C006DE425 /* HealthKitManager.swift in Sources */,
 				4E805FB629DED9880087F178 /* MotionDetectionProvider.swift in Sources */,
+				B033F9292B16AD9800C8A78B /* HeartRate+CoreDataProperties.swift in Sources */,
 				4EC5749E29DB23AA006E23C1 /* MotionTypes.swift in Sources */,
 				4236653F2A0AD11C00994F6B /* History.swift in Sources */,
+				B033F9272B16AD9800C8A78B /* HeartRate+CoreDataClass.swift in Sources */,
 				4236653E2A0AD11A00994F6B /* Bar.swift in Sources */,
 				425EB00529F951970076058F /* Occurence+CoreDataClass.swift in Sources */,
-				B0B11DB12AE493A900F23532 /* HeartRate.swift in Sources */,
+				B0B11DB12AE493A900F23532 /* Heart.swift in Sources */,
 				425004F92AEFAF02008CFFC7 /* Occurence+Comparable.swift in Sources */,
 				422E1F932B04F106004C905A /* HeatmapCellData.swift in Sources */,
 				4299E7362A00442D00896C3B /* TrendDataContainer.swift in Sources */,
@@ -644,6 +675,7 @@
 				425EB00629F951970076058F /* Occurence+CoreDataProperties.swift in Sources */,
 				4E9BDF3829EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
 				423E77B429F9D55F00FB3B27 /* DataController.swift in Sources */,
+				B003F5022B13CFFB006DE425 /* HeartChartData.swift in Sources */,
 				422E1F942B04F10C004C905A /* HeatMapDataContainer.swift in Sources */,
 				4E37302429EB3CF40016D348 /* OccurenceViewModel.swift in Sources */,
 				423665342A0AA64300994F6B /* HistoryData.swift in Sources */,
@@ -808,6 +840,9 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMindfulWatch/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mare.BeMindful;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -840,6 +875,9 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMindfulWatch/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mare.BeMindful;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -874,8 +912,11 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMindfulMobile/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BeMindful;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -911,8 +952,11 @@
 				DEVELOPMENT_TEAM = R652DK5Y89;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeMindfulMobile/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BeMindful;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "BeMindful needs access to your Heart Rate data to provide you accurate information about your behaviour.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

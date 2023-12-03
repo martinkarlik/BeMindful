@@ -26,6 +26,7 @@ struct ManagerView: View {
         .onAppear {
             connectivityProvider.occurenceViewModel = viewModel
             connectivityProvider.connect()
+            viewModel.startObservingHeartRateChanges()
         }
     }
 }
