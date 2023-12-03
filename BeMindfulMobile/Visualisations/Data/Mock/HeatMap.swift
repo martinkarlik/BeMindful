@@ -14,7 +14,7 @@ extension HeatMapDataContainer {
     }
     
     static var mock: HeatMapDataContainer {
-        let heatmapData: [HeatmapCellData] = (1...31).map { day in
+        let heatmapData: [HeatmapCellData] = (1...30).map { day in
             HeatmapCellData(date: occurrenceDate(year: 2023, month: 11, day: day), count: Int.random(in: 0...100))
         }
 
