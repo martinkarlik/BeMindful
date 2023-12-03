@@ -7,16 +7,19 @@
 
 import SwiftUI
 
-struct SelfReflectionView: View {
+struct UserInputView: View {
     @State private var reflectionText: String = ""
+    var question: String = "Question"
+    var placeholder: String = "Enter your answer.."
+    var buttonText: String = "Save"
     
     var body: some View {
         VStack {
-            Text("What were you doing the last time you added an occurrence?")
+            Text(question)
                 .padding()
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            TextField("Enter your reflection...", text: $reflectionText)
+            TextField(placeholder, text: $reflectionText)
                 .foregroundColor(Color.black)
                 .fontWeight(.regular)
                 .frame(maxWidth: 250, minHeight: 41)
@@ -24,10 +27,8 @@ struct SelfReflectionView: View {
                 .foregroundColor(.white)
                 .background(.white)
                 .cornerRadius(8)
-            // Add a button or any other UI element to save the reflectionText
-            Button("Save Reflection") {
-                // Implement your logic to save the reflectionText
-                saveReflection()
+            Button(buttonText) {
+                saveResponse()
                 resetTextField()
             }
             .fontWeight(.regular)
@@ -42,7 +43,7 @@ struct SelfReflectionView: View {
         .cornerRadius(8)
     }
     
-    func saveReflection() {
+    func saveResponse() {
         // Later I will create a new entity in the Data Model named "Reflections"
     }
     func resetTextField() {
@@ -50,9 +51,9 @@ struct SelfReflectionView: View {
     }
 }
 
-struct SelfReflectionView_Previews: PreviewProvider {
+struct UserInputView_Previews: PreviewProvider {
     static var previews: some View {
-        SelfReflectionView()
+        UserInputView(question: "Why", placeholder: "Enter", buttonText: "Save")
     }
 }
 
