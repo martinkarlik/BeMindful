@@ -87,10 +87,8 @@ class OccurenceViewModel: ObservableObject {
     
     private func refreshData() {
         occurences = dataController.fetchData(request: requestOccurences)
-        //heartRate = dataController.fetchData(request: requestHeartRate)
         trendData = getTrendData(from: occurences)
         lineChartData = getLineChartData(from: occurences)
-        //heartChartData = getHeartChartData(from: heartRate)
         heatMapData = getHeatmapData()
         lastSynced = Date()
     }
@@ -98,7 +96,6 @@ class OccurenceViewModel: ObservableObject {
     private func refreshHeartRateData() {
         heartRate = dataController.fetchData(request: requestHeartRate)
         heartChartData = getHeartChartData(from: heartRate)
-        //lastSynced = Date()
     }
     
     private func getTrendData(from occurences: [Occurence]) -> TrendDataContainer {

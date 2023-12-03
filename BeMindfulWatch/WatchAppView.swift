@@ -14,7 +14,6 @@ struct WatchAppView: View {
     var healthKitManager = HealthKitManager()
     var connectivityProvider = ConnectivityProvider()
     var motionDetectionProvider = MotionDetectionProvider()
-    var occurenceViewModel = OccurenceViewModel()
     
     var body: some View {
         VStack {
@@ -24,8 +23,7 @@ struct WatchAppView: View {
                 
                 if healthKitManager.isAuthorized() {
                     print("Heart rate authorized")
-                    occurenceViewModel.startObservingHeartRateChanges()
-                    
+                    connectivityProvider.occurenceViewModel?.startObservingHeartRateChanges()
                 } else {
                     // Request health authorization.
                     requestAuthorization()
@@ -42,7 +40,7 @@ struct WatchAppView: View {
             
             if healthKitManager.isAuthorized() {
                 print("Heart rate authorized")
-                occurenceViewModel.startObservingHeartRateChanges()
+                connectivityProvider.occurenceViewModel?.startObservingHeartRateChanges()
                 
             } else {
                 // Request health authorization.
@@ -52,25 +50,7 @@ struct WatchAppView: View {
         }
         .padding()
     }
-    
-//    private func startObservingHeartRateChanges() {
-//        var bpm: Int32
-//        healthKitManager.startObservingHeartRateChanges { result in
-//            switch result {
-//            case .success(let heartRate):
-//                bpm = Int32(heartRate)
-//                // Handle the recorded heart rate as needed
-//                self.connectivityProvider.sendHeartRateToiPhone(bpm: bpm)
-//                // Now you can also use occurrenceViewModel here if needed
-//                self.occurenceViewModel.addHeartRate(heartRateTimestamp: Date(), bpm: bpm)
-//                
-//            case .failure(let error):
-//                // Handle the error
-//                print("Error recording heart rate: \(error.localizedDescription)")
-//            }
-//        }
-//    }
-    
+
     func recordLiveHeartRate()-> Int32? {
         // HealthKit is already authorized, proceed with recording live heart rate data.
         var bpm: Int32?
@@ -79,8 +59,8 @@ struct WatchAppView: View {
             case .success(let heartRate):
                 // Heart rate recorded successfully
                 bpm = Int32(heartRate)
+                connectivityProvider.occurenceViewModel?.addHeartRate(heartRateTimestamp: Date(), bpm: bpm ?? 0)
                 self.connectivityProvider.sendHeartRateToiPhone(bpm: bpm ?? 0)
-                self.occurenceViewModel.addHeartRate(heartRateTimestamp: Date(), bpm: bpm ?? 0)
                 print("Heart rate recorded successfully: \(String(describing: bpm)) BPM")
 
                 
@@ -102,7 +82,7 @@ struct WatchAppView: View {
             switch result {
             case .success(let success):
                 if success {
-                    recordLiveHeartRate()
+                    self.recordLiveHeartRate()
                 } else {
                     // Authorization denied
                     print("Authorization denied")
