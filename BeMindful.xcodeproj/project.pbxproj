@@ -69,6 +69,7 @@
 		B04534672A00611500AB367E /* CalendarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04534662A00611500AB367E /* CalendarPickerView.swift */; };
 		B051DD442AE425FE008E07B0 /* HeartRateGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B051DD432AE425FE008E07B0 /* HeartRateGraph.swift */; };
 		B088C2832B051BD700396BDA /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B088C2822B051BD700396BDA /* HeatMap.swift */; };
+		B0965C692B1BFE7F00DB2927 /* UserReflections.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0965C682B1BFE7F00DB2927 /* UserReflections.swift */; };
 		B099DBAF2AE94E9F00B68227 /* CalendarHeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099DBAE2AE94E9F00B68227 /* CalendarHeatMap.swift */; };
 		B09CDC3B29F91F950089E686 /* RealTimeCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */; };
 		B09CDC4129F92C330089E686 /* DashboardTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09CDC4029F92C330089E686 /* DashboardTabBar.swift */; };
@@ -165,6 +166,7 @@
 		B04534662A00611500AB367E /* CalendarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerView.swift; sourceTree = "<group>"; };
 		B051DD432AE425FE008E07B0 /* HeartRateGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateGraph.swift; sourceTree = "<group>"; };
 		B088C2822B051BD700396BDA /* HeatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
+		B0965C682B1BFE7F00DB2927 /* UserReflections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReflections.swift; sourceTree = "<group>"; };
 		B099DBAE2AE94E9F00B68227 /* CalendarHeatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeatMap.swift; sourceTree = "<group>"; };
 		B09CDC3A29F91F950089E686 /* RealTimeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCounterView.swift; sourceTree = "<group>"; };
 		B09CDC4029F92C330089E686 /* DashboardTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabBar.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				B04008AB29F85D7700B3BC6C /* ConfirmationPopup.swift */,
+				B0965C682B1BFE7F00DB2927 /* UserReflections.swift */,
 				B09CDC4029F92C330089E686 /* DashboardTabBar.swift */,
 				42C849472B0E507400195AEA /* TimeRangePicker.swift */,
 			);
@@ -586,6 +589,7 @@
 				4E9BDF3729EA89B300CA432A /* Occurences.xcdatamodeld in Sources */,
 				B0DA5B1E29CB486100EAEA24 /* BarChart.swift in Sources */,
 				4E2693CF29F3A92C00401A96 /* ManagerView.swift in Sources */,
+				B0965C692B1BFE7F00DB2927 /* UserReflections.swift in Sources */,
 				B04534652A004CAD00AB367E /* WelcomePopUp.swift in Sources */,
 				42D58AA129FDA06D001A025B /* TrendData.swift in Sources */,
 				4E9BDF3A29EA8CCF00CA432A /* DataController.swift in Sources */,

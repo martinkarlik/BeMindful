@@ -46,7 +46,9 @@ struct DashboardView: View {
                             .listRowSeparator(.hidden)
                         CalendarHeatMap(data: HeatMapDataContainer.mock)
                             .frame(maxWidth: .infinity)
-                            .listRowSeparator(.hidden)
+                            .listRowSeparator(.visible)
+
+                        SelfReflectionView()
                         }
                         .listStyle(.plain)
                     Divider()
