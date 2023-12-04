@@ -25,7 +25,7 @@ class OccurenceViewModel: ObservableObject {
     @Published var lastSynced = Date()
     
     
-    private let dataController: DataController
+    private let dataController = DataController.shared
     private let requestOccurences = NSFetchRequest<Occurence>(entityName: "Occurence")
     private let requestHeartRate = NSFetchRequest<HeartRate>(entityName: "HeartRate")
     private let calendar = Calendar.current
@@ -35,7 +35,6 @@ class OccurenceViewModel: ObservableObject {
     private let secondsInWeek: Double = 604800
     
     init(inMemory: Bool = false) {
-        dataController = DataController(containerName: "Occurences", inMemory: inMemory)
         if !inMemory {
             occurences = dataController.fetchData(request: requestOccurences)
             heartRate = dataController.fetchData(request: requestHeartRate)
@@ -61,7 +60,6 @@ class OccurenceViewModel: ObservableObject {
                  lineChartData: BarChartData,
                  heartChartData: HeartChartData,
                  historyData: HistoryDataContainer) {
-        self.dataController = DataController(containerName: "Occurences", inMemory: true)
         self.occurences = []
         self.trendData = trendData
         self.lineChartData = lineChartData

@@ -11,12 +11,17 @@ import Foundation
 class DataController: ObservableObject {
     let container: NSPersistentContainer
     var context : NSManagedObjectContext { container.viewContext }
-    
-    init(containerName: String, inMemory: Bool = false) {
-        container = NSPersistentContainer(name: containerName)
+
+    static let shared = DataController()
+
+    private init(inMemory: Bool = false) {
+        container = NSPersistentContainer(name: "Occurences")
         if inMemory, let first = container.persistentStoreDescriptions.first {
             first.url = URL(fileURLWithPath: "/dev/null")
         }
+        container.persistentStoreDescriptions = [
+                    NSPersistentStoreDescription(url: FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.bemindful")!.appendingPathComponent("Occurence.sqlite"))
+                ]
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores { description, error in
             if let error = error {
@@ -33,6 +38,11 @@ class DataController: ObservableObject {
             print("ERROR: \(error)")
         }
         return result
+    }
+
+    func createOccurence(timestamp: Date) {
+        _ = Occurence(context: context, timestamp: timestamp, type: "Hair pulling")
+        saveData()
     }
 
     func saveData() {
